@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import DayCard from '../components/DayCard.astro';
+import Checklist from '../components/Checklist.astro';
+import Footer from '../components/Footer.astro';
+import { trip } from '../data/trip';
+
+const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}`;
+---
+<Base title={title}>
+  <Hero
+    title={trip.title}
+    travellers={trip.travellers}
+    dates={trip.dates}
+    tagline={trip.tagline}
+    flightOut={trip.flights.out}
+    flightBack={trip.flights.back}
+  />
+
+  <nav class="daynav" aria-label="Jump to day">
+    <ul class="daynav__list wrap">
+      {trip.days.map((day) => {
+        const slug = day.code.toLowerCase().replace(/\s+/g, '-');
+        return (
+          <li>
+            <a href={`#${slug}`}>
+              <span class="daynav__code">{day.code}</span>
+              <span class="daynav__date">{day.date}</span>
+            </a>
+          </li>
+        );
+      })}
+      <li><a href="#checklist" class="daynav__pill">Checklist</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="wrap main">
+    <Checklist items={[...trip.checklist]} />
+
+    {trip.days.map((day, i) => (
+      <DayCard
+        day={day}
+        dayNumber={i + 1}
+        showWeatherCaveat={i === 0}
+        caveat={trip.weatherCaveat}
+      />
+    ))}
+  </main>
+
+  <Footer items={trip.footer.items} />
+</Base>
+
+<style>
+  .main {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .daynav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--ink);
+    border-bottom: var(--rule) solid var(--bone);
+  }
+  .daynav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem var(--gutter);
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .daynav__list li { flex: 0 0 auto; }
+  .daynav__list a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.4rem 0.7rem;
+    text-decoration: none;
+    color: var(--bone);
+    border: 1px solid var(--bone-faint);
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .daynav__list a:hover,
+  .daynav__list a:focus-visible {
+    background: var(--acid);
+    color: var(--ink);
+    border-color: var(--acid);
+    outline: none;
+  }
+  .daynav__code { font-weight: 700; color: var(--acid); }
+  .daynav__list a:hover .daynav__code,
+  .daynav__list a:focus-visible .daynav__code { color: var(--ink); }
+  .daynav__date { color: inherit; }
+  .daynav__pill { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
+  .daynav__pill:hover, .daynav__pill:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+</style>

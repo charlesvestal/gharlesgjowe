@@ -1,0 +1,57 @@
+---
+interface Props {
+  weather: string;
+  caveat?: string;
+  showCaveat?: boolean;
+}
+
+const { weather, caveat, showCaveat = false } = Astro.props;
+---
+<aside class="weather" aria-label="Seasonal weather note">
+  <span class="weather__icon" aria-hidden="true">☂︎</span>
+  <p class="weather__body">
+    <span class="weather__label">JUL · GLA</span>
+    {weather}
+    {showCaveat && caveat && (
+      <em class="weather__caveat"> — {caveat}</em>
+    )}
+  </p>
+</aside>
+
+<style>
+  .weather {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    margin: 0 0 1.5rem 0;
+    background: var(--ink-2);
+    border-left: var(--rule-thick) solid var(--acid);
+    border-top: var(--rule) solid var(--bone-faint);
+    border-bottom: var(--rule) solid var(--bone-faint);
+  }
+  .weather__icon {
+    font-size: 1.5rem;
+    color: var(--acid);
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  .weather__body {
+    margin: 0;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    color: var(--bone-dim);
+    letter-spacing: 0.01em;
+  }
+  .weather__label {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--acid);
+    margin-right: 0.5rem;
+  }
+  .weather__caveat {
+    color: var(--riso-red);
+    font-style: normal;
+    font-weight: 700;
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+interface FooterItem {
+  label: string;
+  body: string;
+}
+interface Props {
+  items: FooterItem[];
+}
+
+const { items } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="wrap">
+    <h3 class="footer__title">PRACTICAL</h3>
+    <dl class="footer__grid">
+      {items.map((item) => (
+        <div class="footer__cell">
+          <dt class="footer__label">{item.label}</dt>
+          <dd class="footer__body">{item.body}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="footer__sig meta">
+      Built for Charles × Joe · Glasgow {year} · Static site, no tracking, no cookies.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink-2);
+    border-top: var(--rule-thick) solid var(--riso-red);
+    padding: 3rem 0 2rem 0;
+    margin-top: 3rem;
+  }
+
+  .footer__title {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--riso-red);
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 0 0 2rem 0;
+  }
+  @media (min-width: 640px) {
+    .footer__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .footer__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .footer__cell {
+    padding: 0.75rem 0;
+    border-top: 1px dashed var(--bone-faint);
+  }
+
+  .footer__label {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--acid);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .footer__body {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--bone);
+    max-width: 38ch;
+    line-height: 1.45;
+  }
+
+  .footer__sig {
+    border-top: 1px dashed var(--bone-faint);
+    padding-top: 1rem;
+    color: var(--bone-dim);
+  }
+</style>

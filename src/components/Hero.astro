@@ -1,0 +1,167 @@
+---
+import type { Flight } from '../data/trip';
+
+interface Props {
+  title: string;
+  travellers: readonly string[];
+  dates: string;
+  tagline: string;
+  flightOut: Flight;
+  flightBack: Flight;
+}
+
+const { title, travellers, dates, tagline, flightOut, flightBack } = Astro.props;
+const marqueeLine = `Glasgow ${dates} · ${travellers.join(' × ')} · dive bars · galleries · whisky · gigs`;
+---
+<header class="hero" role="banner">
+  <div class="hero__inner wrap">
+    <p class="hero__eyebrow meta reveal" style="--i: 0">
+      <span aria-hidden="true">⚑</span> ITINERARY ZINE · v1
+    </p>
+
+    <h1 class="hero__title reveal" style="--i: 1">
+      <span class="hero__title-line">{title}</span>
+    </h1>
+
+    <p class="hero__sub reveal" style="--i: 2">
+      <span class="hero__names">{travellers.join(' × ')}</span>
+      <span class="hero__dot" aria-hidden="true">·</span>
+      <span class="hero__dates">{dates}</span>
+    </p>
+
+    <p class="hero__tagline reveal" style="--i: 3">{tagline}</p>
+
+    <dl class="hero__flights reveal" style="--i: 4" aria-label="Flight bookends">
+      <div class="hero__flight">
+        <dt class="meta">Out · {flightOut.date}</dt>
+        <dd>
+          <strong>{flightOut.from} {flightOut.depart}</strong>
+          <span aria-hidden="true">→</span>
+          <strong>{flightOut.to} {flightOut.arrive}</strong>
+        </dd>
+      </div>
+      <div class="hero__flight">
+        <dt class="meta">Back · {flightBack.date}</dt>
+        <dd>
+          <strong>{flightBack.from} {flightBack.depart}</strong>
+          <span aria-hidden="true">→</span>
+          <strong>{flightBack.to} {flightBack.arrive}</strong>
+        </dd>
+      </div>
+    </dl>
+
+    <span class="stamp" aria-hidden="true">SOLD<br />OUT</span>
+  </div>
+
+  <div class="marquee reveal" style="--i: 5" aria-hidden="true">
+    <div class="marquee__track">
+      <span>{marqueeLine}</span>
+      <span>{marqueeLine}</span>
+      <span>{marqueeLine}</span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: clamp(1.5rem, 4vw, 3rem);
+    padding-bottom: 0;
+    border-bottom: var(--rule-thick) solid var(--bone);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    position: relative;
+    padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .hero__eyebrow {
+    margin: 0 0 1rem 0;
+    color: var(--acid);
+  }
+
+  .hero__title {
+    color: var(--bone);
+    margin-bottom: 0.75rem;
+    text-shadow:
+      0.04em 0.03em 0 var(--riso-red),
+      -0.02em -0.02em 0 var(--acid);
+    transform: rotate(-1.5deg);
+    transform-origin: left bottom;
+  }
+
+  .hero__title-line { display: block; }
+
+  .hero__sub {
+    font-family: var(--ff-display);
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    line-height: 1;
+    margin: 0 0 0.5rem 0;
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .hero__names { color: var(--acid); }
+  .hero__dot { color: var(--riso-red); margin: 0 0.5rem; }
+  .hero__dates {}
+
+  .hero__tagline {
+    max-width: 50ch;
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    color: var(--bone-dim);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__flights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem 2rem;
+    margin: 0;
+    padding: 1rem;
+    border: var(--rule) dashed var(--bone);
+    background: var(--ink-2);
+    max-width: 42rem;
+  }
+  @media (min-width: 640px) {
+    .hero__flights { grid-template-columns: 1fr 1fr; }
+  }
+
+  .hero__flight dt {
+    margin-bottom: 0.25rem;
+  }
+
+  .hero__flight dd {
+    margin: 0;
+    font-family: var(--ff-mono);
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    color: var(--bone);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__flight dd strong {
+    color: var(--acid);
+    font-weight: 700;
+  }
+
+  .stamp {
+    position: absolute;
+    top: 1rem;
+    right: var(--gutter);
+    font-family: var(--ff-display);
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    color: var(--riso-red);
+    border: 4px solid var(--riso-red);
+    padding: 0.25rem 0.6rem;
+    text-align: center;
+    line-height: 0.95;
+    transform: rotate(8deg);
+    opacity: 0.85;
+    pointer-events: none;
+    background: rgba(243, 233, 216, 0.06);
+  }
+
+  @media (max-width: 540px) {
+    .stamp { font-size: 1rem; padding: 0.2rem 0.4rem; }
+  }
+</style>
