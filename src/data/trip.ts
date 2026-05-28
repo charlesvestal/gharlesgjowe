@@ -78,6 +78,7 @@ export const trip = {
   checklist: [
     { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
+    { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul' },
     { id: 'book-crabshakk', label: 'Book Crabshakk — Sun 5 Jul (small room, often fills)' },
     { id: 'book-ox-and-finch', label: 'Book Ox and Finch — Sat 4 Jul' },
@@ -659,13 +660,25 @@ export const trip = {
         },
         {
           time: '10:30',
-          title: 'Final wander / anything missed',
+          title: 'Tenement House',
+          kind: 'sight',
+          blurb:
+            "NTS-preserved Edwardian working-class tenement flat at 145 Buccleuch Street, Garnethill — exactly as the last tenant Agnes Toward left it in 1965, gas lights and all. 30–45 min visit, central (10-min walk north from Sauchiehall), £9. The quiet weird-small-museum slot of the trip.",
+          booking: { label: 'Book timed entry (NTS)', url: 'https://www.nts.org.uk/visit/places/tenement-house' },
+          maps: mapsUrl('Tenement House 145 Buccleuch Street Garnethill'),
+          pairing: 'Coffee at the GFT café on the walk down to the Laurieston.',
+          swap: 'Sold out for your slot? Skip straight to the Laurieston for a longer half.',
+          image: localImg('tenement-house.jpg'),
+          imageAlt: 'The Tenement House, 145 Buccleuch Street, Garnethill',
+        },
+        {
+          time: '~12:00',
+          title: 'The Laurieston — last half',
           kind: 'drink',
           blurb:
-            'The Laurieston Bar (south side, cash-only 1960s time-warp) for a cheeky half, a last record shop, or a late-morning GFT film.',
+            "Walk south through town and over the Bridge St footbridge — 15 min from the Tenement House. Cash-only 1960s time-warp pub: formica, mirrored bar, vinyl seats, regulars. A pint, 30 minutes, you're done. The most Glasgow goodbye.",
           maps: mapsUrl('The Laurieston Bar Bridge Street'),
-          pairing: 'Fyne Ales Jarl at the Laurieston.',
-          swap: 'Rainy? Duck into a museum you skipped.',
+          pairing: 'Fyne Ales Jarl, or a half-and-half (half-pint + whisky chaser).',
           image: localImg('laurieston-bar.jpg'),
           imageAlt: 'The Laurieston Bar, Bridge Street, Glasgow',
         },
