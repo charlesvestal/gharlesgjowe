@@ -77,10 +77,12 @@ export const trip = {
     'Seasonal averages, not a forecast — check before you fly.',
   checklist: [
     { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
+    { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul' },
+    { id: 'book-crabshakk', label: 'Book Crabshakk — Sun 5 Jul (small room, often fills)' },
+    { id: 'book-ox-and-finch', label: 'Book Ox and Finch — Sat 4 Jul' },
     { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
-    { id: 'klm-checkin', label: 'KLM online check-in — 24h before each leg' },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
     { id: 'cash', label: 'Bring some cash — Laurieston & the Barras lean cash-only' },
     { id: 'stage-time', label: 'Check Southpaw stage time nearer the date' },
@@ -95,14 +97,6 @@ export const trip = {
       {
         label: 'Getting around',
         body: 'Compact and walkable; the Subway ("Clockwork Orange") links centre ↔ West End in minutes.',
-      },
-      {
-        label: 'Delays',
-        body: 'KLM flights are covered by EU/UK air passenger rights (EU261) — care, rebooking, sometimes compensation.',
-      },
-      {
-        label: 'Tickets',
-        body: 'Light fare = carry-on only, non-refundable. Do online check-in 24h out.',
       },
       {
         label: 'Daylight',
@@ -288,8 +282,8 @@ export const trip = {
           blurb: 'Carry-on only = walk straight out. Realistically in the city ~14:00 after the bus.',
           transport:
             '500 Airport Express → Buchanan St, ~£9 return, every 10 min, 15–25 min depending on traffic. Or cab ~£20, ~15 min.',
-          image:
-            localImg('glasgow-airport-terminal.jpg'),
+          pairing: 'Coffee at the gate before the bus — save the pints.',
+          image: localImg('glasgow-airport-terminal.jpg'),
           imageAlt: 'Glasgow Airport terminal building exterior',
         },
         {
@@ -297,6 +291,7 @@ export const trip = {
           title: 'Drop bags at hotel',
           kind: 'note',
           blurb: "Check-in won't be ready — stash, freshen up, head straight back out. Everything from here is within 10 min walk of the centre.",
+          pairing: 'Tap water. The night is long.',
         },
         {
           time: '14:45',
@@ -318,9 +313,21 @@ export const trip = {
           maps: mapsUrl('Gallery of Modern Art GoMA'),
           pairing: 'Espresso at GoMA, or a Gamma Ray at Mono on the way out.',
           swap: 'Wiped from the flight? Drop both and go straight to the Pot Still for a long pre-gig sit.',
-          image:
-            localImg('goma-glasgow.jpg'),
+          image: localImg('goma-glasgow.jpg'),
           imageAlt: 'Gallery of Modern Art Glasgow front facade with Duke of Wellington statue',
+        },
+        {
+          time: 'Show TBD',
+          title: 'Sharmanka Kinetic Theatre',
+          kind: 'sight',
+          blurb:
+            "Basement of mechanical sculptures by Russian artist Eduard Bersudsky — figures, scrap, lights, and music orchestrated into 45-min performances. Two shows in rotation: 'Journey' (lighter, all-ages) and 'Wheels of Life' (darker, 12+). Trongate 103 — 2 min from Monorail. Check show times before the trip and book ahead; the room only seats ~50.",
+          booking: { label: 'Book via TicketSource', url: 'https://www.ticketsource.co.uk/sharmanka' },
+          maps: mapsUrl('Sharmanka Kinetic Theatre Trongate 103'),
+          pairing: 'Skip the pint — concentrate. Then straight to the Pot Still.',
+          swap: "Nothing on at a workable Thursday time? Could shift to Friday or Saturday afternoon — they run Wed–Sun most weeks.",
+          image: localImg('sharmanka.jpg'),
+          imageAlt: 'Sharmanka Kinetic Theatre mechanical sculpture',
         },
         {
           time: '17:30',
@@ -361,6 +368,7 @@ export const trip = {
           blurb:
             "Slow-ferment sourdough + almond croissant locals queue for, on Great Western Rd. On La Liste's world bakeries 2024. Subway to Kelvinbridge (Clockwork Orange loop, ~10 min from centre), 5-min walk. Cashel Coffee in Woodlands is the back-up if Cottonrake's queue is silly.",
           maps: mapsUrl('Cottonrake Bakery Great Western Road'),
+          pairing: 'Flat white from the counter.',
           image: localImg('cottonrake-bakery.jpg'),
           imageAlt: 'Cottonrake Bakery pastry — dark chocolate and raspberry tart',
         },
@@ -371,6 +379,7 @@ export const trip = {
           blurb:
             "Free and superb — Dalí's Christ of St John of the Cross, a real Spitfire. The free 1pm organ recital is a Glasgow institution; time the visit around it. Plan ~2 hrs. (Fri opens 11:00.) Subway: Kelvinhall, 5-min walk.",
           maps: mapsUrl('Kelvingrove Art Gallery and Museum'),
+          pairing: 'Espresso in the museum café.',
           image: localImg('kelvingrove.jpg'),
           imageAlt: 'Kelvingrove Art Gallery and Museum red sandstone exterior',
         },
@@ -380,6 +389,7 @@ export const trip = {
           kind: 'food',
           blurb: '10-min walk north from Kelvingrove. The University Café (1918 art-deco caff, fish & chips) or the Curlers Rest for pub grub — both right by the Uni.',
           maps: mapsUrl('University Cafe Byres Road'),
+          pairing: 'A pot of tea at the Uni Café, or a half of Tennent\'s at the Curlers.',
           image: localImg('university-cafe.jpg'),
           imageAlt: 'University Café art-deco interior, Byres Road',
         },
@@ -390,6 +400,7 @@ export const trip = {
           blurb:
             'Walk the Gilbert Scott cloisters (proper Hogwarts) — 5 min from the Uni Café. Free Hunterian Museum is the nerdy highlight.',
           maps: mapsUrl('University of Glasgow Hunterian Museum'),
+          pairing: 'Coffee from the Hunterian café between exhibits.',
           image: localImg('glasgow-university.jpg'),
           imageAlt: 'University of Glasgow Gilbert Scott main building',
         },
@@ -442,6 +453,7 @@ export const trip = {
             '800-year-old Gothic, free. The atmospheric lower church is the bit people miss. Castle St.',
           transport: '~20-min walk east of Buchanan St, or a £6 cab.',
           maps: mapsUrl('Glasgow Cathedral'),
+          pairing: 'Tea at Cathedral House across the road.',
           image: localImg('glasgow-cathedral.jpg'),
           imageAlt: 'Glasgow Cathedral exterior, Castle Street',
         },
@@ -452,6 +464,7 @@ export const trip = {
           blurb:
             'Victorian hilltop cemetery directly behind the Cathedral — 3,500 monuments, big city views, filming spot for The Batman. Pure Rick Steves.',
           maps: mapsUrl('Glasgow Necropolis'),
+          pairing: 'Water — bring your own, it\'s a climb.',
           image: localImg('glasgow-necropolis.jpg'),
           imageAlt: 'Glasgow Necropolis Victorian hilltop cemetery, aerial view',
         },
@@ -473,6 +486,7 @@ export const trip = {
           blurb:
             "Right next door — weekends only, **closes at 16:00 sharp**. Ramshackle flea market: vinyl, vintage, junk, characters, street food. ~2.5 hrs to dig before traders pack up. Push lunch earlier (12:00) if you want longer here.",
           maps: mapsUrl('The Barras Market Gallowgate'),
+          pairing: 'Can of Tennent\'s from a stall if it\'s warm; hot toddy if it\'s not.',
           image: localImg('barras-market.jpg'),
           imageAlt: 'The Barras Market, Gallowgate, Glasgow',
         },
@@ -494,6 +508,7 @@ export const trip = {
           kind: 'note',
           blurb:
             "10-min cab from Glasgow Green to the centre. Half-hour sit-down before dinner — Sunday is Stirling, you'll want some battery. Important: from here the rest of the night is all central (no more east-end runs).",
+          pairing: 'Glass of water and a coffee — the long evening is coming.',
         },
         {
           time: '19:30',
@@ -538,6 +553,7 @@ export const trip = {
           transport:
             'From Glasgow Queen Street (high level). Sunday service is thinner than weekdays — confirm the last train back before you head out.',
           booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
+          pairing: 'Take-out coffee from the station Pret. Pubs come later.',
           image: localImg('queen-street-station.jpg'),
           imageAlt: 'Glasgow Queen Street station exterior',
         },
@@ -577,6 +593,7 @@ export const trip = {
             'Across town on the Abbey Craig — steep climb up the tower, big payoff view. Separate ticket; allow ~2 hrs door-to-door from the castle.',
           booking: { label: 'Tickets + hours', url: 'https://www.nationalwallacemonument.com/' },
           maps: 'https://www.google.com/maps/search/?api=1&query=National+Wallace+Monument+Stirling',
+          pairing: 'Water bottle for the climb. A real drink waits at the bottom.',
           swap: 'Knackered or raining? Skip Wallace — second pint in the Old Town and an earlier train back.',
           image: localImg('wallace-monument.jpg'),
           imageAlt: 'National Wallace Monument on Abbey Craig, Stirling',
@@ -588,6 +605,7 @@ export const trip = {
           blurb:
             'Aim to be back in Glasgow by ~17:30 so the evening plan stays intact. Sunday service is thinner — do NOT wing the last train.',
           booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
+          pairing: 'Can of Tennent\'s from a corner shop for the ride.',
         },
         {
           time: '18:30',
@@ -637,6 +655,7 @@ export const trip = {
           title: 'Slow breakfast',
           kind: 'food',
           blurb: "No rush — the flight's not till evening.",
+          pairing: 'Big pot of tea. Or a Bloody Mary if you\'re already in goodbye mode.',
         },
         {
           time: '10:30',
@@ -655,12 +674,14 @@ export const trip = {
           title: 'Lunch + collect bags',
           kind: 'food',
           blurb: 'Eat central, grab the backpacks.',
+          pairing: 'A pint with the bags — last one in Glasgow.',
         },
         {
           time: '14:30',
           title: 'Leave for the airport',
           kind: 'transport',
           blurb: '500 bus or cab. Allow ~2h before a connecting international flight.',
+          pairing: 'Take-out coffee for the bus.',
         },
         {
           time: '17:00',
