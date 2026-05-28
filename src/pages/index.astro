@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import DayCard from '../components/DayCard.astro';
 import Checklist from '../components/Checklist.astro';
+import FoodAlternates from '../components/FoodAlternates.astro';
 import Footer from '../components/Footer.astro';
 import { trip } from '../data/trip';
 
@@ -32,6 +33,7 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
         );
       })}
       <li><a href="#checklist" class="daynav__pill">Checklist</a></li>
+      <li><a href="#food" class="daynav__pill daynav__pill--food">Food</a></li>
     </ul>
   </nav>
 
@@ -46,6 +48,8 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
         caveat={trip.weatherCaveat}
       />
     ))}
+
+    <FoodAlternates groups={trip.foodAlternates} />
   </main>
 
   <Footer items={trip.footer.items} />
@@ -103,4 +107,6 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   .daynav__date { color: inherit; }
   .daynav__pill { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
   .daynav__pill:hover, .daynav__pill:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+  .daynav__pill--food { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+  .daynav__pill--food:hover, .daynav__pill--food:focus-visible { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
 </style>
