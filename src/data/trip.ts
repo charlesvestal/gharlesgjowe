@@ -52,10 +52,10 @@ export const trip = {
   weatherCaveat:
     'Seasonal averages, not a forecast — check before you fly.',
   checklist: [
-    { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's" },
+    { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul' },
-    { id: 'check-barrowland', label: 'Check Barrowland listings — Sat 4 Jul' },
-    { id: 'decide-sunday', label: "Decide Sunday gig: The Dirty Nil @ King Tut's vs Nice N Sleazy" },
+    { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
+    { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
     { id: 'klm-checkin', label: 'KLM online check-in — 24h before each leg' },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
     { id: 'cash', label: 'Bring some cash — Laurieston & the Barras lean cash-only' },
@@ -219,11 +219,13 @@ export const trip = {
         },
         {
           time: '21:30',
-          title: 'Night, your call',
-          kind: 'note',
+          title: 'West-end dive route',
+          kind: 'drink',
           blurb:
-            "Check King Tut's / SWG3 / Òran Mór listings, or head back to the centre for dive bars.",
-          swap: 'Knackered? Just settle into the Finnieston strip.',
+            "Mother India should land you back on Argyle St around now — work your way west: Brel on Ashton Lane (Belgian beer garden, fairy-lit), then The Park Bar on Argyle St for a trad folk session in the corner. Cap it back at the Finnieston strip.",
+          maps: mapsUrl('Brel Ashton Lane'),
+          pairing: 'Drygate Bearface lager at Brel; a Highland malt at the Park.',
+          swap: 'Knackered after dinner? Just settle into the Finnieston strip — Ben Nevis to close.',
         },
       ],
     },
@@ -278,72 +280,100 @@ export const trip = {
         },
         {
           time: '20:00',
-          title: 'Big night',
-          kind: 'gig',
+          title: 'Walk past Barrowland → late drinks',
+          kind: 'drink',
           blurb:
-            "Barrowland Ballroom if a gig's on (sprung floor, starry ceiling, legendary). Else Sub Club (Subculture techno) or a dive crawl.",
-          booking: { label: 'Barrowland listings', url: 'https://barrowland.co.uk/' },
+            "No second show this trip — but walk Gallowgate to clock the Barrowland sign lit up (it's a thing), then head west. Either: (a) Sub Club's Subculture for an hour — Saturday house institution since '94, Jamaica St, DJs not a gig — or (b) a Sauchiehall dive crawl: Stereo (basement of a Mackintosh building) → The Variety Bar → Nice N Sleazy.",
           maps: mapsUrl('Barrowland Ballroom'),
-          pairing: "Tennent's in a plastic pint — part of the Barras experience.",
-          swap: 'No Barrowland gig that night → Sub Club, Stereo, or Nice N Sleazy.',
+          pairing: "Tennent's plastic pint at Sub Club; whatever's cheapest at Sleazy's.",
+          swap: "Wiped from the Barras? Cab west, dinner late, and pick up at Finnieston for a quieter pint.",
         },
       ],
     },
     {
       date: 'Sun 5 Jul',
       code: 'DAY 04',
-      theme: 'Riverside & Arthouse',
+      theme: 'Stirling Day Trip',
       weather: weatherShort,
       stops: [
         {
-          time: '11:00',
-          title: 'Riverside Museum',
-          kind: 'sight',
+          time: '~9:30',
+          title: 'Train: Queen St → Stirling',
+          kind: 'transport',
           blurb:
-            'Zaha Hadid building stuffed with trains, trams, cars (a DeLorean), with the Tall Ship Glenlee moored outside. Free.',
-          transport: 'Cab/bus ~15 min, or walk the Clyde from Finnieston.',
-          maps: mapsUrl('Riverside Museum'),
-          swap:
-            'Glorious weather? Swap for Loch Lomond — Balloch is ~45 min by train from Queen St. Or the Burrell Collection in Pollok Park (world-class, recently refurbished).',
+            "ScotRail direct, ~30 min, usually 2–4 per hour. Buy a return — cheaper than two singles.",
+          transport:
+            'From Glasgow Queen Street (high level). Sunday service is thinner than weekdays — confirm the last train back before you head out.',
+          booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
         },
         {
-          time: '16:30',
+          time: '10:30',
+          title: 'Stirling Castle',
+          kind: 'sight',
+          blurb:
+            "The day's anchor — one of Scotland's great castles. Great Hall, Royal Palace, views over the Forth valley. Allow 2.5–3 hrs; last entry well before close; cheaper booked online.",
+          booking: {
+            label: 'Book entry (Historic Environment Scotland)',
+            url: 'https://www.historicenvironment.scot/visit-a-place/places/stirling-castle/',
+          },
+          maps: 'https://www.google.com/maps/search/?api=1&query=Stirling+Castle',
+          pairing: 'A coffee in the castle tearoom — pubs come later.',
+          swap:
+            "Rather stay in Glasgow? Riverside Museum (Zaha Hadid + a DeLorean), the Burrell Collection in Pollok Park, or a Loch Lomond run (Queen St → Balloch, ~45 min).",
+        },
+        {
+          time: '13:00',
+          title: 'Old Town wander + pub lunch',
+          kind: 'food',
+          blurb:
+            "Walk the wynds down from the castle — Church of the Holy Rude is the bit people miss (the only church besides Westminster Abbey to have hosted a still-reigning monarch's coronation). Pub lunch at The Portcullis or Settle Inn.",
+          maps: 'https://www.google.com/maps/search/?api=1&query=The+Portcullis+Stirling',
+          pairing: 'A pint of Williams Bros Caesar Augustus at the Portcullis.',
+        },
+        {
+          time: '14:30',
+          title: 'Wallace Monument (optional)',
+          kind: 'sight',
+          blurb:
+            'Across town on the Abbey Craig — steep climb up the tower, big payoff view. Separate ticket; allow ~2 hrs door-to-door from the castle.',
+          booking: { label: 'Tickets + hours', url: 'https://www.nationalwallacemonument.com/' },
+          maps: 'https://www.google.com/maps/search/?api=1&query=National+Wallace+Monument+Stirling',
+          swap: 'Knackered or raining? Skip Wallace — second pint in the Old Town and an earlier train back.',
+        },
+        {
+          time: '~16:30',
+          title: 'Train: Stirling → Queen St',
+          kind: 'transport',
+          blurb:
+            'Aim to be back in Glasgow by ~17:30 so the evening plan stays intact. Sunday service is thinner — do NOT wing the last train.',
+          booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
+        },
+        {
+          time: '18:30',
           title: 'Glasgow Film Theatre (GFT)',
           kind: 'sight',
           blurb:
-            'Beautiful independent cinema, Rose St — arthouse & rep. Grab an afternoon/early screening.',
+            "Beautiful indie cinema on Rose St — arthouse & rep. Grab an early-evening screening to reset after the day out.",
           booking: { label: "What's on", url: 'https://www.glasgowfilm.org/' },
           maps: mapsUrl('Glasgow Film Theatre Rose Street'),
           pairing: 'A glass of something at the GFT café-bar.',
         },
         {
-          time: '20:00',
-          title: "Live option: The Dirty Nil @ King Tut's",
-          kind: 'gig',
-          blurb:
-            "Canadian punk-rock, loud and fun — and it's on this very night.",
-          booking: {
-            label: 'Tickets',
-            url: 'https://www.songkick.com/concerts/42872666-dirty-nil-at-king-tuts-wah-wah-hut',
-          },
-          maps: mapsUrl("King Tut's Wah Wah Hut"),
-          swap: 'Or skip the gig for Nice N Sleazy below.',
-        },
-        {
-          time: '20:00',
-          title: 'Nice N Sleazy (alt)',
+          time: '21:00',
+          title: 'Nice N Sleazy',
           kind: 'drink',
           blurb:
-            'Grungy Sauchiehall St institution — cheap drinks, basement gigs, jukebox. The dive bar of the trip.',
+            "Grungy Sauchiehall St institution — cheap drinks, jukebox, the dive bar of the trip. 4-min walk from the GFT.",
           maps: mapsUrl('Nice N Sleazy Sauchiehall Street'),
           pairing: 'Cheap house lager, or a boilermaker.',
+          swap: 'Prefer something quieter? The Pot Still is two streets away for a final dram.',
         },
         {
-          time: '22:00',
+          time: '22:30',
           title: 'The Clutha',
           kind: 'drink',
           blurb:
-            'Riverside pub steeped in history, live music most nights, cheap pizza. A fitting last-night pint. Bridgegate.',
+            "Riverside pub steeped in history, live music in the corner most nights, cheap pizza. A fitting last-night pint. Bridgegate.",
           maps: mapsUrl('The Clutha Bridgegate'),
           pairing: 'A pint of Guinness + a dram.',
         },
