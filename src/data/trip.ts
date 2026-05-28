@@ -118,6 +118,7 @@ export const trip = {
           area: 'Shawlands',
           meal: 'breakfast',
           blurb: 'Steak lorne roll with nduja crumb — the cult Southside breakfast.',
+          note: 'Wed–Sun only, closed Mon & Tue.',
           maps: mapsUrl("Gizzi's Espresso Bar Shawlands"),
         },
         {
@@ -125,7 +126,7 @@ export const trip = {
           area: 'Pollokshields',
           meal: 'lunch',
           blurb: 'Punjabi home cooking, vegetarian only — dhal, saag, samosas locals fight over. The non-Mother India curry.',
-          note: 'Cash only.',
+          note: 'Cash only · Closed Mon · no bookings.',
           maps: mapsUrl("Ranjit's Kitchen Pollokshaws Road"),
         },
         {
@@ -140,6 +141,7 @@ export const trip = {
           area: 'Centre / Old Dumbarton Rd',
           meal: 'snack',
           blurb: 'Proper yeast-raised doughnuts. The local sweet stop.',
+          note: 'Old Dumbarton branch closed Mon; Gordon St branch closed Sun.',
           maps: mapsUrl('Tantrum Doughnuts'),
         },
         {
@@ -160,7 +162,7 @@ export const trip = {
           area: 'Govanhill',
           meal: 'dinner',
           blurb: 'Detroit-style + NY from ex-Alchemilla chefs. The non-Paesano pizza Glaswegians actually argue about.',
-          note: 'Tiny, BYOB, hard to book — go early.',
+          note: 'Tiny, BYOB, hard to book. Thu–Sun from 5pm only — fits Thu 2 Jul or Sun 5 Jul.',
           maps: mapsUrl("Errol's Hot Pizza Govanhill"),
         },
         {
@@ -207,25 +209,27 @@ export const trip = {
       intro: 'Standouts when you want non-curry Asian, vegan, or just a great wine bar.',
       picks: [
         {
-          name: "Julie's Kopitiam",
-          area: 'Shawlands',
+          name: 'GaGa',
+          area: 'Partick',
           meal: 'lunch / dinner',
-          blurb: 'Malaysian, Michelin-guide, 4 tables. Best non-curry Asian in town.',
-          note: 'Walk-ins only — turn up, get a return time.',
-          maps: mapsUrl("Julie's Kopitiam Pollokshaws Road"),
+          blurb: "Julie Lin's follow-up to Julie's Kopitiam (closed 2023). Bib Gourmand Malaysian/SE Asian small plates on Dumbarton Rd. The non-curry Asian pick.",
+          note: 'Book ahead. (Julie stepped back as head chef in 2025; team continues.)',
+          maps: mapsUrl('GaGa Dumbarton Road Partick'),
         },
         {
           name: 'Kimchi Cult',
           area: 'West End',
           meal: 'lunch / snack',
           blurb: 'Korean street food — banh-mi-meets-bibimbap energy. Fills the Hanoi Bike Shop hole (RIP).',
-          maps: mapsUrl('Kimchi Cult'),
+          note: 'Closed Mon.',
+          maps: mapsUrl('Kimchi Cult Chancellor Street'),
         },
         {
           name: 'Sylvan',
           area: 'Woodlands',
           meal: 'lunch / dinner',
           blurb: 'Vegan/veg wine bar near Park Circus. Easy West End drop-in.',
+          note: 'Closed Sun.',
           maps: mapsUrl('Sylvan Woodlands'),
         },
       ],
@@ -417,13 +421,15 @@ export const trip = {
         },
         {
           time: '19:30',
-          title: "Dinner — Celentano's",
+          title: 'Dinner — Ox and Finch',
           kind: 'food',
           blurb:
-            "Italian small plates, wine on tap, Michelin-guide — trendy without being a scene. In Cathedral House, Townhead — 10-min walk north from Buchanan St. BOOK AHEAD.",
-          maps: mapsUrl("Celentano's Cathedral House Townhead"),
-          pairing: 'Whatever\'s on tap from the wine board.',
-          swap: 'Booked out? Ox and Finch in Finnieston (~15 min cab) is the small-plates fallback.',
+            "Finnieston's reliably-great Mediterranean small plates — ~15-min cab from centre. The default after a long Barras day. BOOK AHEAD.",
+          booking: { label: 'Book a table', url: 'https://oxandfinch.com/' },
+          maps: mapsUrl('Ox and Finch Finnieston'),
+          pairing: 'Whatever\'s on the wine list.',
+          swap:
+            "Celentano's (Italian small plates, Michelin-guide) was the move but their Cathedral House site closed Dec 2025; they're targeting an April 2026 reopen at Arthouse Glasgow on Bath St — worth checking closer to the date if you'd rather it.",
         },
         {
           time: '21:30',
