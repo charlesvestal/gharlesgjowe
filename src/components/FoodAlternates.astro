@@ -27,6 +27,19 @@ const { groups } = Astro.props;
       <ul class="food__grid">
         {group.picks.map((pick, pi) => (
           <li class="food__card" style={`--i: ${gi * 6 + pi}`}>
+            {pick.image && (
+              <figure class="food__figure">
+                <img
+                  src={pick.image}
+                  alt={pick.imageAlt ?? pick.name}
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer"
+                  class="food__image"
+                />
+                <span class="food__figure-grain" aria-hidden="true"></span>
+              </figure>
+            )}
             <p class="food__area meta">
               {pick.area} · <span class="food__meal">{pick.meal}</span>
             </p>
@@ -126,6 +139,39 @@ const { groups } = Astro.props;
     transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
   }
   .food__card:hover { transform: translateY(-2px) rotate(-0.2deg); border-left-color: var(--riso-red); }
+
+  .food__figure {
+    position: relative;
+    margin: -1rem -1.1rem 0.8rem -1.2rem;
+    padding: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--acid);
+    border-bottom: 1px solid var(--bone);
+  }
+  .food__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: url(#halftone-riso) contrast(1.15);
+    mix-blend-mode: multiply;
+    transform: scale(1.02);
+    transition: transform var(--dur) var(--ease);
+  }
+  .food__card:hover .food__image { transform: scale(1.05); }
+  .food__figure-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(18,17,16,0.4) 0.5px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .food__image, .food__card:hover .food__image { transform: none; transition: none; }
+  }
 
   .food__area {
     margin: 0 0 0.25rem 0;

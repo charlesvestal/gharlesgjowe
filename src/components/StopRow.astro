@@ -27,6 +27,20 @@ const kindGlyph: Record<Stop['kind'], string> = {
 };
 ---
 <article class={`stop stop--${stop.kind} reveal`} style={`--i: ${index}`}>
+  {stop.image && (
+    <figure class={`stop__figure stop__figure--${stop.kind}`}>
+      <img
+        src={stop.image}
+        alt={stop.imageAlt ?? stop.title}
+        loading="lazy"
+        decoding="async"
+        referrerpolicy="no-referrer"
+        class="stop__image"
+      />
+      <span class="stop__figure-grain" aria-hidden="true"></span>
+    </figure>
+  )}
+
   <header class="stop__head">
     {stop.time && <span class="stop__time">{stop.time}</span>}
     <span class={`stop__kind stop__kind--${stop.kind}`}>
@@ -105,6 +119,55 @@ const kindGlyph: Record<Stop['kind'], string> = {
   .stop--sight { border-left-color: #c9b87a; }
   .stop--transport { border-left-color: #888178; }
   .stop--note { border-left-color: var(--bone-faint); }
+
+  .stop__figure {
+    position: relative;
+    margin: -1.25rem -1.25rem 1rem -1.5rem;
+    padding: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--riso-red);
+    border-bottom: var(--rule) solid var(--bone);
+  }
+  .stop__figure--gig { background: var(--acid); }
+  .stop__figure--drink { background: var(--acid); }
+  .stop__figure--sight { background: var(--riso-red); }
+  .stop__figure--food { background: var(--bone); }
+  .stop__figure--transport { background: var(--tape); }
+  .stop__figure--note { background: var(--bone-faint); }
+
+  .stop__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: url(#halftone-riso) contrast(1.15);
+    mix-blend-mode: multiply;
+    transform: scale(1.02);
+    transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+  }
+  .stop--gig .stop__image,
+  .stop--drink .stop__image {
+    filter: url(#halftone-acid) contrast(1.2);
+  }
+  .stop:hover .stop__image {
+    transform: scale(1.04) rotate(-0.3deg);
+  }
+
+  /* Halftone dot overlay on top of the duotoned image. */
+  .stop__figure-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(18,17,16,0.45) 0.6px, transparent 1.2px);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stop__image, .stop:hover .stop__image { transform: none; transition: none; }
+  }
 
   .stop__head {
     display: flex;

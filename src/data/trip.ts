@@ -8,6 +8,8 @@ export interface Stop {
   maps?: string;
   pairing?: string;
   swap?: string;
+  image?: string;       // any URL — halftone-treated in the component
+  imageAlt?: string;
 }
 
 export interface Day {
@@ -38,6 +40,8 @@ export interface FoodPick {
   blurb: string;      // one-line "what + why"
   note?: string;      // booking / cash / opening quirk
   maps?: string;
+  image?: string;     // any URL — halftone-treated in the component
+  imageAlt?: string;
 }
 
 export interface FoodGroup {
