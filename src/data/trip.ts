@@ -437,6 +437,8 @@ export const trip = {
             '800-year-old Gothic, free. The atmospheric lower church is the bit people miss. Castle St.',
           transport: '~20-min walk east of Buchanan St, or a £6 cab.',
           maps: mapsUrl('Glasgow Cathedral'),
+          image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Glasgow-cathedral-may-2007.jpg',
+          imageAlt: 'Glasgow Cathedral exterior, Castle Street',
         },
         {
           time: '11:00',
@@ -445,6 +447,8 @@ export const trip = {
           blurb:
             'Victorian hilltop cemetery directly behind the Cathedral — 3,500 monuments, big city views, filming spot for The Batman. Pure Rick Steves.',
           maps: mapsUrl('Glasgow Necropolis'),
+          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Glasgow_Necropolis_-_aerial_-_2025-04-17_01.jpg/3840px-Glasgow_Necropolis_-_aerial_-_2025-04-17_01.jpg',
+          imageAlt: 'Glasgow Necropolis Victorian hilltop cemetery, aerial view',
         },
         {
           time: '12:30',
@@ -454,6 +458,8 @@ export const trip = {
             "~15-min walk east from the Necropolis up Duke St — Dennistoun's breakfast/lunch hero. Towering pastrami sandwiches, bread from a local baker, fluffy pancakes. From Mesa, ~15 min south to the Barras. Saint Luke's (Bain St, right next to the Barras) is the closer fallback if you'd rather skip the Dennistoun detour.",
           maps: mapsUrl('Mesa Duke Street Dennistoun'),
           pairing: 'A flat white before the Barras dig.',
+          image: 'https://dennistoun.co.uk/uploads/576_mesa_m.jpg',
+          imageAlt: 'Mesa café interior, Duke Street, Dennistoun',
         },
         {
           time: '13:30',
@@ -462,6 +468,8 @@ export const trip = {
           blurb:
             "Right next door — weekends only, **closes at 16:00 sharp**. Ramshackle flea market: vinyl, vintage, junk, characters, street food. ~2.5 hrs to dig before traders pack up. Push lunch earlier (12:00) if you want longer here.",
           maps: mapsUrl('The Barras Market Gallowgate'),
+          image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Barras_Market%2C_Glasgow.jpg',
+          imageAlt: 'The Barras Market, Gallowgate, Glasgow',
         },
         {
           time: '15:30',
@@ -472,6 +480,8 @@ export const trip = {
           maps: mapsUrl('WEST Brewery Glasgow Green'),
           pairing: 'St Mungo, or the Munich Red.',
           swap: 'Barras still pulling you in? Skip WEST and keep digging — it\'ll be there next trip.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Templeton_Business_Centre%2C_Glasgow_Green_%286059112448%29.jpg',
+          imageAlt: 'Templeton Building (WEST Brewery), Glasgow Green',
         },
         {
           time: '17:30',
@@ -491,6 +501,8 @@ export const trip = {
           pairing: 'Whatever\'s on the wine list.',
           swap:
             "Celentano's (Italian small plates, Michelin-guide) was the move but their Cathedral House site closed Dec 2025; they're targeting an April 2026 reopen at Arthouse Glasgow on Bath St — worth checking closer to the date if you'd rather it.",
+          image: 'https://www.oxandfinch.com/wp-content/uploads/2025/03/0O1A2365.jpg',
+          imageAlt: 'Ox and Finch small plates, Finnieston',
         },
         {
           time: '21:30',
@@ -501,6 +513,8 @@ export const trip = {
           maps: mapsUrl('Sub Club Jamaica Street'),
           pairing: "Tennent's plastic pint at Sub Club; cheap house lager at Sleazy's.",
           swap: 'Wiped from the day? Quiet pint at the Pot Still and call it.',
+          image: 'https://subclub.co.uk/images/SUBCLUB_REOPENING_DIGITAL_V10_NORMAL_WEB_SPLASH_IMAGE_MED.png',
+          imageAlt: 'Sub Club, Jamaica Street, Glasgow',
         },
       ],
     },
@@ -519,6 +533,8 @@ export const trip = {
           transport:
             'From Glasgow Queen Street (high level). Sunday service is thinner than weekdays — confirm the last train back before you head out.',
           booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
+          image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/2025_at_Glasgow_Queen_Street_station_-_exterior.JPG',
+          imageAlt: 'Glasgow Queen Street station exterior',
         },
         {
           time: '10:30',
@@ -534,6 +550,8 @@ export const trip = {
           pairing: 'A coffee in the castle tearoom — pubs come later.',
           swap:
             "Rather stay in Glasgow? Riverside Museum (Zaha Hadid + a DeLorean), the Burrell Collection in Pollok Park, or a Loch Lomond run (Queen St → Balloch, ~45 min).",
+          image: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Stirling_Castle_Aerial_Photo.jpg',
+          imageAlt: 'Stirling Castle on its rock, aerial view',
         },
         {
           time: '13:00',
@@ -543,6 +561,8 @@ export const trip = {
             "Walk the wynds down from the castle. Lunch at **The Portcullis** (Sun food from 11:30, pub right by the castle esplanade — Settle Inn doesn't open till 15:00 on Sundays so skip it). Church of the Holy Rude is across the road — gorgeous Gothic exterior, but interior is **Sunday tours only at 14:00 / 16:30** if you want in.",
           maps: 'https://www.google.com/maps/search/?api=1&query=The+Portcullis+Stirling',
           pairing: 'A pint of Williams Bros Caesar Augustus at the Portcullis.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/4/43/The_Portcullis_Hotel%2C_Stirling_-_geograph.org.uk_-_4236356.jpg',
+          imageAlt: 'The Portcullis Hotel pub, Stirling, near the castle',
         },
         {
           time: '14:30',
@@ -553,6 +573,8 @@ export const trip = {
           booking: { label: 'Tickets + hours', url: 'https://www.nationalwallacemonument.com/' },
           maps: 'https://www.google.com/maps/search/?api=1&query=National+Wallace+Monument+Stirling',
           swap: 'Knackered or raining? Skip Wallace — second pint in the Old Town and an earlier train back.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/2/27/The_Wallace_Monument%2C_Stirling.JPG',
+          imageAlt: 'National Wallace Monument on Abbey Craig, Stirling',
         },
         {
           time: '~16:30',
@@ -572,6 +594,8 @@ export const trip = {
           maps: mapsUrl('Crabshakk Argyle Street'),
           pairing: 'A glass of Muscadet, or a cold lager.',
           swap: "Booked out? Six by Nico (Finnieston, tasting menu) or Ox and Finch next door.",
+          image: 'https://images.squarespace-cdn.com/content/v1/61f6af2eda35940165dc0042/1655217624126-WKXHXWEZQL8O52VB6ABI/crabshakk+finnieston+exterior+photo.jpg',
+          imageAlt: 'Crabshakk seafood bar, Argyle Street, Finnieston',
         },
         {
           time: '21:00',
@@ -581,6 +605,8 @@ export const trip = {
             "Grungy Sauchiehall St institution — cheap drinks, jukebox, basement gigs if anything's on (you can stay upstairs). The dive bar of the trip. 10-min cab from Crabshakk, then walk to the Clutha after.",
           maps: mapsUrl('Nice N Sleazy Sauchiehall Street'),
           pairing: 'Cheap house lager, or a boilermaker. Red Bull & vodka if the day catches up.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Stephen_Lawrie_of_The_Telescopes_getting_ready_to_go_on_stage_at_Nice_N_Sleazy%2C_Glasgow._October_2023.jpg',
+          imageAlt: "Nice N Sleazy basement stage, Sauchiehall Street",
         },
         {
           time: '23:00',
@@ -590,6 +616,8 @@ export const trip = {
             "Riverside pub steeped in Glasgow history, live music in the corner most nights, cheap pizza. The fitting last-night pint. 167–169 Stockwell St — 10-min walk south from Sleazy's. Energy flagging? Order a Red Bull & Jäger, not a yawn.",
           maps: mapsUrl('The Clutha Stockwell Street'),
           pairing: 'A pint of Guinness + a dram.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/0/03/The_Clutha_in_Glasgow_%2817833190138%29.jpg',
+          imageAlt: 'The Clutha bar, Stockwell Street, Glasgow',
         },
       ],
     },
@@ -614,6 +642,8 @@ export const trip = {
           maps: mapsUrl('The Laurieston Bar Bridge Street'),
           pairing: 'Fyne Ales Jarl at the Laurieston.',
           swap: 'Rainy? Duck into a museum you skipped.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Glasgow_City_-_The_Laurieston_Bar%2C_58_Bridge_Street_And_2_And_4_Nelson_Street_-_20231202154311.jpg',
+          imageAlt: 'The Laurieston Bar, Bridge Street, Glasgow',
         },
         {
           time: '12:30',
@@ -634,6 +664,8 @@ export const trip = {
           blurb:
             'Land Berlin 22:10. (55-min AMS connection on the way in is fine; just don\'t dawdle through the non-Schengen check.)',
           pairing: "A final airport Tennent's or BrewDog at the gate.",
+          image: 'https://upload.wikimedia.org/wikipedia/commons/4/45/16-11-15-Glasgow_Airport-RR2_7002.jpg',
+          imageAlt: 'Glasgow Airport check-in hall, departures',
         },
       ],
     },
