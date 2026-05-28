@@ -31,6 +31,21 @@ export interface Flight {
   arrive: string;
 }
 
+export interface FoodPick {
+  name: string;
+  area: string;       // neighbourhood
+  meal: string;       // breakfast / lunch / snack / dinner
+  blurb: string;      // one-line "what + why"
+  note?: string;      // booking / cash / opening quirk
+  maps?: string;
+}
+
+export interface FoodGroup {
+  label: string;
+  intro: string;
+  picks: FoodPick[];
+}
+
 const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} Glasgow`)}`;
 
@@ -86,6 +101,136 @@ export const trip = {
       },
     ],
   },
+  foodAlternates: [
+    {
+      label: 'Cheap & cheerful',
+      intro: 'Under £15 a head — the "I\'d go out of my way for this" tier.',
+      picks: [
+        {
+          name: 'Cashel Coffee',
+          area: 'Woodlands',
+          meal: 'breakfast',
+          blurb: 'Square sausage + tattie scone on a Morton\'s crispy roll. The local breakfast pick between centre and West End.',
+          maps: mapsUrl('Cashel Coffee Woodlands'),
+        },
+        {
+          name: "Gizzi's Espresso Bar",
+          area: 'Shawlands',
+          meal: 'breakfast',
+          blurb: 'Steak lorne roll with nduja crumb — the cult Southside breakfast.',
+          maps: mapsUrl("Gizzi's Espresso Bar Shawlands"),
+        },
+        {
+          name: "Ranjit's Kitchen",
+          area: 'Pollokshields',
+          meal: 'lunch',
+          blurb: 'Punjabi home cooking, vegetarian only — dhal, saag, samosas locals fight over. The non-Mother India curry.',
+          note: 'Cash only.',
+          maps: mapsUrl("Ranjit's Kitchen Pollokshaws Road"),
+        },
+        {
+          name: 'Philadelphia',
+          area: 'Kelvinbridge',
+          meal: 'snack / dinner',
+          blurb: 'The chippy locals actually go to — same family 40 years. Skip the touristy Blue Lagoon.',
+          maps: mapsUrl('Philadelphia chippy Great Western Road'),
+        },
+        {
+          name: 'Tantrum Doughnuts',
+          area: 'Centre / Old Dumbarton Rd',
+          meal: 'snack',
+          blurb: 'Proper yeast-raised doughnuts. The local sweet stop.',
+          maps: mapsUrl('Tantrum Doughnuts'),
+        },
+        {
+          name: 'Boca',
+          area: 'Strathbungo',
+          meal: 'lunch',
+          blurb: 'Overstuffed artisan sandwiches. Quiet Southside hero.',
+          maps: mapsUrl('Boca Strathbungo'),
+        },
+      ],
+    },
+    {
+      label: 'Mid-range neighbourhood',
+      intro: 'Under £40 a head — neighbourhood spots locals book regularly.',
+      picks: [
+        {
+          name: "Errol's Hot Pizza",
+          area: 'Govanhill',
+          meal: 'dinner',
+          blurb: 'Detroit-style + NY from ex-Alchemilla chefs. The non-Paesano pizza Glaswegians actually argue about.',
+          note: 'Tiny, BYOB, hard to book — go early.',
+          maps: mapsUrl("Errol's Hot Pizza Govanhill"),
+        },
+        {
+          name: "Frank's Pizza",
+          area: 'Dennistoun',
+          meal: 'snack / dinner',
+          blurb: 'NY slices, stand-up vibe. Pairs with a Mesa walk.',
+          note: 'Wed–Sun only.',
+          maps: mapsUrl("Frank's Pizza Duke Street Dennistoun"),
+        },
+        {
+          name: 'Bar Vini',
+          area: 'Govanhill',
+          meal: 'dinner',
+          blurb: 'Neighbourhood Italian wine bar, weekly-changing pasta specials.',
+          maps: mapsUrl('Bar Vini Victoria Road'),
+        },
+        {
+          name: "Celino's",
+          area: 'Dennistoun',
+          meal: 'lunch / dinner',
+          blurb: 'Italian deli + trattoria, 40+ years. Pasta and a pint, very East End.',
+          maps: mapsUrl("Celino's Alexandra Parade"),
+        },
+        {
+          name: 'Corner Shop',
+          area: 'West End',
+          meal: 'lunch / dinner',
+          blurb: 'Scots-Spanish small plates. Named Scotland\'s best wine bar 2025.',
+          maps: mapsUrl('Corner Shop Old Dumbarton Road'),
+        },
+        {
+          name: 'Brett',
+          area: 'West End',
+          meal: 'dinner',
+          blurb: "Cail Bruich's cooler sibling — Michelin-recommended, counter seats. Hits at the top of £40.",
+          note: 'Book ahead.',
+          maps: mapsUrl('Brett Great Western Road'),
+        },
+      ],
+    },
+    {
+      label: 'Specific gap-fillers',
+      intro: 'Standouts when you want non-curry Asian, vegan, or just a great wine bar.',
+      picks: [
+        {
+          name: "Julie's Kopitiam",
+          area: 'Shawlands',
+          meal: 'lunch / dinner',
+          blurb: 'Malaysian, Michelin-guide, 4 tables. Best non-curry Asian in town.',
+          note: 'Walk-ins only — turn up, get a return time.',
+          maps: mapsUrl("Julie's Kopitiam Pollokshaws Road"),
+        },
+        {
+          name: 'Kimchi Cult',
+          area: 'West End',
+          meal: 'lunch / snack',
+          blurb: 'Korean street food — banh-mi-meets-bibimbap energy. Fills the Hanoi Bike Shop hole (RIP).',
+          maps: mapsUrl('Kimchi Cult'),
+        },
+        {
+          name: 'Sylvan',
+          area: 'Woodlands',
+          meal: 'lunch / dinner',
+          blurb: 'Vegan/veg wine bar near Park Circus. Easy West End drop-in.',
+          maps: mapsUrl('Sylvan Woodlands'),
+        },
+      ],
+    },
+  ] satisfies FoodGroup[],
   days: [
     {
       date: 'Thu 2 Jul',
@@ -155,9 +300,11 @@ export const trip = {
       stops: [
         {
           time: '~10:30',
-          title: 'Breakfast, West End',
+          title: 'Breakfast — Cottonrake Bakery',
           kind: 'food',
-          blurb: 'Subway from centre to Hillhead (~10 min, the Clockwork Orange loop). Singl-end (Garnethill) or any Byres Rd café once you\'re out.',
+          blurb:
+            "Slow-ferment sourdough + almond croissant locals queue for, on Great Western Rd. On La Liste's world bakeries 2024. Subway to Kelvinbridge (Clockwork Orange loop, ~10 min from centre), 5-min walk. Cashel Coffee in Woodlands is the back-up if Cottonrake's queue is silly.",
+          maps: mapsUrl('Cottonrake Bakery Great Western Road'),
         },
         {
           time: '11:00',
@@ -236,12 +383,12 @@ export const trip = {
         },
         {
           time: '12:30',
-          title: "Lunch east-side — Saint Luke's",
+          title: 'Lunch — Mesa, Dennistoun',
           kind: 'food',
           blurb:
-            "10-min walk south down High St. Converted church on Bain St, right next to the Barras — bar/restaurant in one. Sets you up for the afternoon without backtracking.",
-          maps: mapsUrl("Saint Luke's Bain Street"),
-          pairing: 'A WEST St Mungo lager.',
+            "~15-min walk east from the Necropolis up Duke St — Dennistoun's breakfast/lunch hero. Towering pastrami sandwiches, bread from a local baker, fluffy pancakes. From Mesa, ~15 min south to the Barras. Saint Luke's (Bain St, right next to the Barras) is the closer fallback if you'd rather skip the Dennistoun detour.",
+          maps: mapsUrl('Mesa Duke Street Dennistoun'),
+          pairing: 'A flat white before the Barras dig.',
         },
         {
           time: '13:30',
@@ -270,12 +417,13 @@ export const trip = {
         },
         {
           time: '19:30',
-          title: 'Dinner — central',
+          title: "Dinner — Celentano's",
           kind: 'food',
           blurb:
-            "Pick something walkable from the hotel — Ox and Finch in Finnieston (Mediterranean-ish small plates, ~15 min cab; book) is the move if you fancy a destination. Otherwise stay closer: Buchanan / Sauchiehall has plenty.",
-          booking: { label: 'Ox and Finch', url: 'https://oxandfinch.com/' },
-          maps: mapsUrl('Ox and Finch Finnieston'),
+            "Italian small plates, wine on tap, Michelin-guide — trendy without being a scene. In Cathedral House, Townhead — 10-min walk north from Buchanan St. BOOK AHEAD.",
+          maps: mapsUrl("Celentano's Cathedral House Townhead"),
+          pairing: 'Whatever\'s on tap from the wine board.',
+          swap: 'Booked out? Ox and Finch in Finnieston (~15 min cab) is the small-plates fallback.',
         },
         {
           time: '21:30',

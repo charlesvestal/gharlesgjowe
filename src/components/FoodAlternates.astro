@@ -1,0 +1,185 @@
+---
+import type { FoodGroup } from '../data/trip';
+
+interface Props {
+  groups: FoodGroup[];
+}
+
+const { groups } = Astro.props;
+---
+<section class="food" id="food" aria-labelledby="food-h">
+  <header class="food__head">
+    <p class="food__eyebrow meta">B-SIDE · OFF THE TOURIST LIST</p>
+    <h3 id="food-h" class="food__title">MORE GOOD FOOD</h3>
+    <p class="food__intro">
+      Spots Glaswegians actually love — for swap-ins, snacks, or just to know they exist.
+      Not on the typical visitor circuits. Most things already in the itinerary above are great too;
+      these are the "if you have an extra meal slot, spend it here" picks.
+    </p>
+  </header>
+
+  {groups.map((group, gi) => (
+    <div class="food__group">
+      <header class="food__group-head">
+        <h4 class="food__group-label">{group.label}</h4>
+        <p class="food__group-intro meta">{group.intro}</p>
+      </header>
+      <ul class="food__grid">
+        {group.picks.map((pick, pi) => (
+          <li class="food__card" style={`--i: ${gi * 6 + pi}`}>
+            <p class="food__area meta">
+              {pick.area} · <span class="food__meal">{pick.meal}</span>
+            </p>
+            <h5 class="food__name">{pick.name}</h5>
+            <p class="food__blurb">{pick.blurb}</p>
+            {pick.note && <p class="food__note"><span class="food__note-stamp" aria-hidden="true">NB</span> {pick.note}</p>}
+            {pick.maps && (
+              <a class="food__map" href={pick.maps} rel="noopener noreferrer" target="_blank">
+                Maps <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<style>
+  .food {
+    padding: 3rem 0 2rem 0;
+    border-top: var(--rule-thick) solid var(--acid);
+  }
+
+  .food__head {
+    margin-bottom: 2rem;
+  }
+
+  .food__eyebrow {
+    color: var(--riso-red);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .food__title {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0 0 0.75rem 0;
+    text-shadow: 0.03em 0.02em 0 var(--riso-red);
+  }
+
+  .food__intro {
+    max-width: 56ch;
+    color: var(--bone-dim);
+    margin: 0;
+  }
+
+  .food__group {
+    margin-bottom: 2.5rem;
+  }
+
+  .food__group-head {
+    border-top: var(--rule) solid var(--bone-faint);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .food__group-label {
+    font-family: var(--ff-display);
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .food__group-intro {
+    margin: 0;
+    color: var(--bone-dim);
+  }
+
+  .food__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .food__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .food__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .food__card {
+    position: relative;
+    padding: 1rem 1.1rem 1rem 1.2rem;
+    background: var(--ink-2);
+    border-left: 3px solid var(--acid);
+    border-top: 1px solid var(--bone-faint);
+    border-right: 1px solid var(--bone-faint);
+    border-bottom: 1px solid var(--bone-faint);
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .food__card:hover { transform: translateY(-2px) rotate(-0.2deg); border-left-color: var(--riso-red); }
+
+  .food__area {
+    margin: 0 0 0.25rem 0;
+    color: var(--bone-dim);
+  }
+  .food__meal {
+    color: var(--acid);
+    font-weight: 700;
+  }
+
+  .food__name {
+    font-family: var(--ff-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.4rem 0;
+    line-height: 1;
+  }
+
+  .food__blurb {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--bone);
+    line-height: 1.4;
+  }
+
+  .food__note {
+    margin: 0.6rem 0 0 0;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    color: var(--bone);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .food__note-stamp {
+    display: inline-block;
+    font-family: var(--ff-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--riso-red);
+    border: 2px solid var(--riso-red);
+    padding: 0 0.3rem;
+    line-height: 1;
+  }
+
+  .food__map {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>
