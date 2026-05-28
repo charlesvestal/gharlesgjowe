@@ -1,0 +1,210 @@
+---
+import type { Stop } from '../data/trip';
+
+interface Props {
+  stop: Stop;
+  index: number;
+}
+
+const { stop, index } = Astro.props;
+
+const kindLabel: Record<Stop['kind'], string> = {
+  transport: 'TRANSPORT',
+  food: 'FOOD',
+  sight: 'SIGHT',
+  drink: 'DRINK',
+  gig: 'GIG',
+  note: 'NOTE',
+};
+
+const kindGlyph: Record<Stop['kind'], string> = {
+  transport: '→',
+  food: '✦',
+  sight: '◉',
+  drink: '◍',
+  gig: '★',
+  note: '✎',
+};
+---
+<article class={`stop stop--${stop.kind} reveal`} style={`--i: ${index}`}>
+  <header class="stop__head">
+    {stop.time && <span class="stop__time">{stop.time}</span>}
+    <span class={`stop__kind stop__kind--${stop.kind}`}>
+      <span aria-hidden="true">{kindGlyph[stop.kind]}</span> {kindLabel[stop.kind]}
+    </span>
+  </header>
+
+  <h4 class="stop__title">{stop.title}</h4>
+
+  <p class="stop__blurb">{stop.blurb}</p>
+
+  {stop.transport && (
+    <p class="stop__line stop__line--transport">
+      <span class="stop__line-label">Transport</span> {stop.transport}
+    </p>
+  )}
+
+  {stop.pairing && (
+    <p class="stop__line stop__line--pairing">
+      <span class="stop__line-label">Pairing</span> {stop.pairing}
+    </p>
+  )}
+
+  {stop.swap && (
+    <p class="stop__swap">
+      <span class="stop__swap-stamp" aria-hidden="true">SWAP</span>
+      <span>{stop.swap}</span>
+    </p>
+  )}
+
+  {(stop.booking || stop.maps) && (
+    <ul class="stop__links">
+      {stop.booking && (
+        <li>
+          <a href={stop.booking.url} rel="noopener noreferrer" target="_blank">
+            {stop.booking.label} <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      )}
+      {stop.maps && (
+        <li>
+          <a href={stop.maps} rel="noopener noreferrer" target="_blank">
+            Maps <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      )}
+    </ul>
+  )}
+</article>
+
+<style>
+  .stop {
+    position: relative;
+    background: var(--ink-2);
+    color: var(--bone);
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: var(--rule-thick) solid var(--bone);
+
+    /* Ticket-stub perforation across the right edge */
+    background-image:
+      radial-gradient(circle at right, var(--ink) 4px, transparent 5px);
+    background-size: 14px 14px;
+    background-repeat: repeat-y;
+    background-position: 100% 0;
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .stop:hover { transform: translateX(2px) rotate(-0.2deg); }
+
+  .stop--gig {
+    border-left-color: var(--riso-red);
+    background-color: #1a0f0d;
+  }
+  .stop--drink { border-left-color: var(--acid); }
+  .stop--food { border-left-color: #f3e9d8; }
+  .stop--sight { border-left-color: #c9b87a; }
+  .stop--transport { border-left-color: #888178; }
+  .stop--note { border-left-color: var(--bone-faint); }
+
+  .stop__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .stop__time {
+    font-family: var(--ff-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--acid);
+    letter-spacing: 0.02em;
+  }
+
+  .stop__kind {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--bone-faint);
+    color: var(--bone-dim);
+    text-transform: uppercase;
+  }
+  .stop__kind--gig { color: var(--riso-red); border-color: var(--riso-red); }
+  .stop__kind--drink { color: var(--acid); border-color: var(--acid); }
+  .stop__kind--food { color: var(--bone); border-color: var(--bone); }
+
+  .stop__title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 0.95;
+    margin: 0.25rem 0 0.5rem 0;
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  .stop--gig .stop__title { color: var(--riso-red); }
+
+  .stop__blurb {
+    font-size: 1rem;
+    color: var(--bone);
+    margin-bottom: 0.75rem;
+    max-width: 60ch;
+  }
+
+  .stop__line {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    color: var(--bone-dim);
+    margin: 0.25rem 0;
+  }
+  .stop__line-label {
+    display: inline-block;
+    color: var(--acid);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 0.4rem;
+  }
+  .stop__line--pairing .stop__line-label { color: var(--riso-red); }
+
+  .stop__swap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.75rem 0 0.25rem 0;
+    padding: 0.4rem 0.6rem;
+    border: 2px dashed var(--riso-red);
+    background: rgba(255, 58, 32, 0.06);
+    font-size: var(--fs-small);
+    color: var(--bone);
+    transform: rotate(-0.4deg);
+  }
+  .stop__swap-stamp {
+    font-family: var(--ff-display);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: var(--riso-red);
+    border: 2px solid var(--riso-red);
+    padding: 0.05rem 0.35rem;
+    flex: 0 0 auto;
+  }
+
+  .stop__links {
+    list-style: none;
+    margin: 0.75rem 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .stop__links a {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

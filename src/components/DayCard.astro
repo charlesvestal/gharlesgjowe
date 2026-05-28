@@ -1,0 +1,86 @@
+---
+import type { Day } from '../data/trip';
+import StopRow from './StopRow.astro';
+import WeatherStrip from './WeatherStrip.astro';
+
+interface Props {
+  day: Day;
+  dayNumber: number;
+  showWeatherCaveat: boolean;
+  caveat: string;
+}
+
+const { day, dayNumber, showWeatherCaveat, caveat } = Astro.props;
+const slug = day.code.toLowerCase().replace(/\s+/g, '-');
+const stamp = String(dayNumber).padStart(2, '0');
+---
+<section class="day" id={slug} aria-labelledby={`${slug}-h`}>
+  <header class="day__head">
+    <div class="day__stamp" aria-hidden="true">{stamp}</div>
+    <div class="day__heading">
+      <p class="day__code meta">{day.code} · {day.date}</p>
+      <h3 class="day__theme" id={`${slug}-h`}>{day.theme}</h3>
+    </div>
+  </header>
+
+  <WeatherStrip weather={day.weather} caveat={caveat} showCaveat={showWeatherCaveat} />
+
+  <ol class="day__stops" aria-label={`Stops for ${day.theme}`}>
+    {day.stops.map((stop, i) => (
+      <li><StopRow stop={stop} index={i} /></li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .day {
+    padding: 2.5rem 0;
+    border-top: var(--rule-thick) solid var(--bone);
+    position: relative;
+  }
+  .day:first-of-type { border-top: 0; }
+
+  .day__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .day__stamp {
+    font-family: var(--ff-display);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--riso-red);
+    line-height: 0.85;
+    flex: 0 0 auto;
+    transform: rotate(-3deg);
+    text-shadow: 0.02em 0.02em 0 var(--acid);
+    -webkit-text-stroke: 1px var(--riso-red);
+  }
+
+  .day__heading {
+    flex: 1 1 auto;
+    padding-top: 0.25rem;
+  }
+
+  .day__code {
+    margin: 0 0 0.4rem 0;
+    color: var(--acid);
+  }
+
+  .day__theme {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.95;
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  .day__stops {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .day__stops > li { display: block; }
+</style>

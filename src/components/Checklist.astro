@@ -1,0 +1,200 @@
+---
+import type { ChecklistItem } from '../data/trip';
+
+interface Props {
+  items: ChecklistItem[];
+}
+
+const { items } = Astro.props;
+---
+<section class="checklist" id="checklist" aria-labelledby="checklist-h">
+  <header class="checklist__head">
+    <h3 id="checklist-h" class="checklist__title">PRE-FLIGHT CHECKLIST</h3>
+    <button
+      type="button"
+      class="checklist__reset"
+      data-checklist-reset
+      aria-label="Reset all checklist items"
+    >Reset</button>
+  </header>
+
+  <ul class="checklist__list">
+    {items.map((item) => (
+      <li class="checklist__item">
+        <label>
+          <input
+            type="checkbox"
+            data-checklist-item
+            data-id={item.id}
+          />
+          <span class="checklist__box" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="14" height="14" focusable="false">
+              <path d="M2 8 L7 13 L14 3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </span>
+          <span class="checklist__text">{item.label}</span>
+        </label>
+      </li>
+    ))}
+  </ul>
+  <p class="checklist__hint meta">Saved on this device · clear by tapping Reset.</p>
+</section>
+
+<style>
+  .checklist {
+    padding: 1.75rem 1.5rem;
+    background: var(--ink-2);
+    border: var(--rule) solid var(--bone);
+    background-image:
+      repeating-linear-gradient(135deg, transparent 0 8px, rgba(255, 212, 0, 0.04) 8px 9px);
+    transform: rotate(-0.4deg);
+    margin-bottom: 2rem;
+  }
+
+  .checklist__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .checklist__title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .checklist__reset {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bone);
+    background: transparent;
+    border: 2px solid var(--bone);
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .checklist__reset:hover { background: var(--bone); color: var(--ink); }
+
+  .checklist__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  @media (min-width: 760px) {
+    .checklist__list { grid-template-columns: 1fr 1fr; }
+  }
+
+  .checklist__item label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.4rem 0.25rem;
+    border-radius: 0;
+  }
+
+  .checklist__item input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .checklist__box {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--bone);
+    background: var(--ink);
+    color: transparent;
+    transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    margin-top: 0.05rem;
+  }
+
+  .checklist__item input:checked + .checklist__box {
+    color: var(--ink);
+    background: var(--acid);
+    border-color: var(--acid);
+  }
+
+  .checklist__item input:focus-visible + .checklist__box {
+    outline: 3px solid var(--acid);
+    outline-offset: 2px;
+  }
+
+  .checklist__text {
+    font-family: var(--ff-body);
+    font-size: 0.95rem;
+    color: var(--bone);
+    line-height: 1.3;
+  }
+
+  .checklist__item input:checked ~ .checklist__text {
+    color: var(--bone-dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--riso-red);
+    text-decoration-thickness: 2px;
+  }
+
+  .checklist__hint {
+    margin-top: 1rem;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'glasgow-checklist-v1';
+
+  const load = (): Record<string, boolean> => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const save = (state: Record<string, boolean>) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      /* private mode etc. — fail silently */
+    }
+  };
+
+  const state = load();
+
+  const inputs = document.querySelectorAll<HTMLInputElement>('[data-checklist-item]');
+  inputs.forEach((input) => {
+    const id = input.dataset.id;
+    if (!id) return;
+    if (state[id]) input.checked = true;
+    input.addEventListener('change', () => {
+      state[id] = input.checked;
+      save(state);
+    });
+  });
+
+  const resetBtn = document.querySelector<HTMLButtonElement>('[data-checklist-reset]');
+  resetBtn?.addEventListener('click', () => {
+    inputs.forEach((input) => {
+      input.checked = false;
+      const id = input.dataset.id;
+      if (id) delete state[id];
+    });
+    save(state);
+  });
+</script>
