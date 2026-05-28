@@ -31,9 +31,9 @@ const marqueeLine = `Glasgow ${dates} · ${travellers.join(' × ')} · dive bars
 
     <p class="hero__tagline reveal" style="--i: 3">{tagline}</p>
 
-    <dl class="hero__flights reveal" style="--i: 4" aria-label="Flight bookends">
+    <dl class="hero__flights reveal" style="--i: 4" aria-label="Charles's flights — Joe TBD">
       <div class="hero__flight">
-        <dt class="meta">Out · {flightOut.date}</dt>
+        <dt class="meta">Charles out · {flightOut.date}</dt>
         <dd>
           <strong>{flightOut.from} {flightOut.depart}</strong>
           <span aria-hidden="true">→</span>
@@ -41,12 +41,16 @@ const marqueeLine = `Glasgow ${dates} · ${travellers.join(' × ')} · dive bars
         </dd>
       </div>
       <div class="hero__flight">
-        <dt class="meta">Back · {flightBack.date}</dt>
+        <dt class="meta">Charles back · {flightBack.date}</dt>
         <dd>
           <strong>{flightBack.from} {flightBack.depart}</strong>
           <span aria-hidden="true">→</span>
           <strong>{flightBack.to} {flightBack.arrive}</strong>
         </dd>
+      </div>
+      <div class="hero__flight hero__flight--note">
+        <dt class="meta">Joe</dt>
+        <dd><em>flights TBD</em></dd>
       </div>
     </dl>
 
