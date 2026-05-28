@@ -116,6 +116,8 @@ export const trip = {
           meal: 'breakfast',
           blurb: 'Square sausage + tattie scone on a Morton\'s crispy roll. The local breakfast pick between centre and West End.',
           maps: mapsUrl('Cashel Coffee Woodlands'),
+          image: 'https://img02.restaurantguru.com/c174-Restaurant-Cashel-Coffee-and-Dry-Goods-food.jpg',
+          imageAlt: 'Cashel Coffee food spread',
         },
         {
           name: "Gizzi's Espresso Bar",
@@ -124,6 +126,8 @@ export const trip = {
           blurb: 'Steak lorne roll with nduja crumb — the cult Southside breakfast.',
           note: 'Wed–Sun only, closed Mon & Tue.',
           maps: mapsUrl("Gizzi's Espresso Bar Shawlands"),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/bd/2a/c4/photo0jpg.jpg',
+          imageAlt: "Gizzi's Espresso Bar, Shawlands",
         },
         {
           name: "Ranjit's Kitchen",
@@ -132,6 +136,8 @@ export const trip = {
           blurb: 'Punjabi home cooking, vegetarian only — dhal, saag, samosas locals fight over. The non-Mother India curry.',
           note: 'Cash only · Closed Mon · no bookings.',
           maps: mapsUrl("Ranjit's Kitchen Pollokshaws Road"),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/4a/21/36/the-thali-is-a-great.jpg',
+          imageAlt: "Ranjit's Kitchen thali",
         },
         {
           name: 'Philadelphia',
@@ -139,6 +145,8 @@ export const trip = {
           meal: 'snack / dinner',
           blurb: 'The chippy locals actually go to — same family 40 years. Skip the touristy Blue Lagoon.',
           maps: mapsUrl('Philadelphia chippy Great Western Road'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d8/a0/31/front-of-shop.jpg',
+          imageAlt: 'Philadelphia Fish & Chicken Bar, Great Western Road',
         },
         {
           name: 'Tantrum Doughnuts',
@@ -147,6 +155,8 @@ export const trip = {
           blurb: 'Proper yeast-raised doughnuts. The local sweet stop.',
           note: 'Old Dumbarton branch closed Mon; Gordon St branch closed Sun.',
           maps: mapsUrl('Tantrum Doughnuts'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/56/f4/98/tantrum-doughnuts.jpg',
+          imageAlt: 'Tantrum Doughnuts display',
         },
         {
           name: 'Boca',
@@ -154,6 +164,8 @@ export const trip = {
           meal: 'lunch',
           blurb: 'Overstuffed artisan sandwiches. Quiet Southside hero.',
           maps: mapsUrl('Boca Strathbungo'),
+          image: 'https://shupxpgnxvmicfkbcsru.supabase.co/storage/v1/object/public/venue-photos/48b67f72-3b58-4877-b2ac-0bc2a2edb824/1.jpg',
+          imageAlt: 'Boca sandwich shop, Strathbungo',
         },
       ],
     },
@@ -168,6 +180,8 @@ export const trip = {
           blurb: 'Detroit-style + NY from ex-Alchemilla chefs. The non-Paesano pizza Glaswegians actually argue about.',
           note: 'Tiny, BYOB, hard to book. Thu–Sun from 5pm only — fits Thu 2 Jul or Sun 5 Jul.',
           maps: mapsUrl("Errol's Hot Pizza Govanhill"),
+          image: 'https://www.foodieexplorers.co.uk/wp-content/uploads/2019/04/A4E0C4CB-2EF1-418D-913C-E84EEE66AFFE.jpeg',
+          imageAlt: "Errol's Hot Pizza, Govanhill",
         },
         {
           name: "Frank's Pizza",
@@ -176,6 +190,8 @@ export const trip = {
           blurb: 'NY slices, stand-up vibe. Pairs with a Mesa walk.',
           note: 'Wed–Sun only.',
           maps: mapsUrl("Frank's Pizza Duke Street Dennistoun"),
+          image: 'https://www.frankspizza.uk/wp-content/uploads/2021/10/Franks1.png',
+          imageAlt: "Frank's Pizza, Dennistoun",
         },
         {
           name: 'Bar Vini',
@@ -183,6 +199,8 @@ export const trip = {
           meal: 'dinner',
           blurb: 'Neighbourhood Italian wine bar, weekly-changing pasta specials.',
           maps: mapsUrl('Bar Vini Victoria Road'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/62/03/30/bar-vini.jpg',
+          imageAlt: 'Bar Vini, Victoria Road, Govanhill',
         },
         {
           name: "Celino's",
@@ -190,6 +208,8 @@ export const trip = {
           meal: 'lunch / dinner',
           blurb: 'Italian deli + trattoria, 40+ years. Pasta and a pint, very East End.',
           maps: mapsUrl("Celino's Alexandra Parade"),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/df/c1/0e/img-20190122-232852-142.jpg',
+          imageAlt: "Celino's, Alexandra Parade, Dennistoun",
         },
         {
           name: 'Corner Shop',
@@ -197,6 +217,8 @@ export const trip = {
           meal: 'lunch / dinner',
           blurb: 'Scots-Spanish small plates. Named Scotland\'s best wine bar 2025.',
           maps: mapsUrl('Corner Shop Old Dumbarton Road'),
+          image: 'https://images.squarespace-cdn.com/content/v1/680670ffb73d9b098169783b/43822534-dc09-4a8a-9a0d-5a6069952066/SpouseCornerShopFullSize57.jpg',
+          imageAlt: 'Corner Shop wine bar, Old Dumbarton Road',
         },
         {
           name: 'Brett',
@@ -205,6 +227,8 @@ export const trip = {
           blurb: "Cail Bruich's cooler sibling — Michelin-recommended, counter seats. Hits at the top of £40.",
           note: 'Book ahead.',
           maps: mapsUrl('Brett Great Western Road'),
+          image: 'https://images.squarespace-cdn.com/content/v1/61d46209ed2d3d6235044f82/292bd6db-8331-4b76-b314-e3731c399c13/annim578.jpg',
+          imageAlt: 'Brett restaurant interior, West End Glasgow',
         },
       ],
     },
@@ -219,6 +243,8 @@ export const trip = {
           blurb: "Julie Lin's follow-up to Julie's Kopitiam (closed 2023). Bib Gourmand Malaysian/SE Asian small plates on Dumbarton Rd. The non-curry Asian pick.",
           note: 'Book ahead. (Julie stepped back as head chef in 2025; team continues.)',
           maps: mapsUrl('GaGa Dumbarton Road Partick'),
+          image: 'https://static.wixstatic.com/media/3c31ef_f6d7650646c64cbd89c42531d4702375~mv2.jpg',
+          imageAlt: 'GaGa restaurant dish, Partick',
         },
         {
           name: 'Kimchi Cult',
@@ -227,6 +253,8 @@ export const trip = {
           blurb: 'Korean street food — banh-mi-meets-bibimbap energy. Fills the Hanoi Bike Shop hole (RIP).',
           note: 'Closed Mon.',
           maps: mapsUrl('Kimchi Cult Chancellor Street'),
+          image: 'https://www.foodieexplorers.co.uk/wp-content/uploads/2016/04/Kimchi_cult_bibimbap-1.jpg',
+          imageAlt: 'Kimchi Cult bibimbap bowl',
         },
         {
           name: 'Sylvan',
@@ -235,6 +263,8 @@ export const trip = {
           blurb: 'Vegan/veg wine bar near Park Circus. Easy West End drop-in.',
           note: 'Closed Sun.',
           maps: mapsUrl('Sylvan Woodlands'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/46/34/ce/caption.jpg',
+          imageAlt: 'Sylvan vegan wine bar dish, Woodlands',
         },
       ],
     },
