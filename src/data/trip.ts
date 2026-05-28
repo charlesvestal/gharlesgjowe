@@ -53,6 +53,11 @@ export interface FoodGroup {
 const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} Glasgow`)}`;
 
+// Local mirror of remote photos. Files live in public/images/ and are
+// served at <base>/images/<filename>. See .scripts/mirror-images.sh.
+const localImg = (filename: string) =>
+  `${import.meta.env.BASE_URL}images/${filename}`;
+
 const weather =
   'Glasgow in early July: highs ~18–19°C, lows ~11°C, genuinely changeable — sun and showers in one afternoon. Daylight until ~22:00. Pack a light waterproof shell.';
 
@@ -116,7 +121,7 @@ export const trip = {
           meal: 'breakfast',
           blurb: 'Square sausage + tattie scone on a Morton\'s crispy roll. The local breakfast pick between centre and West End.',
           maps: mapsUrl('Cashel Coffee Woodlands'),
-          image: 'https://img02.restaurantguru.com/c174-Restaurant-Cashel-Coffee-and-Dry-Goods-food.jpg',
+          image: localImg('cashel-coffee.jpg'),
           imageAlt: 'Cashel Coffee food spread',
         },
         {
@@ -126,7 +131,7 @@ export const trip = {
           blurb: 'Steak lorne roll with nduja crumb — the cult Southside breakfast.',
           note: 'Wed–Sun only, closed Mon & Tue.',
           maps: mapsUrl("Gizzi's Espresso Bar Shawlands"),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/bd/2a/c4/photo0jpg.jpg',
+          image: localImg('gizzis.jpg'),
           imageAlt: "Gizzi's Espresso Bar, Shawlands",
         },
         {
@@ -136,7 +141,7 @@ export const trip = {
           blurb: 'Punjabi home cooking, vegetarian only — dhal, saag, samosas locals fight over. The non-Mother India curry.',
           note: 'Cash only · Closed Mon · no bookings.',
           maps: mapsUrl("Ranjit's Kitchen Pollokshaws Road"),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/4a/21/36/the-thali-is-a-great.jpg',
+          image: localImg('ranjits.jpg'),
           imageAlt: "Ranjit's Kitchen thali",
         },
         {
@@ -145,7 +150,7 @@ export const trip = {
           meal: 'snack / dinner',
           blurb: 'The chippy locals actually go to — same family 40 years. Skip the touristy Blue Lagoon.',
           maps: mapsUrl('Philadelphia chippy Great Western Road'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/d8/a0/31/front-of-shop.jpg',
+          image: localImg('philadelphia-chippy.jpg'),
           imageAlt: 'Philadelphia Fish & Chicken Bar, Great Western Road',
         },
         {
@@ -155,7 +160,7 @@ export const trip = {
           blurb: 'Proper yeast-raised doughnuts. The local sweet stop.',
           note: 'Old Dumbarton branch closed Mon; Gordon St branch closed Sun.',
           maps: mapsUrl('Tantrum Doughnuts'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/56/f4/98/tantrum-doughnuts.jpg',
+          image: localImg('tantrum-doughnuts.jpg'),
           imageAlt: 'Tantrum Doughnuts display',
         },
         {
@@ -164,7 +169,7 @@ export const trip = {
           meal: 'lunch',
           blurb: 'Overstuffed artisan sandwiches. Quiet Southside hero.',
           maps: mapsUrl('Boca Strathbungo'),
-          image: 'https://shupxpgnxvmicfkbcsru.supabase.co/storage/v1/object/public/venue-photos/48b67f72-3b58-4877-b2ac-0bc2a2edb824/1.jpg',
+          image: localImg('boca-strathbungo.jpg'),
           imageAlt: 'Boca sandwich shop, Strathbungo',
         },
       ],
@@ -180,7 +185,7 @@ export const trip = {
           blurb: 'Detroit-style + NY from ex-Alchemilla chefs. The non-Paesano pizza Glaswegians actually argue about.',
           note: 'Tiny, BYOB, hard to book. Thu–Sun from 5pm only — fits Thu 2 Jul or Sun 5 Jul.',
           maps: mapsUrl("Errol's Hot Pizza Govanhill"),
-          image: 'https://www.foodieexplorers.co.uk/wp-content/uploads/2019/04/A4E0C4CB-2EF1-418D-913C-E84EEE66AFFE.jpeg',
+          image: localImg('errols-pizza.jpg'),
           imageAlt: "Errol's Hot Pizza, Govanhill",
         },
         {
@@ -190,7 +195,7 @@ export const trip = {
           blurb: 'NY slices, stand-up vibe. Pairs with a Mesa walk.',
           note: 'Wed–Sun only.',
           maps: mapsUrl("Frank's Pizza Duke Street Dennistoun"),
-          image: 'https://www.frankspizza.uk/wp-content/uploads/2021/10/Franks1.png',
+          image: localImg('franks-pizza.png'),
           imageAlt: "Frank's Pizza, Dennistoun",
         },
         {
@@ -199,7 +204,7 @@ export const trip = {
           meal: 'dinner',
           blurb: 'Neighbourhood Italian wine bar, weekly-changing pasta specials.',
           maps: mapsUrl('Bar Vini Victoria Road'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/62/03/30/bar-vini.jpg',
+          image: localImg('bar-vini.jpg'),
           imageAlt: 'Bar Vini, Victoria Road, Govanhill',
         },
         {
@@ -208,7 +213,7 @@ export const trip = {
           meal: 'lunch / dinner',
           blurb: 'Italian deli + trattoria, 40+ years. Pasta and a pint, very East End.',
           maps: mapsUrl("Celino's Alexandra Parade"),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/df/c1/0e/img-20190122-232852-142.jpg',
+          image: localImg('celinos.jpg'),
           imageAlt: "Celino's, Alexandra Parade, Dennistoun",
         },
         {
@@ -217,7 +222,7 @@ export const trip = {
           meal: 'lunch / dinner',
           blurb: 'Scots-Spanish small plates. Named Scotland\'s best wine bar 2025.',
           maps: mapsUrl('Corner Shop Old Dumbarton Road'),
-          image: 'https://images.squarespace-cdn.com/content/v1/680670ffb73d9b098169783b/43822534-dc09-4a8a-9a0d-5a6069952066/SpouseCornerShopFullSize57.jpg',
+          image: localImg('corner-shop.jpg'),
           imageAlt: 'Corner Shop wine bar, Old Dumbarton Road',
         },
         {
@@ -227,7 +232,7 @@ export const trip = {
           blurb: "Cail Bruich's cooler sibling — Michelin-recommended, counter seats. Hits at the top of £40.",
           note: 'Book ahead.',
           maps: mapsUrl('Brett Great Western Road'),
-          image: 'https://images.squarespace-cdn.com/content/v1/61d46209ed2d3d6235044f82/292bd6db-8331-4b76-b314-e3731c399c13/annim578.jpg',
+          image: localImg('brett.jpg'),
           imageAlt: 'Brett restaurant interior, West End Glasgow',
         },
       ],
@@ -243,7 +248,7 @@ export const trip = {
           blurb: "Julie Lin's follow-up to Julie's Kopitiam (closed 2023). Bib Gourmand Malaysian/SE Asian small plates on Dumbarton Rd. The non-curry Asian pick.",
           note: 'Book ahead. (Julie stepped back as head chef in 2025; team continues.)',
           maps: mapsUrl('GaGa Dumbarton Road Partick'),
-          image: 'https://static.wixstatic.com/media/3c31ef_f6d7650646c64cbd89c42531d4702375~mv2.jpg',
+          image: localImg('gaga.jpg'),
           imageAlt: 'GaGa restaurant dish, Partick',
         },
         {
@@ -253,7 +258,7 @@ export const trip = {
           blurb: 'Korean street food — banh-mi-meets-bibimbap energy. Fills the Hanoi Bike Shop hole (RIP).',
           note: 'Closed Mon.',
           maps: mapsUrl('Kimchi Cult Chancellor Street'),
-          image: 'https://www.foodieexplorers.co.uk/wp-content/uploads/2016/04/Kimchi_cult_bibimbap-1.jpg',
+          image: localImg('kimchi-cult.jpg'),
           imageAlt: 'Kimchi Cult bibimbap bowl',
         },
         {
@@ -263,7 +268,7 @@ export const trip = {
           blurb: 'Vegan/veg wine bar near Park Circus. Easy West End drop-in.',
           note: 'Closed Sun.',
           maps: mapsUrl('Sylvan Woodlands'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/46/34/ce/caption.jpg',
+          image: localImg('sylvan.jpg'),
           imageAlt: 'Sylvan vegan wine bar dish, Woodlands',
         },
       ],
@@ -284,7 +289,7 @@ export const trip = {
           transport:
             '500 Airport Express → Buchanan St, ~£9 return, every 10 min, 15–25 min depending on traffic. Or cab ~£20, ~15 min.',
           image:
-            'https://upload.wikimedia.org/wikipedia/commons/1/14/Glasgow_Airport_-_terminal_building_-_geograph.org.uk_-_2922025.jpg',
+            localImg('glasgow-airport-terminal.jpg'),
           imageAlt: 'Glasgow Airport terminal building exterior',
         },
         {
@@ -301,7 +306,7 @@ export const trip = {
           maps: mapsUrl('Paesano Pizza Miller Street'),
           pairing: 'Birra Moretti, or a Negroni sbagliato to mark the start.',
           image:
-            'https://images.squarespace-cdn.com/content/v1/66f276e6a3e81068b13d74f9/6f081b26-f9b8-4d09-a924-9fd82f5f99ff/MILLER+ST+2.jpg',
+            localImg('paesano.jpg'),
           imageAlt: 'Paesano Pizza Miller Street wood-fired oven and counter',
         },
         {
@@ -314,7 +319,7 @@ export const trip = {
           pairing: 'Espresso at GoMA, or a Gamma Ray at Mono on the way out.',
           swap: 'Wiped from the flight? Drop both and go straight to the Pot Still for a long pre-gig sit.',
           image:
-            'https://upload.wikimedia.org/wikipedia/commons/a/a4/Gallery_of_Modern_Art%2C_Glasgow%2C_front_view%2C_2018-06-27.jpg',
+            localImg('goma-glasgow.jpg'),
           imageAlt: 'Gallery of Modern Art Glasgow front facade with Duke of Wellington statue',
         },
         {
@@ -326,7 +331,7 @@ export const trip = {
           maps: mapsUrl('The Pot Still Hope Street'),
           pairing: 'A Lowland single malt + a Tempest four-grain stout.',
           swap: "Want a second pre-show pint? The Horseshoe (Drury St, 5 min away) — one of the UK's longest bars, cheap Tennent's.",
-          image: 'https://thepotstill.co.uk/wp-content/uploads/2024/08/PotStill-OM-1-2-copy-1440px.jpg',
+          image: localImg('pot-still.jpg'),
           imageAlt: 'The Pot Still whisky bar, Hope Street, Glasgow',
         },
         {
@@ -338,7 +343,7 @@ export const trip = {
           booking: { label: "Tickets (King Tut's)", url: 'https://www.kingtuts.co.uk/whats-on' },
           maps: mapsUrl("King Tut's Wah Wah Hut"),
           pairing: "Drygate Gladeye IPA, or a can of Tennent's.",
-          image: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/King_Tut%27s_Wah_Wah_Hut_1.jpg',
+          image: localImg('king-tuts.jpg'),
           imageAlt: "King Tut's Wah Wah Hut frontage, St Vincent Street, Glasgow",
         },
       ],
@@ -356,7 +361,7 @@ export const trip = {
           blurb:
             "Slow-ferment sourdough + almond croissant locals queue for, on Great Western Rd. On La Liste's world bakeries 2024. Subway to Kelvinbridge (Clockwork Orange loop, ~10 min from centre), 5-min walk. Cashel Coffee in Woodlands is the back-up if Cottonrake's queue is silly.",
           maps: mapsUrl('Cottonrake Bakery Great Western Road'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/f4/a4/7e/dark-chocolate-and-raspberry.jpg',
+          image: localImg('cottonrake-bakery.jpg'),
           imageAlt: 'Cottonrake Bakery pastry — dark chocolate and raspberry tart',
         },
         {
@@ -366,7 +371,7 @@ export const trip = {
           blurb:
             "Free and superb — Dalí's Christ of St John of the Cross, a real Spitfire. The free 1pm organ recital is a Glasgow institution; time the visit around it. Plan ~2 hrs. (Fri opens 11:00.) Subway: Kelvinhall, 5-min walk.",
           maps: mapsUrl('Kelvingrove Art Gallery and Museum'),
-          image: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Kelvingrove_Art_Gallery_and_Museum_1.jpg',
+          image: localImg('kelvingrove.jpg'),
           imageAlt: 'Kelvingrove Art Gallery and Museum red sandstone exterior',
         },
         {
@@ -375,7 +380,7 @@ export const trip = {
           kind: 'food',
           blurb: '10-min walk north from Kelvingrove. The University Café (1918 art-deco caff, fish & chips) or the Curlers Rest for pub grub — both right by the Uni.',
           maps: mapsUrl('University Cafe Byres Road'),
-          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/83/f5/df/caption.jpg',
+          image: localImg('university-cafe.jpg'),
           imageAlt: 'University Café art-deco interior, Byres Road',
         },
         {
@@ -385,7 +390,7 @@ export const trip = {
           blurb:
             'Walk the Gilbert Scott cloisters (proper Hogwarts) — 5 min from the Uni Café. Free Hunterian Museum is the nerdy highlight.',
           maps: mapsUrl('University of Glasgow Hunterian Museum'),
-          image: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/University_of_Glasgow_Main_Building_-_rear_aspect.jpg',
+          image: localImg('glasgow-university.jpg'),
           imageAlt: 'University of Glasgow Gilbert Scott main building',
         },
         {
@@ -395,7 +400,7 @@ export const trip = {
           blurb: 'Cobbled lane strung with fairy lights, 3 min from the Uni — afternoon pint and a wander. Brel for a beer garden, or Òran Mór across Byres Rd.',
           maps: mapsUrl('Ashton Lane'),
           pairing: 'Innis & Gunn oak-aged.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Ashton_Lane_%28geograph_7708250%29.jpg',
+          image: localImg('ashton-lane.jpg'),
           imageAlt: 'Ashton Lane cobbled street with fairy lights, West End Glasgow',
         },
         {
@@ -407,7 +412,7 @@ export const trip = {
           booking: { label: 'Book a table', url: 'https://www.motherindia.co.uk/' },
           maps: mapsUrl('Mother India Finnieston'),
           pairing: 'Cobra, or a whisky sour.',
-          image: 'https://www.motherindia.co.uk/wp-content/uploads/2021/03/MotherIndia_restaurant1.jpg',
+          image: localImg('mother-india.jpg'),
           imageAlt: 'Mother India restaurant dining room, Finnieston',
         },
         {
@@ -418,7 +423,7 @@ export const trip = {
           maps: mapsUrl('Ben Nevis bar Argyle Street'),
           pairing: 'A Highland malt at the Ben Nevis; Joker IPA at BrewDog.',
           swap: 'Knackered after the curry? End at Mother India, walk back along Argyle.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/The_Ben_Nevis_bar_%28geograph_6000023%29.jpg',
+          image: localImg('ben-nevis-bar.jpg'),
           imageAlt: 'The Ben Nevis whisky bar on Argyle Street, Finnieston',
         },
       ],
@@ -437,7 +442,7 @@ export const trip = {
             '800-year-old Gothic, free. The atmospheric lower church is the bit people miss. Castle St.',
           transport: '~20-min walk east of Buchanan St, or a £6 cab.',
           maps: mapsUrl('Glasgow Cathedral'),
-          image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Glasgow-cathedral-may-2007.jpg',
+          image: localImg('glasgow-cathedral.jpg'),
           imageAlt: 'Glasgow Cathedral exterior, Castle Street',
         },
         {
@@ -447,7 +452,7 @@ export const trip = {
           blurb:
             'Victorian hilltop cemetery directly behind the Cathedral — 3,500 monuments, big city views, filming spot for The Batman. Pure Rick Steves.',
           maps: mapsUrl('Glasgow Necropolis'),
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Glasgow_Necropolis_-_aerial_-_2025-04-17_01.jpg/3840px-Glasgow_Necropolis_-_aerial_-_2025-04-17_01.jpg',
+          image: localImg('glasgow-necropolis.jpg'),
           imageAlt: 'Glasgow Necropolis Victorian hilltop cemetery, aerial view',
         },
         {
@@ -458,7 +463,7 @@ export const trip = {
             "~15-min walk east from the Necropolis up Duke St — Dennistoun's breakfast/lunch hero. Towering pastrami sandwiches, bread from a local baker, fluffy pancakes. From Mesa, ~15 min south to the Barras. Saint Luke's (Bain St, right next to the Barras) is the closer fallback if you'd rather skip the Dennistoun detour.",
           maps: mapsUrl('Mesa Duke Street Dennistoun'),
           pairing: 'A flat white before the Barras dig.',
-          image: 'https://dennistoun.co.uk/uploads/576_mesa_m.jpg',
+          image: localImg('mesa-dennistoun.jpg'),
           imageAlt: 'Mesa café interior, Duke Street, Dennistoun',
         },
         {
@@ -468,7 +473,7 @@ export const trip = {
           blurb:
             "Right next door — weekends only, **closes at 16:00 sharp**. Ramshackle flea market: vinyl, vintage, junk, characters, street food. ~2.5 hrs to dig before traders pack up. Push lunch earlier (12:00) if you want longer here.",
           maps: mapsUrl('The Barras Market Gallowgate'),
-          image: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Barras_Market%2C_Glasgow.jpg',
+          image: localImg('barras-market.jpg'),
           imageAlt: 'The Barras Market, Gallowgate, Glasgow',
         },
         {
@@ -480,7 +485,7 @@ export const trip = {
           maps: mapsUrl('WEST Brewery Glasgow Green'),
           pairing: 'St Mungo, or the Munich Red.',
           swap: 'Barras still pulling you in? Skip WEST and keep digging — it\'ll be there next trip.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Templeton_Business_Centre%2C_Glasgow_Green_%286059112448%29.jpg',
+          image: localImg('west-brewery-templeton.jpg'),
           imageAlt: 'Templeton Building (WEST Brewery), Glasgow Green',
         },
         {
@@ -501,7 +506,7 @@ export const trip = {
           pairing: 'Whatever\'s on the wine list.',
           swap:
             "Celentano's (Italian small plates, Michelin-guide) was the move but their Cathedral House site closed Dec 2025; they're targeting an April 2026 reopen at Arthouse Glasgow on Bath St — worth checking closer to the date if you'd rather it.",
-          image: 'https://www.oxandfinch.com/wp-content/uploads/2025/03/0O1A2365.jpg',
+          image: localImg('ox-and-finch.jpg'),
           imageAlt: 'Ox and Finch small plates, Finnieston',
         },
         {
@@ -513,7 +518,7 @@ export const trip = {
           maps: mapsUrl('Sub Club Jamaica Street'),
           pairing: "Tennent's plastic pint at Sub Club; cheap house lager at Sleazy's.",
           swap: 'Wiped from the day? Quiet pint at the Pot Still and call it.',
-          image: 'https://subclub.co.uk/images/SUBCLUB_REOPENING_DIGITAL_V10_NORMAL_WEB_SPLASH_IMAGE_MED.png',
+          image: localImg('sub-club.png'),
           imageAlt: 'Sub Club, Jamaica Street, Glasgow',
         },
       ],
@@ -533,7 +538,7 @@ export const trip = {
           transport:
             'From Glasgow Queen Street (high level). Sunday service is thinner than weekdays — confirm the last train back before you head out.',
           booking: { label: 'ScotRail journey planner', url: 'https://www.scotrail.co.uk/' },
-          image: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/2025_at_Glasgow_Queen_Street_station_-_exterior.JPG',
+          image: localImg('queen-street-station.jpg'),
           imageAlt: 'Glasgow Queen Street station exterior',
         },
         {
@@ -550,7 +555,7 @@ export const trip = {
           pairing: 'A coffee in the castle tearoom — pubs come later.',
           swap:
             "Rather stay in Glasgow? Riverside Museum (Zaha Hadid + a DeLorean), the Burrell Collection in Pollok Park, or a Loch Lomond run (Queen St → Balloch, ~45 min).",
-          image: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Stirling_Castle_Aerial_Photo.jpg',
+          image: localImg('stirling-castle.jpg'),
           imageAlt: 'Stirling Castle on its rock, aerial view',
         },
         {
@@ -561,7 +566,7 @@ export const trip = {
             "Walk the wynds down from the castle. Lunch at **The Portcullis** (Sun food from 11:30, pub right by the castle esplanade — Settle Inn doesn't open till 15:00 on Sundays so skip it). Church of the Holy Rude is across the road — gorgeous Gothic exterior, but interior is **Sunday tours only at 14:00 / 16:30** if you want in.",
           maps: 'https://www.google.com/maps/search/?api=1&query=The+Portcullis+Stirling',
           pairing: 'A pint of Williams Bros Caesar Augustus at the Portcullis.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/4/43/The_Portcullis_Hotel%2C_Stirling_-_geograph.org.uk_-_4236356.jpg',
+          image: localImg('portcullis-stirling.jpg'),
           imageAlt: 'The Portcullis Hotel pub, Stirling, near the castle',
         },
         {
@@ -573,7 +578,7 @@ export const trip = {
           booking: { label: 'Tickets + hours', url: 'https://www.nationalwallacemonument.com/' },
           maps: 'https://www.google.com/maps/search/?api=1&query=National+Wallace+Monument+Stirling',
           swap: 'Knackered or raining? Skip Wallace — second pint in the Old Town and an earlier train back.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/2/27/The_Wallace_Monument%2C_Stirling.JPG',
+          image: localImg('wallace-monument.jpg'),
           imageAlt: 'National Wallace Monument on Abbey Craig, Stirling',
         },
         {
@@ -594,7 +599,7 @@ export const trip = {
           maps: mapsUrl('Crabshakk Argyle Street'),
           pairing: 'A glass of Muscadet, or a cold lager.',
           swap: "Booked out? Six by Nico (Finnieston, tasting menu) or Ox and Finch next door.",
-          image: 'https://images.squarespace-cdn.com/content/v1/61f6af2eda35940165dc0042/1655217624126-WKXHXWEZQL8O52VB6ABI/crabshakk+finnieston+exterior+photo.jpg',
+          image: localImg('crabshakk.jpg'),
           imageAlt: 'Crabshakk seafood bar, Argyle Street, Finnieston',
         },
         {
@@ -605,7 +610,7 @@ export const trip = {
             "Grungy Sauchiehall St institution — cheap drinks, jukebox, basement gigs if anything's on (you can stay upstairs). The dive bar of the trip. 10-min cab from Crabshakk, then walk to the Clutha after.",
           maps: mapsUrl('Nice N Sleazy Sauchiehall Street'),
           pairing: 'Cheap house lager, or a boilermaker. Red Bull & vodka if the day catches up.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Stephen_Lawrie_of_The_Telescopes_getting_ready_to_go_on_stage_at_Nice_N_Sleazy%2C_Glasgow._October_2023.jpg',
+          image: localImg('nice-n-sleazy.jpg'),
           imageAlt: "Nice N Sleazy basement stage, Sauchiehall Street",
         },
         {
@@ -616,7 +621,7 @@ export const trip = {
             "Riverside pub steeped in Glasgow history, live music in the corner most nights, cheap pizza. The fitting last-night pint. 167–169 Stockwell St — 10-min walk south from Sleazy's. Energy flagging? Order a Red Bull & Jäger, not a yawn.",
           maps: mapsUrl('The Clutha Stockwell Street'),
           pairing: 'A pint of Guinness + a dram.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/0/03/The_Clutha_in_Glasgow_%2817833190138%29.jpg',
+          image: localImg('the-clutha.jpg'),
           imageAlt: 'The Clutha bar, Stockwell Street, Glasgow',
         },
       ],
@@ -642,7 +647,7 @@ export const trip = {
           maps: mapsUrl('The Laurieston Bar Bridge Street'),
           pairing: 'Fyne Ales Jarl at the Laurieston.',
           swap: 'Rainy? Duck into a museum you skipped.',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Glasgow_City_-_The_Laurieston_Bar%2C_58_Bridge_Street_And_2_And_4_Nelson_Street_-_20231202154311.jpg',
+          image: localImg('laurieston-bar.jpg'),
           imageAlt: 'The Laurieston Bar, Bridge Street, Glasgow',
         },
         {
@@ -664,7 +669,7 @@ export const trip = {
           blurb:
             'Land Berlin 22:10. (55-min AMS connection on the way in is fine; just don\'t dawdle through the non-Schengen check.)',
           pairing: "A final airport Tennent's or BrewDog at the gate.",
-          image: 'https://upload.wikimedia.org/wikipedia/commons/4/45/16-11-15-Glasgow_Airport-RR2_7002.jpg',
+          image: localImg('glasgow-airport-departures.jpg'),
           imageAlt: 'Glasgow Airport check-in hall, departures',
         },
       ],
