@@ -318,7 +318,7 @@ export const trip = {
           title: 'Merchant City wander — GoMA + Monorail',
           kind: 'sight',
           blurb:
-            "Three-minute stroll from Paesano. Duck into the Gallery of Modern Art (Royal Exchange Sq — free, the traffic-coned Duke of Wellington statue out front = peak Glasgow), then poke through Monorail Music inside Mono on King St (records + a vegan bar in one room, 4 min away). Both small, both free to walk in — skip one if you fancy a slower pace.",
+            "Three-minute stroll from Paesano. Duck into the Gallery of Modern Art (Royal Exchange Sq — free, the traffic-coned Duke of Wellington statue out front = peak Glasgow), then poke through Monorail Music inside Mono on King St (records + a vegan bar in one room, 4 min away). Both small, both free to walk in. If you want a second dig: Rubadub on Howard St (electronic/dance records, DJ gear) is 8 min south.",
           maps: mapsUrl('Gallery of Modern Art GoMA'),
           pairing: 'Espresso at GoMA, or a Gamma Ray at Mono on the way out.',
           swap: 'Wiped from the flight? Drop both and go straight to the Pot Still for a long pre-gig sit.',
@@ -467,7 +467,18 @@ export const trip = {
           imageAlt: 'Glasgow Cathedral exterior, Castle Street',
         },
         {
-          time: '11:00',
+          time: '10:45',
+          title: "Provand's Lordship",
+          kind: 'sight',
+          blurb:
+            "Directly across Castle St from the Cathedral. Oldest house in Glasgow (1471) — one of only four medieval buildings to survive in the city. Free, tiny, 15-min visit. Easy add on the walk to the Necropolis.",
+          maps: mapsUrl("Provand's Lordship Castle Street"),
+          pairing: 'Nothing — save it for the climb up the hill.',
+          image: localImg('provands-lordship.jpg'),
+          imageAlt: "Provand's Lordship medieval stone house, Castle Street, Glasgow",
+        },
+        {
+          time: '11:15',
           title: 'Glasgow Necropolis',
           kind: 'sight',
           blurb:
