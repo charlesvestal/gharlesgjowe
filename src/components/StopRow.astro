@@ -122,12 +122,15 @@ const kindGlyph: Record<Stop['kind'], string> = {
 
   .stop__figure {
     position: relative;
-    margin: -1.25rem -1.25rem 1rem -1.5rem;
+    margin: -1.25rem 0 1rem -1.5rem;
     padding: 0;
     aspect-ratio: 16 / 9;
+    width: calc(100% + 1.5rem);
+    max-width: 700px;
     overflow: hidden;
-    background: var(--ink); /* visible only behind transparent / failed images */
+    background: var(--ink);
     border-bottom: var(--rule) solid var(--bone);
+    border-right: var(--rule) solid var(--bone);
   }
 
   .stop__image {
