@@ -248,7 +248,7 @@ export const trip = {
           title: 'The Barras Market',
           kind: 'sight',
           blurb:
-            'Right next door — weekends only (10–4). Ramshackle flea market: vinyl, vintage, junk, characters, street food. Allow ~1.5 hrs to dig properly.',
+            "Right next door — weekends only, **closes at 16:00 sharp**. Ramshackle flea market: vinyl, vintage, junk, characters, street food. ~2.5 hrs to dig before traders pack up. Push lunch earlier (12:00) if you want longer here.",
           maps: mapsUrl('The Barras Market Gallowgate'),
         },
         {
@@ -325,7 +325,7 @@ export const trip = {
           title: 'Old Town wander + pub lunch',
           kind: 'food',
           blurb:
-            "Walk the wynds down from the castle — Church of the Holy Rude is the bit people miss (the only church besides Westminster Abbey to have hosted a still-reigning monarch's coronation). Pub lunch at The Portcullis or Settle Inn.",
+            "Walk the wynds down from the castle. Lunch at **The Portcullis** (Sun food from 11:30, pub right by the castle esplanade — Settle Inn doesn't open till 15:00 on Sundays so skip it). Church of the Holy Rude is across the road — gorgeous Gothic exterior, but interior is **Sunday tours only at 14:00 / 16:30** if you want in.",
           maps: 'https://www.google.com/maps/search/?api=1&query=The+Portcullis+Stirling',
           pairing: 'A pint of Williams Bros Caesar Augustus at the Portcullis.',
         },
@@ -370,8 +370,8 @@ export const trip = {
           title: 'The Clutha — last pint',
           kind: 'drink',
           blurb:
-            "Riverside pub steeped in Glasgow history, live music in the corner most nights, cheap pizza. The fitting last-night pint. Bridgegate — 10-min walk south from the GFT, or a £5 cab.",
-          maps: mapsUrl('The Clutha Bridgegate'),
+            "Riverside pub steeped in Glasgow history, live music in the corner most nights, cheap pizza. The fitting last-night pint. 167–169 Stockwell St — 10-min walk south from the GFT, or a £5 cab.",
+          maps: mapsUrl('The Clutha Stockwell Street'),
           pairing: 'A pint of Guinness + a dram.',
         },
       ],
