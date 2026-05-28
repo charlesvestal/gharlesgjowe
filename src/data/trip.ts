@@ -349,10 +349,10 @@ export const trip = {
         },
         {
           time: '~18:00',
-          title: 'Back in Glasgow — slow gear',
-          kind: 'note',
+          title: 'Dinner before the GFT',
+          kind: 'food',
           blurb:
-            "You'll have done ~8 hrs of moving by now (train + castle + Old Town + maybe Wallace). Drop bags at the hotel, sit for half an hour, eat something close by. Don't try to pack the evening.",
+            "Eat central before the 20:00 screening — Sauchiehall / Rose St has plenty (Singl-end Garnethill 5 min away, or anywhere on the way). GFT café-bar can do a light bite if you'd rather drink first.",
         },
         {
           time: '20:00',
