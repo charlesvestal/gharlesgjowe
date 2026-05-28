@@ -253,6 +253,9 @@ export const trip = {
           blurb: 'Carry-on only = walk straight out. Realistically in the city ~14:00 after the bus.',
           transport:
             '500 Airport Express → Buchanan St, ~£9 return, every 10 min, 15–25 min depending on traffic. Or cab ~£20, ~15 min.',
+          image:
+            'https://upload.wikimedia.org/wikipedia/commons/1/14/Glasgow_Airport_-_terminal_building_-_geograph.org.uk_-_2922025.jpg',
+          imageAlt: 'Glasgow Airport terminal building exterior',
         },
         {
           time: '~14:15',
@@ -267,6 +270,9 @@ export const trip = {
           blurb: 'Wood-fired, fast, cheap — the no-faff landing lunch. Miller St, Merchant City, ~5 min from Buchanan St.',
           maps: mapsUrl('Paesano Pizza Miller Street'),
           pairing: 'Birra Moretti, or a Negroni sbagliato to mark the start.',
+          image:
+            'https://images.squarespace-cdn.com/content/v1/66f276e6a3e81068b13d74f9/6f081b26-f9b8-4d09-a924-9fd82f5f99ff/MILLER+ST+2.jpg',
+          imageAlt: 'Paesano Pizza Miller Street wood-fired oven and counter',
         },
         {
           time: '16:00',
@@ -277,6 +283,9 @@ export const trip = {
           maps: mapsUrl('Gallery of Modern Art GoMA'),
           pairing: 'Espresso at GoMA, or a Gamma Ray at Mono on the way out.',
           swap: 'Wiped from the flight? Drop both and go straight to the Pot Still for a long pre-gig sit.',
+          image:
+            'https://upload.wikimedia.org/wikipedia/commons/a/a4/Gallery_of_Modern_Art%2C_Glasgow%2C_front_view%2C_2018-06-27.jpg',
+          imageAlt: 'Gallery of Modern Art Glasgow front facade with Duke of Wellington statue',
         },
         {
           time: '17:30',
@@ -287,6 +296,8 @@ export const trip = {
           maps: mapsUrl('The Pot Still Hope Street'),
           pairing: 'A Lowland single malt + a Tempest four-grain stout.',
           swap: "Want a second pre-show pint? The Horseshoe (Drury St, 5 min away) — one of the UK's longest bars, cheap Tennent's.",
+          image: 'https://thepotstill.co.uk/wp-content/uploads/2024/08/PotStill-OM-1-2-copy-1440px.jpg',
+          imageAlt: 'The Pot Still whisky bar, Hope Street, Glasgow',
         },
         {
           time: '19:30',
@@ -297,6 +308,8 @@ export const trip = {
           booking: { label: "Tickets (King Tut's)", url: 'https://www.kingtuts.co.uk/whats-on' },
           maps: mapsUrl("King Tut's Wah Wah Hut"),
           pairing: "Drygate Gladeye IPA, or a can of Tennent's.",
+          image: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/King_Tut%27s_Wah_Wah_Hut_1.jpg',
+          imageAlt: "King Tut's Wah Wah Hut frontage, St Vincent Street, Glasgow",
         },
       ],
     },
@@ -313,6 +326,8 @@ export const trip = {
           blurb:
             "Slow-ferment sourdough + almond croissant locals queue for, on Great Western Rd. On La Liste's world bakeries 2024. Subway to Kelvinbridge (Clockwork Orange loop, ~10 min from centre), 5-min walk. Cashel Coffee in Woodlands is the back-up if Cottonrake's queue is silly.",
           maps: mapsUrl('Cottonrake Bakery Great Western Road'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/f4/a4/7e/dark-chocolate-and-raspberry.jpg',
+          imageAlt: 'Cottonrake Bakery pastry — dark chocolate and raspberry tart',
         },
         {
           time: '11:00',
@@ -321,6 +336,8 @@ export const trip = {
           blurb:
             "Free and superb — Dalí's Christ of St John of the Cross, a real Spitfire. The free 1pm organ recital is a Glasgow institution; time the visit around it. Plan ~2 hrs. (Fri opens 11:00.) Subway: Kelvinhall, 5-min walk.",
           maps: mapsUrl('Kelvingrove Art Gallery and Museum'),
+          image: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Kelvingrove_Art_Gallery_and_Museum_1.jpg',
+          imageAlt: 'Kelvingrove Art Gallery and Museum red sandstone exterior',
         },
         {
           time: '13:30',
@@ -328,6 +345,8 @@ export const trip = {
           kind: 'food',
           blurb: '10-min walk north from Kelvingrove. The University Café (1918 art-deco caff, fish & chips) or the Curlers Rest for pub grub — both right by the Uni.',
           maps: mapsUrl('University Cafe Byres Road'),
+          image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/83/f5/df/caption.jpg',
+          imageAlt: 'University Café art-deco interior, Byres Road',
         },
         {
           time: '14:30',
@@ -336,6 +355,8 @@ export const trip = {
           blurb:
             'Walk the Gilbert Scott cloisters (proper Hogwarts) — 5 min from the Uni Café. Free Hunterian Museum is the nerdy highlight.',
           maps: mapsUrl('University of Glasgow Hunterian Museum'),
+          image: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/University_of_Glasgow_Main_Building_-_rear_aspect.jpg',
+          imageAlt: 'University of Glasgow Gilbert Scott main building',
         },
         {
           time: '16:00',
@@ -344,6 +365,8 @@ export const trip = {
           blurb: 'Cobbled lane strung with fairy lights, 3 min from the Uni — afternoon pint and a wander. Brel for a beer garden, or Òran Mór across Byres Rd.',
           maps: mapsUrl('Ashton Lane'),
           pairing: 'Innis & Gunn oak-aged.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Ashton_Lane_%28geograph_7708250%29.jpg',
+          imageAlt: 'Ashton Lane cobbled street with fairy lights, West End Glasgow',
         },
         {
           time: '18:30',
@@ -354,6 +377,8 @@ export const trip = {
           booking: { label: 'Book a table', url: 'https://www.motherindia.co.uk/' },
           maps: mapsUrl('Mother India Finnieston'),
           pairing: 'Cobra, or a whisky sour.',
+          image: 'https://www.motherindia.co.uk/wp-content/uploads/2021/03/MotherIndia_restaurant1.jpg',
+          imageAlt: 'Mother India restaurant dining room, Finnieston',
         },
         {
           time: '20:30',
@@ -363,6 +388,8 @@ export const trip = {
           maps: mapsUrl('Ben Nevis bar Argyle Street'),
           pairing: 'A Highland malt at the Ben Nevis; Joker IPA at BrewDog.',
           swap: 'Knackered after the curry? End at Mother India, walk back along Argyle.',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/The_Ben_Nevis_bar_%28geograph_6000023%29.jpg',
+          imageAlt: 'The Ben Nevis whisky bar on Argyle Street, Finnieston',
         },
       ],
     },
