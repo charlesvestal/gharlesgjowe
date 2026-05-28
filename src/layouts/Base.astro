@@ -32,41 +32,55 @@ const base = import.meta.env.BASE_URL;
   <body>
     <a class="skip-link" href="#main">Skip to itinerary</a>
 
-    <!-- Halftone + duotone SVG filters reused by all image components. -->
+    <!--
+      Halftone + duotone SVG filters reused by all image components.
+
+      Pipeline per filter:
+        1. Desaturate to grayscale
+        2. Contrast boost (slope 1.6, intercept -0.3) so the tonal range
+           spreads evenly across the posterize levels — without this, most
+           photo mid-tones collapse into the darkest level.
+        3. Add Bayer-style dither via tiled fractalNoise composited into
+           the luminance — this creates the screenprint-grain texture and
+           softens the hard posterize edges.
+        4. Posterize to 4 levels (ink → mid-red → bright-red → cream OR
+           ink → mid-red → bright-red → acid yellow), mapped to actual
+           palette ink colors via discrete component transfer.
+    -->
     <svg width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">
       <defs>
-        <!-- Duotone: maps luminance to bone (cream) → riso-red gradient. -->
-        <filter id="halftone-riso" color-interpolation-filters="sRGB">
-          <feColorMatrix type="matrix" values="
-            0.33 0.33 0.33 0 0
-            0.33 0.33 0.33 0 0
-            0.33 0.33 0.33 0 0
-            0    0    0    1 0
-          "/>
+        <!-- ink #121110 · riso-red #ff3a20 · bone #f3e9d8 -->
+        <filter id="halftone-riso" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
           <feComponentTransfer>
-            <feFuncR type="table" tableValues="0.07 1.00"/>
-            <feFuncG type="table" tableValues="0.07 0.91"/>
-            <feFuncB type="table" tableValues="0.06 0.85"/>
+            <feFuncR type="linear" slope="1.6" intercept="-0.30"/>
+            <feFuncG type="linear" slope="1.6" intercept="-0.30"/>
+            <feFuncB type="linear" slope="1.6" intercept="-0.30"/>
           </feComponentTransfer>
-          <feComponentTransfer>
-            <feFuncR type="discrete" tableValues="0.07 0.07 0.07 1.00 1.00 1.00"/>
-            <feFuncG type="discrete" tableValues="0.07 0.07 0.07 0.23 0.91 0.91"/>
-            <feFuncB type="discrete" tableValues="0.06 0.06 0.06 0.13 0.85 0.85"/>
+          <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" stitchTiles="stitch" result="dither"/>
+          <feComposite in="SourceGraphic" in2="dither" operator="arithmetic" k1="0" k2="0.85" k3="0.30" k4="-0.15" result="dithered"/>
+          <feComponentTransfer in="dithered">
+            <!-- 4-level posterize → ink, mid-red, bright-red, cream -->
+            <feFuncR type="discrete" tableValues="0.07 0.78 1.00 0.953"/>
+            <feFuncG type="discrete" tableValues="0.067 0.20 0.227 0.914"/>
+            <feFuncB type="discrete" tableValues="0.063 0.13 0.125 0.847"/>
           </feComponentTransfer>
         </filter>
 
-        <!-- Duotone red→cream with extra contrast for the gig/marquee shots. -->
-        <filter id="halftone-acid" color-interpolation-filters="sRGB">
-          <feColorMatrix type="matrix" values="
-            0.33 0.33 0.33 0 0
-            0.33 0.33 0.33 0 0
-            0.33 0.33 0.33 0 0
-            0    0    0    1 0
-          "/>
+        <!-- ink → mid-red → bright-red → acid #ffd400 (gig / drink) -->
+        <filter id="halftone-acid" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0"/>
           <feComponentTransfer>
-            <feFuncR type="table" tableValues="0.07 1.00"/>
-            <feFuncG type="table" tableValues="0.07 0.83"/>
-            <feFuncB type="table" tableValues="0.06 0.00"/>
+            <feFuncR type="linear" slope="1.6" intercept="-0.30"/>
+            <feFuncG type="linear" slope="1.6" intercept="-0.30"/>
+            <feFuncB type="linear" slope="1.6" intercept="-0.30"/>
+          </feComponentTransfer>
+          <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" stitchTiles="stitch" result="dither"/>
+          <feComposite in="SourceGraphic" in2="dither" operator="arithmetic" k1="0" k2="0.85" k3="0.30" k4="-0.15" result="dithered"/>
+          <feComponentTransfer in="dithered">
+            <feFuncR type="discrete" tableValues="0.07 0.85 1.00 1.00"/>
+            <feFuncG type="discrete" tableValues="0.067 0.20 0.227 0.831"/>
+            <feFuncB type="discrete" tableValues="0.063 0.13 0.125 0.000"/>
           </feComponentTransfer>
         </filter>
       </defs>

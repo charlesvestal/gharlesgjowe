@@ -146,7 +146,7 @@ const { groups } = Astro.props;
     padding: 0;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: var(--acid);
+    background: var(--ink); /* fallback if image fails — duotone fills the rest */
     border-bottom: 1px solid var(--bone);
   }
   .food__image {
@@ -154,8 +154,7 @@ const { groups } = Astro.props;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: url(#halftone-riso) contrast(1.15);
-    mix-blend-mode: multiply;
+    filter: url(#halftone-riso);
     transform: scale(1.02);
     transition: transform var(--dur) var(--ease);
   }
@@ -164,10 +163,10 @@ const { groups } = Astro.props;
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: radial-gradient(circle, rgba(18,17,16,0.4) 0.5px, transparent 1px);
-    background-size: 3px 3px;
+    background-image: radial-gradient(circle, rgba(18,17,16,0.55) 0.45px, transparent 1px);
+    background-size: 2.5px 2.5px;
     mix-blend-mode: multiply;
-    opacity: 0.55;
+    opacity: 0.18;
   }
   @media (prefers-reduced-motion: reduce) {
     .food__image, .food__card:hover .food__image { transform: none; transition: none; }
