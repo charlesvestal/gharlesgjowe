@@ -126,43 +126,40 @@ const kindGlyph: Record<Stop['kind'], string> = {
     padding: 0;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: var(--riso-red);
+    background: var(--ink); /* visible only behind transparent / failed images */
     border-bottom: var(--rule) solid var(--bone);
   }
-  .stop__figure--gig { background: var(--acid); }
-  .stop__figure--drink { background: var(--acid); }
-  .stop__figure--sight { background: var(--riso-red); }
-  .stop__figure--food { background: var(--bone); }
-  .stop__figure--transport { background: var(--tape); }
-  .stop__figure--note { background: var(--bone-faint); }
 
   .stop__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: url(#halftone-riso) contrast(1.15);
-    mix-blend-mode: multiply;
+    filter: url(#halftone-riso);
     transform: scale(1.02);
-    transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+    transition: transform var(--dur) var(--ease);
   }
   .stop--gig .stop__image,
   .stop--drink .stop__image {
-    filter: url(#halftone-acid) contrast(1.2);
+    filter: url(#halftone-acid);
   }
   .stop:hover .stop__image {
     transform: scale(1.04) rotate(-0.3deg);
   }
 
-  /* Halftone dot overlay on top of the duotoned image. */
+  /*
+    Soft halftone-dot overlay on top of the dithered image — adds a
+    visible print-screen pattern at larger viewport sizes. Kept very
+    subtle because the SVG filter already does the heavy lifting.
+  */
   .stop__figure-grain {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: radial-gradient(circle, rgba(18,17,16,0.45) 0.6px, transparent 1.2px);
-    background-size: 4px 4px;
+    background-image: radial-gradient(circle, rgba(18,17,16,0.55) 0.5px, transparent 1.1px);
+    background-size: 3px 3px;
     mix-blend-mode: multiply;
-    opacity: 0.55;
+    opacity: 0.22;
   }
 
   @media (prefers-reduced-motion: reduce) {
