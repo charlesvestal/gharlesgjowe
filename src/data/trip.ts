@@ -428,8 +428,8 @@ export const trip = {
           title: 'Mother India',
           kind: 'food',
           blurb:
-            'Glasgow is a UK curry capital and this is the institution. Finnieston — 15-min walk south down Byres Rd, or 5-min cab. BOOK AHEAD.',
-          booking: { label: 'Book a table', url: 'https://www.motherindia.co.uk/' },
+            "Glasgow is a UK curry capital and this is the institution. Finnieston — 15-min walk south down Byres Rd, or 5-min cab. **Booked 18:30.**",
+          booking: { label: 'Booking', url: 'https://www.motherindia.co.uk/' },
           maps: mapsUrl('Mother India Finnieston'),
           pairing: 'Cobra, or a whisky sour.',
           image: localImg('mother-india.jpg'),
@@ -535,8 +535,8 @@ export const trip = {
           title: 'Dinner — Margo',
           kind: 'food',
           blurb:
-            "Scottish small plates by the Ox and Finch / Ka Pao team — at 66 Trongate in the Merchant City, so genuinely walkable from any central hotel. The right pick for staying central after the Barras day. BOOK AHEAD.",
-          booking: { label: 'Book a table', url: 'https://www.margorestaurant.co.uk/' },
+            "Scottish small plates by the Ox and Finch / Ka Pao team — at 66 Trongate in the Merchant City, so genuinely walkable from any central hotel. The right pick for staying central after the Barras day. **Booked 19:30.**",
+          booking: { label: 'Booking', url: 'https://www.margorestaurant.co.uk/' },
           maps: mapsUrl('Margo Restaurant Trongate Glasgow'),
           pairing: 'Whatever\'s on the wine list.',
           swap:
@@ -630,8 +630,8 @@ export const trip = {
           title: 'Crabshakk, Finnieston',
           kind: 'food',
           blurb:
-            "Proper last-night dinner — the Finnieston seafood institution. Counter seating, no-frills, exceptional. Book ahead, it's small. 15-min cab from the centre. Order the langoustines.",
-          booking: { label: 'Book a table', url: 'https://www.crabshakk.com/' },
+            "Proper last-night dinner — the Finnieston seafood institution. Counter seating, no-frills, exceptional. 15-min cab from the centre. Order the langoustines. **Booked 18:30.**",
+          booking: { label: 'Booking', url: 'https://www.crabshakk.com/' },
           maps: mapsUrl('Crabshakk Argyle Street'),
           pairing: 'A glass of Muscadet, or a cold lager.',
           swap: "Booked out? Six by Nico (Finnieston, tasting menu) or Ox and Finch next door.",
