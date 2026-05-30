@@ -117,3 +117,15 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   .daynav__list a.daynav__pill--near { background: var(--bone); color: var(--ink); border-color: var(--bone); }
   .daynav__list a.daynav__pill--near:hover, .daynav__list a.daynav__pill--near:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
 </style>
+
+<script>
+  // Measure the sticky nav so each day's sticky header locks right beneath it.
+  const root = document.documentElement;
+  const nav = document.querySelector('.daynav') as HTMLElement | null;
+  const setNavH = () => {
+    if (nav) root.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  };
+  setNavH();
+  window.addEventListener('resize', setNavH);
+  window.addEventListener('load', setNavH);
+</script>
