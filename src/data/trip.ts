@@ -86,6 +86,7 @@ export const trip = {
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
     { id: 'cash', label: 'Bring some cash — Laurieston & the Barras lean cash-only' },
+    { id: 'spires-deposit', label: 'Photo ID + the booking card for check-in — The Spires holds a £250 deposit' },
     { id: 'stage-time', label: 'Check Southpaw stage time nearer the date' },
     { id: 'home-screen', label: 'Add this site to home screen / save offline' },
   ] satisfies ChecklistItem[],
@@ -297,9 +298,12 @@ export const trip = {
         },
         {
           time: '~14:15',
-          title: 'Drop bags at hotel',
+          title: 'Drop bags — The Spires',
           kind: 'note',
-          blurb: "Check-in won't be ready — stash, freshen up, head straight back out. Everything from here is within 10 min walk of the centre.",
+          blurb:
+            "**The Spires Serviced Apartments**, 77 Glassford St — bang in the Merchant City with bars on the doorstep, ~10 min walk to King Tut's. Two-bed apartment: a bedroom each, plus a living room + kitchen to flop in. Keys at reception (open till 17:00 on a weekday, so fine on a Thursday arrival); proper check-in from 15:00 — stash, freshen up, head straight back out. Bring **photo ID + the card you booked with**: they hold a £250 deposit (refunded after checkout). Booking ref 6325399289.",
+          booking: { label: 'The Spires', url: 'https://www.booking.com/hotel/gb/thespiresglasgow.html' },
+          maps: mapsUrl('The Spires Serviced Apartments Glassford Street'),
           pairing: 'Tap water. The night is long.',
         },
         {
@@ -524,10 +528,10 @@ export const trip = {
         },
         {
           time: '17:30',
-          title: 'Cab back, reset at hotel',
+          title: 'Cab back, reset at the flat',
           kind: 'note',
           blurb:
-            "10-min cab from Glasgow Green to the centre. Half-hour sit-down before dinner — Sunday is Stirling, you'll want some battery. Important: from here the rest of the night is all central (no more east-end runs).",
+            "10-min cab from Glasgow Green back to the Spires. Half-hour in the living room before dinner — Sunday is Stirling, you'll want some battery. Important: from here the rest of the night is all central (no more east-end runs).",
           pairing: 'Glass of water and a coffee — the long evening is coming.',
         },
         {
