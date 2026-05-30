@@ -26,7 +26,7 @@ const kindGlyph: Record<Stop['kind'], string> = {
   note: '✎',
 };
 ---
-<article class={`stop stop--${stop.kind} reveal`} style={`--i: ${index}`}>
+<article class={`stop stop--${stop.kind} reveal ${stop.optional ? 'stop--optional' : ''}`} style={`--i: ${index}`}>
   {stop.image && (
     <figure class={`stop__figure stop__figure--${stop.kind}`}>
       <img
@@ -46,6 +46,7 @@ const kindGlyph: Record<Stop['kind'], string> = {
     <span class={`stop__kind stop__kind--${stop.kind}`}>
       <span aria-hidden="true">{kindGlyph[stop.kind]}</span> {kindLabel[stop.kind]}
     </span>
+    {stop.optional && <span class="stop__optional">Optional</span>}
   </header>
 
   <h4 class="stop__title">{stop.title}</h4>
@@ -195,6 +196,18 @@ const kindGlyph: Record<Stop['kind'], string> = {
   .stop__kind--gig { color: var(--riso-red); border-color: var(--riso-red); }
   .stop__kind--drink { color: var(--acid); border-color: var(--acid); }
   .stop__kind--food { color: var(--bone); border-color: var(--bone); }
+
+  .stop--optional { border-left-style: dashed; }
+  .stop__optional {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.1rem 0.45rem;
+    border: 1px dashed var(--acid);
+    color: var(--acid);
+    text-transform: uppercase;
+  }
 
   .stop__title {
     font-family: var(--ff-display);
