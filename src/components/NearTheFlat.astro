@@ -1,0 +1,149 @@
+---
+import type { NearbyGroup } from '../data/trip';
+
+interface Props {
+  intro: string;
+  groups: NearbyGroup[];
+}
+
+const { intro, groups } = Astro.props;
+---
+<section class="near" id="near" aria-labelledby="near-h">
+  <header class="near__head">
+    <p class="near__eyebrow meta">MERCHANT CITY · ON YOUR DOORSTEP</p>
+    <h3 id="near-h" class="near__title">BY THE FLAT</h3>
+    <p class="near__intro">{intro}</p>
+  </header>
+
+  {groups.map((group) => (
+    <div class="near__group">
+      <header class="near__group-head">
+        <h4 class="near__group-label">{group.label}</h4>
+      </header>
+      <ul class="near__grid">
+        {group.picks.map((pick) => (
+          <li class="near__card">
+            <p class="near__walk meta"><span class="near__walk-pin" aria-hidden="true">▸</span> {pick.walk}</p>
+            <h5 class="near__name">{pick.name}</h5>
+            <p class="near__blurb">{pick.blurb}</p>
+            {pick.maps && (
+              <a class="near__map" href={pick.maps} rel="noopener noreferrer" target="_blank">
+                Maps <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<style>
+  .near {
+    padding: 3rem 0 2rem 0;
+    border-top: var(--rule-thick) solid var(--riso-red);
+  }
+
+  .near__head {
+    margin-bottom: 2rem;
+  }
+
+  .near__eyebrow {
+    color: var(--acid);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .near__title {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0 0 0.75rem 0;
+    text-shadow: 0.03em 0.02em 0 var(--riso-red);
+  }
+
+  .near__intro {
+    max-width: 56ch;
+    color: var(--bone-dim);
+    margin: 0;
+  }
+
+  .near__group {
+    margin-bottom: 2.5rem;
+  }
+
+  .near__group-head {
+    border-top: var(--rule) solid var(--bone-faint);
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .near__group-label {
+    font-family: var(--ff-display);
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .near__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .near__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .near__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .near__card {
+    position: relative;
+    padding: 1rem 1.1rem 1rem 1.2rem;
+    background: var(--ink-2);
+    border-left: 3px solid var(--riso-red);
+    border-top: 1px solid var(--bone-faint);
+    border-right: 1px solid var(--bone-faint);
+    border-bottom: 1px solid var(--bone-faint);
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .near__card:hover { transform: translateY(-2px) rotate(-0.2deg); border-left-color: var(--acid); }
+
+  .near__walk {
+    margin: 0 0 0.25rem 0;
+    color: var(--bone-dim);
+  }
+  .near__walk-pin { color: var(--acid); }
+
+  .near__name {
+    font-family: var(--ff-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.4rem 0;
+    line-height: 1;
+  }
+
+  .near__blurb {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--bone);
+    line-height: 1.4;
+  }
+
+  .near__map {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

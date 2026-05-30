@@ -51,6 +51,18 @@ export interface FoodGroup {
   picks: FoodPick[];
 }
 
+export interface NearbyPlace {
+  name: string;
+  walk: string;        // approx walk from the flat, e.g. '3 min'
+  blurb: string;       // one-line what + why
+  maps?: string;
+}
+
+export interface NearbyGroup {
+  label: string;       // 'Pubs', 'Food & coffee', 'Culture & curios'
+  picks: NearbyPlace[];
+}
+
 const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} Glasgow`)}`;
 
@@ -279,6 +291,54 @@ export const trip = {
       ],
     },
   ] satisfies FoodGroup[],
+  nearTheFlat: {
+    intro:
+      "You're in the dead centre of Merchant City — pubs, breakfast and galleries are mostly a 2–10 min walk from the Spires door. Everything here was checked open as of mid-2026.",
+    groups: [
+      {
+        label: 'Pubs & bars',
+        picks: [
+          { name: 'The Blane Valley', walk: '30 sec', blurb: 'Honest traditional pub literally across the street — pints and homecooked food. Your default first and last stop.', maps: mapsUrl('The Blane Valley 76 Glassford Street') },
+          { name: 'Blackfriars', walk: '4 min', blurb: 'Merchant City stalwart: five rotating cask ales and a basement live-music & comedy room. The dive-ish gig pick.', maps: mapsUrl('Blackfriars Bell Street') },
+          { name: 'Babbity Bowster', walk: '5 min', blurb: '18th-century pub with folk-music heritage, good beer and a sunny courtyard. (The one that was full for rooms.)', maps: mapsUrl('Babbity Bowster Blackfriars Street') },
+          { name: "Anderson's", walk: '6 min', blurb: "New pub on the old 13th Note site on King St — tank-fresh Tennent's, an ex-Michelin kitchen, and gigs downstairs.", maps: mapsUrl("Andersons King Street Glasgow") },
+          { name: 'The Scotia Bar', walk: '8 min', blurb: "Claims the city's oldest pub (1792); low ceilings, trad/folk sessions, a proper musicians' and writers' den.", maps: mapsUrl('The Scotia Bar Stockwell Street') },
+          { name: 'The Clutha & Victoria', walk: '9 min', blurb: 'Joined-up riverside live-music bars with free gigs most nights, murals and a beer garden.', maps: mapsUrl('The Clutha Stockwell Street') },
+          { name: 'Shilling Brewing Co.', walk: '8 min', blurb: 'Brewpub in a marble-and-copper former bank — 30+ taps including their own beers. Top spot for craft.', maps: mapsUrl('Shilling Brewing Co West George Street') },
+          { name: 'The Horseshoe Bar', walk: '9 min', blurb: "1870 Victorian institution with one of the UK's longest bars — cheap pints, listed interior, karaoke upstairs.", maps: mapsUrl('The Horseshoe Bar Drury Street') },
+        ],
+      },
+      {
+        label: 'Breakfast & coffee',
+        picks: [
+          { name: 'Café Gandolfi', walk: '4 min', blurb: 'Merchant City institution since 1979 — the proper sit-down Scottish breakfast/brunch pick. Get there before it fills.', maps: mapsUrl('Cafe Gandolfi Albion Street') },
+          { name: 'Bar 91', walk: '3 min', blurb: 'Laid-back Merchant City bar doing a solid brunch and good coffee — the easy morning-after landing.', maps: mapsUrl('Bar 91 Candleriggs') },
+          { name: 'Spitfire Espresso', walk: '6 min', blurb: 'Specialty coffee and breakfast rolls at 55 High Street — a quick caffeine-and-roll start to the day.', maps: mapsUrl('Spitfire Espresso High Street Glasgow') },
+          { name: 'Mono', walk: '6 min', blurb: 'All-day vegan café-bar sharing space with Monorail records — brunch, good beer, and gigs later on.', maps: mapsUrl('Mono Kings Court King Street') },
+        ],
+      },
+      {
+        label: 'Casual eats',
+        picks: [
+          { name: 'Paesano Pizza', walk: '5 min', blurb: 'Walk-in-only wood-fired Neapolitan pizza — cheap and excellent. Already your day-one lunch; worth a repeat.', maps: mapsUrl('Paesano Pizza Miller Street') },
+          { name: 'Sugo Pasta', walk: '8 min', blurb: 'No-bookings fresh-pasta canteen — fast, affordable, buzzy. The no-faff dinner.', maps: mapsUrl('Sugo Pasta Mitchell Street') },
+          { name: 'Hutchesons Bar & Brasserie', walk: '2 min', blurb: 'Grand listed building round the corner on Ingram St — steaks and a Scottish menu if you want a proper sit-down.', maps: mapsUrl('Hutchesons Ingram Street Glasgow') },
+          { name: 'Alston Bar & Beef', walk: '9 min', blurb: 'Atmospheric steakhouse and a big gin list hidden in the vaults under Central Station.', maps: mapsUrl('Alston Bar and Beef Gordon Street') },
+        ],
+      },
+      {
+        label: 'Culture & curios',
+        picks: [
+          { name: 'GoMA + the cone', walk: '3 min', blurb: "Free contemporary-art gallery on Royal Exchange Sq — and the traffic-cone-on-Wellington statue out front, the city's unofficial mascot.", maps: mapsUrl('Gallery of Modern Art Royal Exchange Square') },
+          { name: 'Sharmanka Kinetic Theatre', walk: '6 min', blurb: 'Mesmerising kinetic-sculpture theatre at Trongate 103 — utterly unique; book a timed show. (Already on your plan.)', maps: mapsUrl('Sharmanka Kinetic Theatre Trongate') },
+          { name: 'Britannia Panopticon', walk: '6 min', blurb: "World's oldest surviving music hall (Stan Laurel's debut), hidden above a Trongate shop — open Thu–Sat, atmospheric and free to look round.", maps: mapsUrl('Britannia Panopticon Trongate') },
+          { name: 'City Halls & Old Fruitmarket', walk: '3 min', blurb: "Candleriggs concert venues — trad, folk, jazz and classical. Worth checking what's on for the nights you're in town.", maps: mapsUrl('City Halls Candleriggs Glasgow') },
+          { name: 'Argyll Arcade', walk: '7 min', blurb: 'Victorian covered jewellery arcade off Buchanan St — a quick atmospheric cut-through with 30+ jewellers.', maps: mapsUrl('Argyll Arcade Glasgow') },
+          { name: 'Glasgow Cross & Tolbooth Steeple', walk: '7 min', blurb: '1634 steeple marooned on the Trongate, last survivor of the old Tolbooth — a two-minute photo stop en route to the Barras.', maps: mapsUrl('Tolbooth Steeple Glasgow Cross') },
+        ],
+      },
+    ] satisfies NearbyGroup[],
+  },
   days: [
     {
       date: 'Thu 2 Jul',
