@@ -26,6 +26,7 @@ const { items } = Astro.props;
             type="checkbox"
             data-checklist-item
             data-id={item.id}
+            checked={item.done}
           />
           <span class="checklist__box" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="14" height="14" focusable="false">
@@ -181,7 +182,7 @@ const { items } = Astro.props;
   inputs.forEach((input) => {
     const id = input.dataset.id;
     if (!id) return;
-    if (state[id]) input.checked = true;
+    if (id in state) input.checked = state[id];
     input.addEventListener('change', () => {
       state[id] = input.checked;
       save(state);
