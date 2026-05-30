@@ -638,12 +638,12 @@ export const trip = {
       stops: [
         {
           time: '~8:45',
-          title: 'Breakfast — Spitfire Espresso',
+          title: 'Breakfast — grab on the way to the train',
           kind: 'food',
           blurb:
-            "The one early start, but Spitfire (55 High St) opens at 8am seven days a week — the reliable Sunday call when most cafés are still shut. Grab a flat white and a breakfast roll or burrito, then it's a ~10-min walk to Queen St for the train.",
-          maps: mapsUrl('Spitfire Espresso High Street Glasgow'),
-          pairing: 'Coffee to go. Pints come in Stirling.',
+            "Keep the early start simple. There's a Greggs at 100 George St, basically on the line to Queen St and open from ~8am Sundays — cheap roll, done. Queen Street station itself has coffee carts (92 Degrees, Tinderbox, Costa) for a coffee and a pastry, but no Greggs/M&S inside (that's Central). Want proper coffee? Spitfire (55 High St, opens 8am daily) is a short detour east.",
+          maps: mapsUrl('Greggs 100 George Street Glasgow'),
+          pairing: 'Coffee for the platform. Pints come in Stirling.',
         },
         {
           time: '~9:30',
