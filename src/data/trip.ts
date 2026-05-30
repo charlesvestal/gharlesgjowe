@@ -301,7 +301,7 @@ export const trip = {
           title: 'Drop bags — The Spires',
           kind: 'note',
           blurb:
-            "**The Spires Serviced Apartments**, 77 Glassford St — bang in the Merchant City with bars on the doorstep, ~10 min walk to King Tut's. Two-bed apartment: a bedroom each, plus a living room + kitchen to flop in. Keys at reception (open till 17:00 on a weekday, so fine on a Thursday arrival); proper check-in from 15:00 — stash, freshen up, head straight back out. Bring **photo ID + the card you booked with**: they hold a £250 deposit (refunded after checkout). Booking ref 6325399289.",
+            "**The Spires Serviced Apartments**, 77 Glassford St — bang in the Merchant City with bars on the doorstep, ~10 min walk to King Tut's. Two-bed apartment: a bedroom each, plus a living room + kitchen to flop in. Keys at reception (open till 17:00 on a weekday, so fine on a Thursday arrival); proper check-in from 15:00 — stash, freshen up, head straight back out. Bring **photo ID + the card you booked with**: they hold a £250 deposit (refunded after checkout).",
           booking: { label: 'The Spires', url: 'https://www.booking.com/hotel/gb/thespiresglasgow.html' },
           maps: mapsUrl('The Spires Serviced Apartments Glassford Street'),
           pairing: 'Tap water. The night is long.',
