@@ -23,6 +23,7 @@ export interface Day {
 export interface ChecklistItem {
   id: string;
   label: string;
+  done?: boolean;   // pre-checked for everyone (already sorted)
 }
 
 export interface Flight {
@@ -79,9 +80,9 @@ export const trip = {
     { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
-    { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul' },
-    { id: 'book-crabshakk', label: 'Book Crabshakk — Sun 5 Jul (small room, often fills)' },
-    { id: 'book-margo', label: 'Book Margo — Sat 4 Jul (Merchant City small plates)' },
+    { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul', done: true },
+    { id: 'book-crabshakk', label: 'Book Crabshakk — Sun 5 Jul (small room, often fills)', done: true },
+    { id: 'book-margo', label: 'Book Margo — Sat 4 Jul (Merchant City small plates)', done: true },
     { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
