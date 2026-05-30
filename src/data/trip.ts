@@ -443,6 +443,7 @@ export const trip = {
             "Slow-ferment sourdough + almond croissant locals queue for, on Great Western Rd. On La Liste's world bakeries 2024. Subway to Kelvinbridge (Clockwork Orange loop, ~10 min from centre), 5-min walk. Cashel Coffee in Woodlands is the back-up if Cottonrake's queue is silly.",
           maps: mapsUrl('Cottonrake Bakery Great Western Road'),
           pairing: 'Flat white from the counter.',
+          swap: "Fancy a proper sit-down brunch instead? Kember & Jones on Byres Rd (deli-café, big plates) is the locals' pick — handy if you'd rather start further south near the Uni.",
           image: localImg('cottonrake-bakery.jpg'),
           imageAlt: 'Cottonrake Bakery pastry — dark chocolate and raspberry tart',
         },
@@ -480,9 +481,18 @@ export const trip = {
         },
         {
           time: '16:00',
+          title: 'Botanic Gardens + River Kelvin walk',
+          kind: 'sight',
+          blurb:
+            "Jesse's West End tip, and a good one: from the Uni, head up Byres Rd to the Botanic Gardens — free, with the Victorian Kibble Palace glasshouse, and you can drop onto the leafy River Kelvin walkway for a riverside loop. ~40 min of green before the pint, and Ashton Lane's on the way back down.",
+          maps: mapsUrl('Glasgow Botanic Gardens Kibble Palace'),
+          pairing: 'Save it for Ashton Lane.',
+        },
+        {
+          time: '16:45',
           title: 'Ashton Lane',
           kind: 'drink',
-          blurb: 'Cobbled lane strung with fairy lights, 3 min from the Uni — afternoon pint and a wander. Brel for a beer garden, or Òran Mór across Byres Rd.',
+          blurb: "Cobbled lane strung with fairy lights, a few minutes back down from the Botanics — afternoon pint and a wander. Brel for a beer garden, Òran Mór across Byres Rd, or the Ubiquitous Chip for the lane's famous Scottish institution (the Wee Chip bar upstairs if you just want a pint).",
           maps: mapsUrl('Ashton Lane'),
           pairing: 'Innis & Gunn oak-aged.',
           image: localImg('ashton-lane.jpg'),
