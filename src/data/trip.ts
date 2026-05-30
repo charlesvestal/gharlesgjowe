@@ -520,6 +520,15 @@ export const trip = {
       weather: weatherShort,
       stops: [
         {
+          time: '9:00',
+          title: 'Breakfast — Spitfire Espresso',
+          kind: 'food',
+          blurb:
+            "Specialty coffee and a breakfast roll at 55 High St — and it's right on the walk north: High St runs straight up to Castle St and the Cathedral, so grab-and-go then stroll up.",
+          maps: mapsUrl('Spitfire Espresso High Street Glasgow'),
+          pairing: 'Flat white for the road.',
+        },
+        {
           time: '10:00',
           title: 'Glasgow Cathedral',
           kind: 'sight',
@@ -628,6 +637,14 @@ export const trip = {
       weather: weatherShort,
       stops: [
         {
+          time: '~8:45',
+          title: 'Breakfast in the flat',
+          kind: 'food',
+          blurb:
+            "Stirling start = the one early morning, so use the apartment kitchen. Grab rolls, eggs and coffee from a nearby Tesco/Sainsbury's Local the night before and eat in — Sunday café hours are thin and the ~9:30 train won't wait.",
+          pairing: 'Strong coffee. Save the pints for Stirling.',
+        },
+        {
           time: '~9:30',
           title: 'Train: Queen St → Stirling',
           kind: 'transport',
@@ -735,9 +752,10 @@ export const trip = {
       stops: [
         {
           time: '~9:30',
-          title: 'Slow breakfast',
+          title: 'Slow breakfast — Café Gandolfi',
           kind: 'food',
-          blurb: "No rush — the flight's not till evening.",
+          blurb: "No rush — the flight's not till evening. Round it off with a proper sit-down at Café Gandolfi (Albion St, ~4 min) — the Merchant City classic since 1979, big pot of tea and all.",
+          maps: mapsUrl('Cafe Gandolfi Albion Street'),
           pairing: 'Big pot of tea. Or a Bloody Mary if you\'re already in goodbye mode.',
         },
         {
