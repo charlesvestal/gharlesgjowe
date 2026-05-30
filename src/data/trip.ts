@@ -683,21 +683,9 @@ export const trip = {
             "Walk the wynds down from the castle. Lunch at **The Portcullis** (Sun food from 11:30, pub right by the castle esplanade — Settle Inn doesn't open till 15:00 on Sundays so skip it). Church of the Holy Rude is across the road — gorgeous Gothic exterior, but interior is **Sunday tours only at 14:00 / 16:30** if you want in.",
           maps: 'https://www.google.com/maps/search/?api=1&query=The+Portcullis+Stirling',
           pairing: 'A pint of Williams Bros Caesar Augustus at the Portcullis.',
+          swap: "Tempted by the Wallace Monument? It's ~2 hrs door-to-door across town and won't fit with the 16:30 train and the Crabshakk booking — left out on purpose. Castle + a relaxed Old Town afternoon is the better play.",
           image: localImg('portcullis-stirling.jpg'),
           imageAlt: 'The Portcullis Hotel pub, Stirling, near the castle',
-        },
-        {
-          time: '14:30',
-          title: 'Wallace Monument (optional)',
-          kind: 'sight',
-          blurb:
-            'Across town on the Abbey Craig — steep climb up the tower, big payoff view. Separate ticket; allow ~2 hrs door-to-door from the castle.',
-          booking: { label: 'Tickets + hours', url: 'https://www.nationalwallacemonument.com/' },
-          maps: 'https://www.google.com/maps/search/?api=1&query=National+Wallace+Monument+Stirling',
-          pairing: 'Water bottle for the climb. A real drink waits at the bottom.',
-          swap: 'Knackered or raining? Skip Wallace — second pint in the Old Town and an earlier train back.',
-          image: localImg('wallace-monument.jpg'),
-          imageAlt: 'National Wallace Monument on Abbey Craig, Stirling',
         },
         {
           time: '~16:30',
@@ -784,10 +772,10 @@ export const trip = {
           imageAlt: 'The Laurieston Bar, Bridge Street, Glasgow',
         },
         {
-          time: '12:30',
+          time: '~13:00',
           title: 'Lunch + collect bags',
           kind: 'food',
-          blurb: 'Eat central, grab the backpacks.',
+          blurb: 'Back from the Laurieston — eat central and grab the backpacks. Plenty of buffer before the airport run.',
           pairing: 'A pint with the bags — last one in Glasgow.',
         },
         {
