@@ -521,12 +521,12 @@ export const trip = {
       stops: [
         {
           time: '9:00',
-          title: 'Breakfast — Spitfire Espresso',
+          title: 'Breakfast — Café Gandolfi',
           kind: 'food',
           blurb:
-            "Specialty coffee and a breakfast roll at 55 High St — and it's right on the walk north: High St runs straight up to Castle St and the Cathedral, so grab-and-go then stroll up.",
-          maps: mapsUrl('Spitfire Espresso High Street Glasgow'),
-          pairing: 'Flat white for the road.',
+            "Merchant City classic since 1979, ~4 min from the flat — eggs, smoked haddock, proper coffee. A hearty sit-down (opens 8am) to fuel the Cathedral–Necropolis–Barras walking day.",
+          maps: mapsUrl('Cafe Gandolfi Albion Street'),
+          pairing: 'Coffee and a kipper if you\'re feeling Scottish.',
         },
         {
           time: '10:00',
@@ -638,11 +638,12 @@ export const trip = {
       stops: [
         {
           time: '~8:45',
-          title: 'Breakfast in the flat',
+          title: 'Breakfast — Spitfire Espresso',
           kind: 'food',
           blurb:
-            "Stirling start = the one early morning, so use the apartment kitchen. Grab rolls, eggs and coffee from a nearby Tesco/Sainsbury's Local the night before and eat in — Sunday café hours are thin and the ~9:30 train won't wait.",
-          pairing: 'Strong coffee. Save the pints for Stirling.',
+            "The one early start, but Spitfire (55 High St) opens at 8am seven days a week — the reliable Sunday call when most cafés are still shut. Grab a flat white and a breakfast roll or burrito, then it's a ~10-min walk to Queen St for the train.",
+          maps: mapsUrl('Spitfire Espresso High Street Glasgow'),
+          pairing: 'Coffee to go. Pints come in Stirling.',
         },
         {
           time: '~9:30',
@@ -754,7 +755,7 @@ export const trip = {
           time: '~9:30',
           title: 'Slow breakfast — Café Gandolfi',
           kind: 'food',
-          blurb: "No rush — the flight's not till evening. Round it off with a proper sit-down at Café Gandolfi (Albion St, ~4 min) — the Merchant City classic since 1979, big pot of tea and all.",
+          blurb: "No rush — the flight's not till evening. Back to Café Gandolfi (Albion St, ~4 min) for a proper sit-down send-off — the Merchant City classic since 1979, big pot of tea and all.",
           maps: mapsUrl('Cafe Gandolfi Albion Street'),
           pairing: 'Big pot of tea. Or a Bloody Mary if you\'re already in goodbye mode.',
         },
