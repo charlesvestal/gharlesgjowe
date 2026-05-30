@@ -42,6 +42,13 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   <main id="main" class="wrap main">
     <Checklist items={[...trip.checklist]} />
 
+    <p class="menu-note">
+      <strong>It's a menu, not a checklist.</strong> Everything below is optional — drop
+      anything tagged <span class="menu-note__tag">Optional</span>, swap freely, and don't
+      sweat hitting every stop. The only fixed points are the gig (Thu) and the booked dinners.
+      Build in a lazy hour where you fancy.
+    </p>
+
     {trip.days.map((day, i) => (
       <DayCard
         day={day}
@@ -64,6 +71,27 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     max-width: 700px;
+  }
+
+  .menu-note {
+    margin: 0 0 2rem 0;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--acid);
+    background: var(--ink-2);
+    font-size: 0.95rem;
+    color: var(--bone);
+    line-height: 1.45;
+  }
+  .menu-note strong { color: var(--acid); }
+  .menu-note__tag {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acid);
+    border: 1px dashed var(--acid);
+    padding: 0 0.3rem;
+    white-space: nowrap;
   }
 
   .daynav {

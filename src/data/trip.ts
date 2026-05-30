@@ -8,6 +8,7 @@ export interface Stop {
   maps?: string;
   pairing?: string;
   swap?: string;
+  optional?: boolean;   // droppable — rendered with an "Optional" tag
   image?: string;       // any URL — halftone-treated in the component
   imageAlt?: string;
 }
@@ -382,6 +383,7 @@ export const trip = {
           time: '16:00',
           title: 'Merchant City wander — GoMA + Monorail',
           kind: 'sight',
+          optional: true,
           blurb:
             "Three-minute stroll from Paesano. Duck into the Gallery of Modern Art (Royal Exchange Sq — free, the traffic-coned Duke of Wellington statue out front = peak Glasgow), then poke through Monorail Music inside Mono on King St (records + a vegan bar in one room, 4 min away). Both small, both free to walk in. If you want a second dig: Rubadub on Howard St (electronic/dance records, DJ gear) is 8 min south.",
           maps: mapsUrl('Gallery of Modern Art GoMA'),
@@ -483,6 +485,7 @@ export const trip = {
           time: '16:00',
           title: 'Botanic Gardens + River Kelvin walk',
           kind: 'sight',
+          optional: true,
           blurb:
             "Jesse's West End tip, and a good one: from the Uni, head up Byres Rd to the Botanic Gardens — free, with the Victorian Kibble Palace glasshouse, and you can drop onto the leafy River Kelvin walkway for a riverside loop. ~40 min of green before the pint, and Ashton Lane's on the way back down.",
           maps: mapsUrl('Glasgow Botanic Gardens Kibble Palace'),
@@ -547,6 +550,7 @@ export const trip = {
           transport: '~20-min walk east of Buchanan St, or a £6 cab.',
           maps: mapsUrl('Glasgow Cathedral'),
           pairing: 'Tea at Cathedral House across the road.',
+          swap: "Rough morning after Friday? This cluster is pick-and-choose — Cathedral + Necropolis are the keepers, Provand's is an optional 2-min add. Roll in later if you need to; just leave ~2 hrs for the Barras before it shuts at 16:00.",
           image: localImg('glasgow-cathedral.jpg'),
           imageAlt: 'Glasgow Cathedral exterior, Castle Street',
         },
@@ -554,6 +558,7 @@ export const trip = {
           time: '10:45',
           title: "Provand's Lordship",
           kind: 'sight',
+          optional: true,
           blurb:
             "Directly across Castle St from the Cathedral. Oldest house in Glasgow (1471) — one of only four medieval buildings to survive in the city. Free, tiny, 15-min visit. Easy add on the walk to the Necropolis.",
           maps: mapsUrl("Provand's Lordship Castle Street"),
@@ -598,6 +603,7 @@ export const trip = {
           time: '15:30',
           title: 'WEST Brewery, Glasgow Green',
           kind: 'drink',
+          optional: true,
           blurb:
             '10-min walk south from the Barras across Glasgow Green. German-style brewery in the old Templeton carpet factory — afternoon pint with seating outside in good weather.',
           maps: mapsUrl('WEST Brewery Glasgow Green'),
@@ -734,6 +740,7 @@ export const trip = {
           time: '23:00',
           title: 'The Clutha — last pint',
           kind: 'drink',
+          optional: true,
           blurb:
             "Riverside pub steeped in Glasgow history, live music in the corner most nights, cheap pizza. The fitting last-night pint. 167–169 Stockwell St — 10-min walk south from Sleazy's. Energy flagging? Order a Red Bull & Jäger, not a yawn.",
           maps: mapsUrl('The Clutha Stockwell Street'),
