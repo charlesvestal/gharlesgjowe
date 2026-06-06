@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import DayCard from '../components/DayCard.astro';
 import Checklist from '../components/Checklist.astro';
+import DrinksPlan from '../components/DrinksPlan.astro';
 import FoodAlternates from '../components/FoodAlternates.astro';
 import NearTheFlat from '../components/NearTheFlat.astro';
 import Footer from '../components/Footer.astro';
@@ -34,6 +35,7 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
         );
       })}
       <li><a href="#checklist" class="daynav__pill">Checklist</a></li>
+      <li><a href="#tab" class="daynav__pill daynav__pill--tab">The Tab</a></li>
       <li><a href="#near" class="daynav__pill daynav__pill--near">By the flat</a></li>
       <li><a href="#food" class="daynav__pill daynav__pill--food">Food</a></li>
     </ul>
@@ -41,6 +43,15 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
 
   <main id="main" class="wrap main">
     <Checklist items={[...trip.checklist]} />
+
+    <DrinksPlan
+      intro={trip.drinksPlan.intro}
+      perPerson={trip.drinksPlan.perPerson}
+      unitsPerPerson={trip.drinksPlan.unitsPerPerson}
+      days={[...trip.drinksPlan.days]}
+      rules={[...trip.drinksPlan.rules]}
+      caveat={trip.drinksPlan.caveat}
+    />
 
     <p class="menu-note">
       <strong>It's a menu, not a checklist.</strong> Everything below is optional — drop
@@ -142,6 +153,8 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   .daynav__pill:hover, .daynav__pill:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
   .daynav__pill--food { background: var(--acid); color: var(--ink); border-color: var(--acid); }
   .daynav__pill--food:hover, .daynav__pill--food:focus-visible { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
+  .daynav__list a.daynav__pill--tab { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+  .daynav__list a.daynav__pill--tab:hover, .daynav__list a.daynav__pill--tab:focus-visible { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
   .daynav__list a.daynav__pill--near { background: var(--bone); color: var(--ink); border-color: var(--bone); }
   .daynav__list a.daynav__pill--near:hover, .daynav__list a.daynav__pill--near:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
 </style>
