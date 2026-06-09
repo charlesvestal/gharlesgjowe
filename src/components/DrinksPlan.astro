@@ -1,0 +1,228 @@
+---
+import type { DrinkDay } from '../data/trip';
+
+interface Props {
+  intro: string;
+  perPerson: number;
+  unitsPerPerson: number;
+  days: DrinkDay[];
+  rules: string[];
+  caveat: string;
+}
+
+const { intro, perPerson, unitsPerPerson, days, rules, caveat } = Astro.props;
+---
+<section class="tab" id="tab" aria-labelledby="tab-h">
+  <header class="tab__head">
+    <p class="tab__eyebrow meta">THE RULING · PER PERSON</p>
+    <h3 id="tab-h" class="tab__title">THE TAB</h3>
+    <p class="tab__intro">{intro}</p>
+  </header>
+
+  <div class="tab__total" role="group" aria-label="Trip total per person">
+    <span class="tab__total-num">{perPerson}</span>
+    <span class="tab__total-label">
+      drinks each<br />
+      <span class="tab__total-sub">≈ {unitsPerPerson} UK units over 5 days</span>
+    </span>
+  </div>
+
+  <ol class="tab__grid">
+    {days.map((day) => (
+      <li class="tab__card">
+        <p class="tab__card-meta meta"><span class="tab__card-code">{day.code}</span> · {day.date}</p>
+        <p class="tab__card-label">{day.label}</p>
+        <div class="tab__count">
+          <span class="tab__count-num">{day.drinks}</span>
+          <span class="tab__count-unit">
+            drinks<br />
+            <span class="tab__count-sub">≈ {day.units} units</span>
+          </span>
+        </div>
+        <p class="tab__headline">{day.headline}</p>
+        <p class="tab__detail">{day.detail}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="tab__rules">
+    <h4 class="tab__rules-title">House rules</h4>
+    <ul class="tab__rules-list">
+      {rules.map((rule) => (
+        <li class="tab__rule">{rule}</li>
+      ))}
+    </ul>
+  </div>
+
+  <p class="tab__caveat">{caveat}</p>
+</section>
+
+<style>
+  .tab {
+    padding: 1.75rem 1.5rem;
+    background: var(--ink-2);
+    border: var(--rule) solid var(--bone);
+    border-left: var(--rule-thick) solid var(--riso-red);
+    margin-bottom: 2rem;
+  }
+
+  .tab__head { margin-bottom: 1.5rem; }
+  .tab__eyebrow { color: var(--acid); margin: 0 0 0.4rem 0; }
+  .tab__title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.6rem 0;
+    text-shadow: 0.03em 0.02em 0 var(--riso-red);
+  }
+  .tab__intro { max-width: 60ch; color: var(--bone-dim); margin: 0; line-height: 1.5; }
+
+  .tab__total {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+    background: var(--acid);
+    color: var(--ink);
+    transform: rotate(-0.5deg);
+  }
+  .tab__total-num {
+    font-family: var(--ff-display);
+    font-size: clamp(3rem, 12vw, 5rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+  .tab__total-label {
+    font-family: var(--ff-display);
+    text-transform: uppercase;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .tab__total-sub {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  .tab__grid {
+    list-style: none;
+    margin: 0 0 1.75rem 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    counter-reset: none;
+  }
+  @media (min-width: 640px) {
+    .tab__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .tab__card {
+    position: relative;
+    padding: 1rem 1.1rem;
+    background: var(--ink);
+    border: 1px solid var(--bone-faint);
+    border-top: 3px solid var(--acid);
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .tab__card:hover { transform: translateY(-2px) rotate(-0.2deg); border-top-color: var(--riso-red); }
+
+  .tab__card-meta { margin: 0 0 0.1rem 0; color: var(--bone-dim); }
+  .tab__card-code { color: var(--acid); font-weight: 700; }
+
+  .tab__card-label {
+    font-family: var(--ff-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--bone);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tab__count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .tab__count-num {
+    font-family: var(--ff-display);
+    font-size: clamp(2.25rem, 8vw, 3rem);
+    color: var(--riso-red);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+  .tab__count-unit {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bone-dim);
+    line-height: 1.2;
+  }
+  .tab__count-sub { color: var(--bone-dim); text-transform: none; letter-spacing: 0.02em; }
+
+  .tab__headline {
+    margin: 0 0 0.4rem 0;
+    font-size: 0.95rem;
+    color: var(--acid);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .tab__detail { margin: 0; font-size: 0.92rem; color: var(--bone); line-height: 1.45; }
+
+  .tab__rules {
+    border-top: var(--rule) solid var(--bone-faint);
+    padding-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .tab__rules-title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    color: var(--acid);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.75rem 0;
+  }
+  .tab__rules-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .tab__rule {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--bone);
+    line-height: 1.4;
+  }
+  .tab__rule::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--riso-red);
+    font-weight: 700;
+  }
+
+  .tab__caveat {
+    margin: 0;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--riso-red);
+    background: var(--ink);
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    color: var(--bone-dim);
+    line-height: 1.5;
+  }
+</style>
