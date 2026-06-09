@@ -64,6 +64,16 @@ export interface NearbyGroup {
   picks: NearbyPlace[];
 }
 
+export interface DrinkDay {
+  code: string;        // matches Day.code, e.g. 'DAY 01'
+  date: string;
+  label: string;       // short echo of the day's theme
+  drinks: number;      // the ruling: standard drinks per person
+  units: number;       // approx UK units per person (pint ≈ 2.3, dram ≈ 1, cocktail/wine ≈ 2)
+  headline: string;    // the one-line verdict for the day
+  detail: string;      // what those drinks actually are
+}
+
 const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} Glasgow`)}`;
 
@@ -89,6 +99,73 @@ export const trip = {
   },
   weatherCaveat:
     'Seasonal averages, not a forecast — check before you fly.',
+  drinksPlan: {
+    intro:
+      "You asked, so here's the ruling: how much you actually drink, per person, per day. It's a guideline shaped around the fixed points — the gig, the booked dinners, the early Stirling train and the flight home — not a target to chase. The pints are good in this town; the trick is still being upright for the next one.",
+    perPerson: 24,        // standard drinks across the trip
+    unitsPerPerson: 52,   // approx UK units across the trip
+    days: [
+      {
+        code: 'DAY 01',
+        date: 'Thu 2 Jul',
+        label: "Touchdown & Tut's",
+        drinks: 5,
+        units: 11,
+        headline: 'Ease in — you flew this morning.',
+        detail:
+          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and two cans across Southpaw at Tut's. Skip the dram before Sharmanka — concentrate, then catch up after.",
+      },
+      {
+        code: 'DAY 02',
+        date: 'Fri 3 Jul',
+        label: 'West End Wander',
+        drinks: 6,
+        units: 13,
+        headline: 'The big wander — pace it across the afternoon.',
+        detail:
+          "An Innis & Gunn on Ashton Lane, a Cobra with Mother India, then the Finnieston strip: a Highland malt at the Ben Nevis, a pint at Eighty Eight, and a White Russian to finish at Lebowskis. Stop at six.",
+      },
+      {
+        code: 'DAY 03',
+        date: 'Sat 4 Jul',
+        label: 'East End & The Barras',
+        drinks: 5,
+        units: 11,
+        headline: 'Curfew night — Sunday is an early train.',
+        detail:
+          "A can at the Barras, a St Mungo at WEST, then two glasses with dinner at Margo and one at the Sub Club. One fewer than Friday on purpose — you do not want to do Stirling Castle hungover.",
+      },
+      {
+        code: 'DAY 04',
+        date: 'Sun 5 Jul',
+        label: 'Stirling Day Trip',
+        drinks: 6,
+        units: 13,
+        headline: 'Last proper night — go out on the Clutha.',
+        detail:
+          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, then two at Nice N Sleazy and a last pint-and-a-dram at the Clutha.",
+      },
+      {
+        code: 'DAY 05',
+        date: 'Mon 6 Jul',
+        label: 'Last Call',
+        drinks: 2,
+        units: 4,
+        headline: 'Travel day — keep it to a gesture.',
+        detail:
+          "A half-and-half at the Laurieston (half-pint plus a whisky chaser) and one pint with the bags. That's the goodbye. Save the airport Tennent's for if the flight's delayed.",
+      },
+    ] satisfies DrinkDay[],
+    rules: [
+      'A pint of water between every round — Glasgow tap water is excellent and free.',
+      'No spirits before anything timed or booked: the Sharmanka show, the gig, every dinner reservation.',
+      'Hard stop the night before the Stirling train. Future-you on the 09:30 platform is real.',
+      'Eat first. Every drinking stretch on this plan sits next to food on purpose.',
+      'The numbers are a ceiling, not a quota. Under is always fine; one of you can always call it.',
+    ],
+    caveat:
+      "Honest maths: 24 drinks across five days is roughly 52 UK units per person — well over the 14-a-week guideline, condensed into a long weekend. Know what that is going in, line your stomach, and mind each other.",
+  },
   checklist: [
     { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
