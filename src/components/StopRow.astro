@@ -72,7 +72,7 @@ const kindGlyph: Record<Stop['kind'], string> = {
     </p>
   )}
 
-  {(stop.booking || stop.maps) && (
+  {(stop.booking || stop.maps || stop.listen?.length) && (
     <ul class="stop__links">
       {stop.booking && (
         <li>
@@ -81,6 +81,13 @@ const kindGlyph: Record<Stop['kind'], string> = {
           </a>
         </li>
       )}
+      {stop.listen?.map((l) => (
+        <li>
+          <a href={l.url} rel="noopener noreferrer" target="_blank">
+            {l.label} <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
       {stop.maps && (
         <li>
           <a href={stop.maps} rel="noopener noreferrer" target="_blank">
