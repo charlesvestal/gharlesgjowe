@@ -5,6 +5,7 @@ export interface Stop {
   blurb: string;
   transport?: string;
   booking?: { label: string; url: string };
+  listen?: { label: string; url: string }[];   // "have a listen" links — Apple Music / Bandcamp etc.
   maps?: string;
   pairing?: string;
   swap?: string;
@@ -113,7 +114,7 @@ export const trip = {
         units: 11,
         headline: 'Ease in — you flew this morning.',
         detail:
-          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and two cans across Southpaw at Tut's. Skip the dram before Sharmanka — concentrate, then catch up after.",
+          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and the rest across the covers-band pub crawl (or Southpaw at Tut's, if you go). Skip the dram before Sharmanka — concentrate, then catch up after.",
       },
       {
         code: 'DAY 02',
@@ -133,7 +134,7 @@ export const trip = {
         units: 11,
         headline: 'Curfew night — Sunday is an early train.',
         detail:
-          "A can at the Barras, a St Mungo at WEST, then two glasses with dinner at Margo and one at the Sub Club. One fewer than Friday on purpose — you do not want to do Stirling Castle hungover.",
+          "A can at the Barras, a St Mungo at WEST, then two glasses with dinner at Margo and one at the Sleazy's gig. One fewer than Friday on purpose — you do not want to do Stirling Castle hungover.",
       },
       {
         code: 'DAY 04',
@@ -143,7 +144,7 @@ export const trip = {
         units: 13,
         headline: 'Last proper night — go out on the Clutha.',
         detail:
-          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, then two at Nice N Sleazy and a last pint-and-a-dram at the Clutha.",
+          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, then two at Slouch and a last pint-and-a-dram at the Clutha.",
       },
       {
         code: 'DAY 05',
@@ -167,7 +168,7 @@ export const trip = {
       "Honest maths: 24 drinks across five days is roughly 52 UK units per person — well over the 14-a-week guideline, condensed into a long weekend. Know what that is going in, line your stomach, and mind each other.",
   },
   checklist: [
-    { id: 'tix-southpaw', label: "Buy Southpaw tickets — Thu 2 Jul, King Tut's (the one show)" },
+    { id: 'tix-sleazy', label: "Book the Sat 4 Jul gig — Few Thoughts / Reason To Leave / The Fragz, Nice'n'Sleazy (skiddle.com)" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul', done: true },
@@ -175,11 +176,9 @@ export const trip = {
     { id: 'book-margo', label: 'Book Margo — Sat 4 Jul (Merchant City small plates)', done: true },
     { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
-    { id: 'check-soul-night', label: 'Check Sat 4 Jul soul-night listings — Rummy Soul (Rum Shack) or The Ferry — swap for Sat late-night if on' },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
     { id: 'cash', label: 'Bring some cash — Laurieston & the Barras lean cash-only' },
     { id: 'spires-deposit', label: 'Photo ID + the booking card for check-in — The Spires holds a £250 deposit' },
-    { id: 'stage-time', label: 'Check Southpaw stage time nearer the date' },
     { id: 'home-screen', label: 'Add this site to home screen / save offline' },
   ] satisfies ChecklistItem[],
   footer: {
@@ -422,7 +421,7 @@ export const trip = {
     {
       date: 'Thu 2 Jul',
       code: 'DAY 01',
-      theme: "Touchdown & Tut's",
+      theme: 'Touchdown & a covers band',
       weather: weather,
       stops: [
         {
@@ -496,16 +495,13 @@ export const trip = {
           imageAlt: 'The Pot Still whisky bar, Hope Street, Glasgow',
         },
         {
-          time: '19:30',
-          title: 'DOORS: Southpaw + The Misprints + The Citrines',
+          time: '20:30',
+          title: "Covers-band pub crawl — MacSorley's → Maggie May's → Waxy's",
           kind: 'gig',
           blurb:
-            "King Tut's Wah Wah Hut, St Vincent St — 3-min walk from the Pot Still. ~300 cap; Southpaw's first Glasgow show in 14 years. Headline likely ~21:30–22:00, so no need to be glued to the door.",
-          booking: { label: "Tickets (King Tut's)", url: 'https://www.kingtuts.co.uk/whats-on' },
-          maps: mapsUrl("King Tut's Wah Wah Hut"),
-          pairing: "Drygate Gladeye IPA, or a can of Tennent's.",
-          image: localImg('king-tuts.jpg'),
-          imageAlt: "King Tut's Wah Wah Hut frontage, St Vincent Street, Glasgow",
+            "Easy arrival-night fun: no ticket, no setlist — wander between the central pubs that have a band on most nights and land wherever it's loudest. MacSorley's (Jamaica St, free live music six nights a week) is the anchor; Maggie May's (Trongate, ~5 min from the flat) and Waxy O'Connor's (West George St, cover bands every night) are the back-ups. Sweaty, cheap, everyone shouting the chorus. Save the real gig energy for Saturday's punk bill at Sleazy's.",
+          maps: mapsUrl("MacSorley's Bar Jamaica Street Glasgow"),
+          pairing: "Whatever's cheap and on tap — a Tennent's, probably.",
         },
       ],
     },
@@ -703,7 +699,7 @@ export const trip = {
           title: 'Dinner — Margo',
           kind: 'food',
           blurb:
-            "Scottish small plates by the Ox and Finch / Ka Pao team — at 66 Trongate in the Merchant City, so genuinely walkable from any central hotel. The right pick for staying central after the Barras day. **Booked 19:30.**",
+            "Scottish small plates by the Ox and Finch / Ka Pao team — at 66 Trongate in the Merchant City, so genuinely walkable from any central hotel. The right pick for staying central after the Barras day. **Booked 19:30.** Note: Saturday's punk gig at Sleazy's runs 7–11pm, 10 min away — roll over after for the headliners, or move this booking to ~18:00 to catch the full set.",
           booking: { label: 'Booking', url: 'https://www.margorestaurant.co.uk/' },
           maps: mapsUrl('Margo Restaurant Trongate Glasgow'),
           pairing: 'Whatever\'s on the wine list.',
@@ -711,16 +707,22 @@ export const trip = {
             "Booked out? Ox and Finch in Finnieston (sister restaurant, ~15-min cab) is the small-plates fallback.",
         },
         {
-          time: '21:30',
-          title: 'Central late-night',
-          kind: 'drink',
+          time: '21:15',
+          title: 'GIG: Few Thoughts + Reason To Leave + The Fragz',
+          kind: 'gig',
           blurb:
-            "All within 10 min of each other in the centre, pick one and stick: Sub Club on Jamaica St (Subculture, Saturday house institution since '94 — DJs in a basement, NOT a gig); Stereo on Renfield Lane (bar/club in a Mackintosh building); or a Sauchiehall dive crawl — Nice N Sleazy → The Variety Bar.",
-          maps: mapsUrl('Sub Club Jamaica Street'),
-          pairing: "Tennent's plastic pint at Sub Club; cheap house lager at Sleazy's.",
-          swap: "Northern Soul instead of house? If it's on, swap the club for a soul all-nighter — Rummy Soul at the Rum Shack (Pollokshaws Rd, rare oldies, resident DJs Baz & Stevie, ~£5 on the door, but ~15-min cab Southside) or a soul/Motown night at The Ferry (Anderston Quay, floating venue, stays central). These are recurring nights, not fixed dates — check listings nearer the time. Or, wiped from the day? Quiet pint at the Pot Still and call it.",
-          image: localImg('sub-club.png'),
-          imageAlt: 'Sub Club, Jamaica Street, Glasgow',
+            "Nice'n'Sleazy, Sauchiehall St — a skate-punk / melodic-hardcore bill (Few Thoughts are the Fat Wreck-style one with a ska-punk streak; the others are fast melodic punk). Not actual 2-tone ska, but exactly the sweaty, sing-along, Green-Day-in-a-dive energy you were after. Doors 7pm, runs to 11pm — come straight over from Margo (10 min away) for the headliners, and the 11pm finish is kind to Sunday's early Stirling train. Move Margo earlier (~18:00) if you want the full set.",
+          booking: { label: 'Tickets (Skiddle)', url: 'https://www.skiddle.com/whats-on/Glasgow/Nice%27n%27sleazy/Few-Thoughts--Reason-To-Leave--The-Fragz/42405845/' },
+          listen: [
+            { label: '♫ The Fragz (Apple Music)', url: 'https://music.apple.com/gb/artist/the-fragz/1599493564' },
+            { label: '♫ Reason To Leave (Bandcamp)', url: 'https://reasontoleave.bandcamp.com/' },
+            { label: '♫ Few Thoughts (FB)', url: 'https://www.facebook.com/FewThoughtsband/' },
+          ],
+          maps: mapsUrl('Nice N Sleazy Sauchiehall Street'),
+          pairing: 'Cheap house lager, sweat, and a singalong.',
+          swap: "Not your night? Sub Club (Subculture house on Jamaica St) or — if a soul night's on — Rummy Soul at the Rum Shack / The Ferry. Wiped from the Barras day? Quiet pint at the Pot Still and call it.",
+          image: localImg('nice-n-sleazy.jpg'),
+          imageAlt: 'Nice N Sleazy basement stage, Sauchiehall Street',
         },
       ],
     },
@@ -805,14 +807,12 @@ export const trip = {
         },
         {
           time: '21:00',
-          title: 'Nice N Sleazy',
+          title: 'Slouch',
           kind: 'drink',
           blurb:
-            "Grungy Sauchiehall St institution — cheap drinks, jukebox, basement gigs if anything's on (you can stay upstairs). The dive bar of the trip. 10-min cab from Crabshakk, then walk to the Clutha after.",
-          maps: mapsUrl('Nice N Sleazy Sauchiehall Street'),
+            "With Sleazy's now Saturday's gig, the last-night dive moves here: Slouch on Bath St — rock-and-indie bar with live music most nights and a 3am licence, so it actually has life on a Sunday. Cheap, loud, the dive bar of the trip. 10-min cab from Crabshakk, then walk down to the Clutha. (Live blues more your thing? The Howlin' Wolf runs a Sunday 'Killing Floor' jam round the corner.)",
+          maps: mapsUrl('Slouch Bath Street Glasgow'),
           pairing: 'Cheap house lager, or a boilermaker. Red Bull & vodka if the day catches up.',
-          image: localImg('nice-n-sleazy.jpg'),
-          imageAlt: "Nice N Sleazy basement stage, Sauchiehall Street",
         },
         {
           time: '23:00',
