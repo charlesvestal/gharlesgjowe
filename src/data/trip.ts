@@ -168,7 +168,7 @@ export const trip = {
       "Honest maths: 24 drinks across five days is roughly 52 UK units per person — well over the 14-a-week guideline, condensed into a long weekend. Know what that is going in, line your stomach, and mind each other.",
   },
   checklist: [
-    { id: 'tix-sleazy', label: "Book the Sat 4 Jul gig — Few Thoughts / Reason To Leave / The Fragz, Nice'n'Sleazy (skiddle.com)" },
+    { id: 'tix-sleazy', label: "Sat 4 Jul gig (Few Thoughts / Reason To Leave / The Fragz, Nice'n'Sleazy) — pay on the door; just glance at the listing a day or two before in case it's flagged sold out" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul', done: true },
@@ -711,8 +711,8 @@ export const trip = {
           title: 'GIG: Few Thoughts + Reason To Leave + The Fragz',
           kind: 'gig',
           blurb:
-            "Nice'n'Sleazy, Sauchiehall St — a skate-punk / melodic-hardcore bill (Few Thoughts are the Fat Wreck-style one with a ska-punk streak; the others are fast melodic punk). Not actual 2-tone ska, but exactly the sweaty, sing-along, Green-Day-in-a-dive energy you were after. Doors 7pm, runs to 11pm — come straight over from Margo (10 min away) for the headliners, and the 11pm finish is kind to Sunday's early Stirling train. Move Margo earlier (~18:00) if you want the full set.",
-          booking: { label: 'Tickets (Skiddle)', url: 'https://www.skiddle.com/whats-on/Glasgow/Nice%27n%27sleazy/Few-Thoughts--Reason-To-Leave--The-Fragz/42405845/' },
+            "Nice'n'Sleazy, Sauchiehall St — a skate-punk / melodic-hardcore bill (Few Thoughts are the Fat Wreck-style one with a ska-punk streak; the others are fast melodic punk). Not actual 2-tone ska, but exactly the sweaty, sing-along, Green-Day-in-a-dive energy you were after. Doors 7pm, runs to 11pm — come straight over from Margo (10 min away) for the headliners, and the 11pm finish is kind to Sunday's early Stirling train. Move Margo earlier (~18:00) if you want the full set. Cheap basement gig — pay on the door, no need to commit ahead; the flexibility suits a packed Saturday (bail after Margo if the Barras day's wiped you). Just glance at the listing a day or two before in case it sells out.",
+          booking: { label: 'Listing / door price (Skiddle)', url: 'https://www.skiddle.com/whats-on/Glasgow/Nice%27n%27sleazy/Few-Thoughts--Reason-To-Leave--The-Fragz/42405845/' },
           listen: [
             { label: '♫ The Fragz (Apple Music)', url: 'https://music.apple.com/gb/artist/the-fragz/1599493564' },
             { label: '♫ Reason To Leave (Bandcamp)', url: 'https://reasontoleave.bandcamp.com/' },
