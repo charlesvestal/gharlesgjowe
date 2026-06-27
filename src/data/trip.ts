@@ -122,7 +122,7 @@ export const trip = {
         units: 11,
         headline: 'Ease in — you flew this morning.',
         detail:
-          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and the rest across the King Tut's gig (Southpaw) and the covers-band crawl after. Skip the dram before Sharmanka — concentrate, then catch up after.",
+          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and the rest across the covers-band pub crawl. Skip the dram before Sharmanka — concentrate, then catch up after.",
       },
       {
         code: 'DAY 02',
@@ -152,7 +152,7 @@ export const trip = {
         units: 13,
         headline: 'Last proper night — go out on the Clutha.',
         detail:
-          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, a pint at the Dirty Nil gig, then one at Slouch and a last pint-and-a-dram at the Clutha.",
+          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, then two at Slouch and a last pint-and-a-dram at the Clutha.",
       },
       {
         code: 'DAY 05',
@@ -177,8 +177,6 @@ export const trip = {
   },
   checklist: [
     { id: 'tix-sleazy', label: "Sat 4 Jul gig (Few Thoughts / Reason To Leave / The Fragz, Nice'n'Sleazy) — pay on the door; just glance at the listing a day or two before in case it's flagged sold out" },
-    { id: 'tix-southpaw', label: "Thu 2 Jul gig — Southpaw + The Misprints + The Citrines (King Tut's, doors 19:30): ticketed, buy ahead — Tut's sells out" },
-    { id: 'tix-dirty-nil', label: "Sun 5 Jul gig — The Dirty Nil + Bruise Control (King Tut's, doors 19:00, 18+): ticketed, buy ahead; bring photo ID" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul', done: true },
@@ -432,7 +430,7 @@ export const trip = {
     {
       date: 'Thu 2 Jul',
       code: 'DAY 01',
-      theme: "Touchdown & a King Tut's gig",
+      theme: 'Touchdown & a covers band',
       weather: weatherThu,
       stops: [
         {
@@ -506,23 +504,11 @@ export const trip = {
           imageAlt: 'The Pot Still whisky bar, Hope Street, Glasgow',
         },
         {
-          time: '19:30',
-          title: 'GIG: Southpaw + The Misprints + The Citrines',
-          kind: 'gig',
-          blurb:
-            "The arrival-night gig, and it's bang on theme: Southpaw headline a bill of Glasgow guitar bands (The Misprints, The Citrines, The Provans) at King Tut's Wah Wah Hut — the St Vincent St room where Oasis got signed. Doors 19:30, and it's ~3 min from the Pot Still, so roll straight over after the first pint. Ticketed (unlike Saturday's pay-on-the-door punk bill) and Tut's shows do sell out — grab tickets before you fly. Pick an earlier Sharmanka slot so the evening lines up.",
-          booking: { label: "Tickets / listing (King Tut's)", url: 'https://www.kingtuts.co.uk/whats-on' },
-          maps: mapsUrl("King Tut's Wah Wah Hut St Vincent Street"),
-          pairing: "A cold pint — Tut's isn't a whisky room.",
-          swap: 'Rather stay loose and ticket-free? Skip it and head to the covers-band crawl below.',
-        },
-        {
-          time: '~22:00',
+          time: '20:30',
           title: "Covers-band pub crawl — MacSorley's → Maggie May's → Waxy's",
           kind: 'gig',
-          optional: true,
           blurb:
-            "After Tut's — or instead of it, if you'd rather stay loose and ticket-free: no setlist, just wander the central pubs that have a band on most nights and land wherever it's loudest. MacSorley's (Jamaica St, free live music six nights a week) is the anchor; Maggie May's (Trongate, ~5 min from the flat) and Waxy O'Connor's (West George St, cover bands every night) are the back-ups. Sweaty, cheap, everyone shouting the chorus.",
+            "Easy arrival-night fun: no ticket, no setlist — wander between the central pubs that have a band on most nights and land wherever it's loudest. MacSorley's (Jamaica St, free live music six nights a week) is the anchor; Maggie May's (Trongate, ~5 min from the flat) and Waxy O'Connor's (West George St, cover bands every night) are the back-ups. Sweaty, cheap, everyone shouting the chorus. Save the real gig energy for Saturday's punk bill at Sleazy's.",
           maps: mapsUrl("MacSorley's Bar Jamaica Street Glasgow"),
           pairing: "Whatever's cheap and on tap — a Tennent's, probably.",
         },
@@ -829,23 +815,11 @@ export const trip = {
           imageAlt: 'Crabshakk seafood bar, Argyle Street, Finnieston',
         },
         {
-          time: '~20:45',
-          title: 'GIG: The Dirty Nil + Bruise Control',
-          kind: 'gig',
-          blurb:
-            "Last-night gig, and a loud one to go out on: The Dirty Nil (Canadian punk/garage rock — all riffs, hooks and noise) at King Tut's, with Bruise Control and Smug LLC. Doors 19:00, 18+ so bring photo ID; the headliner's on around 21:00, so finish at Crabshakk and cab the 10 min over (Finnieston → St Vincent St). Ticketed and Tut's sells out — grab tickets before you fly. Slouch and the Clutha are a short walk on for the last pints.",
-          booking: { label: 'Tickets (TicketWeb)', url: 'https://www.ticketweb.uk/event/the-dirty-nil-king-tuts-wah-wah-hut-tickets/14663133' },
-          maps: mapsUrl("King Tut's Wah Wah Hut St Vincent Street"),
-          pairing: 'House lager, loud.',
-          swap: "Not a ticketed-gig night? Skip it — Slouch and the Clutha below are the no-ticket last-night plan.",
-        },
-        {
-          time: '~22:45',
+          time: '21:00',
           title: 'Slouch',
           kind: 'drink',
-          optional: true,
           blurb:
-            "After the gig — or instead of it, if you skipped the ticket: Slouch on Bath St, a rock-and-indie bar with live music most nights and a 3am licence, so it actually has life on a Sunday. Cheap, loud, the dive bar of the trip. ~5 min from Tut's, then walk down to the Clutha. (Live blues more your thing? The Howlin' Wolf runs a Sunday 'Killing Floor' jam round the corner.)",
+            "With Sleazy's now Saturday's gig, the last-night dive moves here: Slouch on Bath St — rock-and-indie bar with live music most nights and a 3am licence, so it actually has life on a Sunday. Cheap, loud, the dive bar of the trip. 10-min cab from Crabshakk, then walk down to the Clutha. (Live blues more your thing? The Howlin' Wolf runs a Sunday 'Killing Floor' jam round the corner.)",
           maps: mapsUrl('Slouch Bath Street Glasgow'),
           pairing: 'Cheap house lager, or a boilermaker. Red Bull & vodka if the day catches up.',
         },
