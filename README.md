@@ -99,5 +99,5 @@ PROMPT.md               # original build spec (kept for reference)
 ## Notes
 
 - **Accessibility** is intended to stay first-class: semantic landmarks, logical heading order, visible focus states, good contrast, and `prefers-reduced-motion` respected. Keep it that way when adding things.
-- The per-day **weather** lines are *seasonal averages for July, not a forecast* — check an actual forecast before flying.
+- The per-day **weather** lines hold a real **Met Office forecast snapshot** (date stamped in the `weather*` consts in `trip.ts`). Refresh them the night before flying — the far end of any forecast (here, the weekend) is the least certain.
 - Checklist state persists in the browser via `localStorage` (per device).
