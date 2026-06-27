@@ -83,11 +83,19 @@ const mapsUrl = (query: string) =>
 const localImg = (filename: string) =>
   `${import.meta.env.BASE_URL}images/${filename}`;
 
-const weather =
-  'Glasgow in early July: highs ~18–19°C, lows ~11°C, genuinely changeable — sun and showers in one afternoon. Daylight until ~22:00. Pack a light waterproof shell.';
-
-const weatherShort =
-  'Highs ~18–19°C, lows ~11°C. Sun and showers in one afternoon. Daylight to ~22:00 — pack a shell.';
+// Forecast snapshot — Met Office, as of Sat 27 Jun 2026. Thu & Fri are firm;
+// Sat–Mon are still 7–9 days out, so treat those as a steer, not gospel.
+// Refresh the night before flying (see weatherCaveat below).
+const weatherThu =
+  'Cloudy and breezy to land into — gusts ~30 mph, high 19°C / low 11°C, ~40% chance of a passing shower. Get the shell out of the bag for the walk off the bus. Daylight to ~22:00.';
+const weatherFri =
+  'Drier and a touch brighter for the West End wander — high 19°C / low 13°C, ~30% chance of rain, still a fresh wind. Best-looking day of the week so far.';
+const weatherSat =
+  'The coolest day — high ~17°C / low ~10°C, classic sunny-spells-and-showers. The Barras is half-outdoors, so layer up and keep the shell handy.';
+const weatherSun =
+  'Sunny spells and showers, fresh SW breeze — high ~18°C / low ~11°C. Fine for Stirling, but the castle sits exposed up on its rock and the wind bites; hood up on the ramparts.';
+const weatherMon =
+  'The brightest, warmest day to bow out on — high ~20°C / low ~12°C, lighter winds. A kind send-off before the evening flight.';
 
 export const trip = {
   title: 'Glasgow',
@@ -99,7 +107,7 @@ export const trip = {
     back: { date: 'Mon 6 Jul', from: 'GLA', to: 'BER', depart: '17:00', arrive: '22:10' } satisfies Flight,
   },
   weatherCaveat:
-    'Seasonal averages, not a forecast — check before you fly.',
+    'Real forecast now (Met Office, 27 Jun): Thu & Fri are nailed down, Sat–Mon still firming up. Re-check the night before you fly.',
   drinksPlan: {
     intro:
       "You asked, so here's the ruling: how much you actually drink, per person, per day. It's a guideline shaped around the fixed points — the gig, the booked dinners, the early Stirling train and the flight home — not a target to chase. The pints are good in this town; the trick is still being upright for the next one.",
@@ -114,7 +122,7 @@ export const trip = {
         units: 11,
         headline: 'Ease in — you flew this morning.',
         detail:
-          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and the rest across the covers-band pub crawl (or Southpaw at Tut's, if you go). Skip the dram before Sharmanka — concentrate, then catch up after.",
+          "A Moretti or a sbagliato at Paesano, then one pint and one Lowland dram at the Pot Still to settle, and the rest across the King Tut's gig (Southpaw) and the covers-band crawl after. Skip the dram before Sharmanka — concentrate, then catch up after.",
       },
       {
         code: 'DAY 02',
@@ -144,7 +152,7 @@ export const trip = {
         units: 13,
         headline: 'Last proper night — go out on the Clutha.',
         detail:
-          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, then two at Slouch and a last pint-and-a-dram at the Clutha.",
+          "Nothing until Stirling: a Caesar Augustus at the Portcullis, a can on the train back, a cold one with the langoustines at Crabshakk, a pint at the Dirty Nil gig, then one at Slouch and a last pint-and-a-dram at the Clutha.",
       },
       {
         code: 'DAY 05',
@@ -169,6 +177,8 @@ export const trip = {
   },
   checklist: [
     { id: 'tix-sleazy', label: "Sat 4 Jul gig (Few Thoughts / Reason To Leave / The Fragz, Nice'n'Sleazy) — pay on the door; just glance at the listing a day or two before in case it's flagged sold out" },
+    { id: 'tix-southpaw', label: "Thu 2 Jul gig — Southpaw + The Misprints + The Citrines (King Tut's, doors 19:30): ticketed, buy ahead — Tut's sells out" },
+    { id: 'tix-dirty-nil', label: "Sun 5 Jul gig — The Dirty Nil + Bruise Control (King Tut's, doors 19:00, 18+): ticketed, buy ahead; bring photo ID" },
     { id: 'book-sharmanka', label: 'Book Sharmanka Kinetic Theatre — pick a Thu/Fri/Sat show time via ticketsource.co.uk/sharmanka' },
     { id: 'book-tenement-house', label: 'Book Tenement House timed entry for Mon 6 Jul ~10:30 (nts.org.uk)' },
     { id: 'book-mother-india', label: 'Book Mother India — Fri 3 Jul', done: true },
@@ -176,6 +186,7 @@ export const trip = {
     { id: 'book-margo', label: 'Book Margo — Sat 4 Jul (Merchant City small plates)', done: true },
     { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
+    { id: 'summer-sessions-cabs', label: "Bellahouston crowds: Kings of Leon (Fri 3) & My Chemical Romance (Sat 4) at Summer Sessions, ~40k each — pre-book the Sat Glasgow Green→flat cab; expect busy central pubs & cabs both nights" },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
     { id: 'cash', label: 'Bring some cash — Laurieston & the Barras lean cash-only' },
     { id: 'spires-deposit', label: 'Photo ID + the booking card for check-in — The Spires holds a £250 deposit' },
@@ -421,8 +432,8 @@ export const trip = {
     {
       date: 'Thu 2 Jul',
       code: 'DAY 01',
-      theme: 'Touchdown & a covers band',
-      weather: weather,
+      theme: "Touchdown & a King Tut's gig",
+      weather: weatherThu,
       stops: [
         {
           time: '12:55',
@@ -495,11 +506,23 @@ export const trip = {
           imageAlt: 'The Pot Still whisky bar, Hope Street, Glasgow',
         },
         {
-          time: '20:30',
-          title: "Covers-band pub crawl — MacSorley's → Maggie May's → Waxy's",
+          time: '19:30',
+          title: 'GIG: Southpaw + The Misprints + The Citrines',
           kind: 'gig',
           blurb:
-            "Easy arrival-night fun: no ticket, no setlist — wander between the central pubs that have a band on most nights and land wherever it's loudest. MacSorley's (Jamaica St, free live music six nights a week) is the anchor; Maggie May's (Trongate, ~5 min from the flat) and Waxy O'Connor's (West George St, cover bands every night) are the back-ups. Sweaty, cheap, everyone shouting the chorus. Save the real gig energy for Saturday's punk bill at Sleazy's.",
+            "The arrival-night gig, and it's bang on theme: Southpaw headline a bill of Glasgow guitar bands (The Misprints, The Citrines, The Provans) at King Tut's Wah Wah Hut — the St Vincent St room where Oasis got signed. Doors 19:30, and it's ~3 min from the Pot Still, so roll straight over after the first pint. Ticketed (unlike Saturday's pay-on-the-door punk bill) and Tut's shows do sell out — grab tickets before you fly. Pick an earlier Sharmanka slot so the evening lines up.",
+          booking: { label: "Tickets / listing (King Tut's)", url: 'https://www.kingtuts.co.uk/whats-on' },
+          maps: mapsUrl("King Tut's Wah Wah Hut St Vincent Street"),
+          pairing: "A cold pint — Tut's isn't a whisky room.",
+          swap: 'Rather stay loose and ticket-free? Skip it and head to the covers-band crawl below.',
+        },
+        {
+          time: '~22:00',
+          title: "Covers-band pub crawl — MacSorley's → Maggie May's → Waxy's",
+          kind: 'gig',
+          optional: true,
+          blurb:
+            "After Tut's — or instead of it, if you'd rather stay loose and ticket-free: no setlist, just wander the central pubs that have a band on most nights and land wherever it's loudest. MacSorley's (Jamaica St, free live music six nights a week) is the anchor; Maggie May's (Trongate, ~5 min from the flat) and Waxy O'Connor's (West George St, cover bands every night) are the back-ups. Sweaty, cheap, everyone shouting the chorus.",
           maps: mapsUrl("MacSorley's Bar Jamaica Street Glasgow"),
           pairing: "Whatever's cheap and on tap — a Tennent's, probably.",
         },
@@ -509,7 +532,7 @@ export const trip = {
       date: 'Fri 3 Jul',
       code: 'DAY 02',
       theme: 'West End Wander',
-      weather: weatherShort,
+      weather: weatherFri,
       stops: [
         {
           time: '~10:30',
@@ -604,7 +627,7 @@ export const trip = {
       date: 'Sat 4 Jul',
       code: 'DAY 03',
       theme: 'East End & The Barras',
-      weather: weatherShort,
+      weather: weatherSat,
       stops: [
         {
           time: '9:00',
@@ -691,7 +714,7 @@ export const trip = {
           title: 'Cab back, reset at the flat',
           kind: 'note',
           blurb:
-            "10-min cab from Glasgow Green back to the Spires. Half-hour in the living room before dinner — Sunday is Stirling, you'll want some battery. Important: from here the rest of the night is all central (no more east-end runs).",
+            "10-min cab from Glasgow Green back to the Spires — but pre-book it: My Chemical Romance play Bellahouston Park tonight (~40k crowd, gates 17:00), so cabs are stretched citywide from late afternoon. Half-hour in the living room before dinner — Sunday is Stirling, you'll want some battery. From here the rest of the night is all central (no more east-end runs).",
           pairing: 'Glass of water and a coffee — the long evening is coming.',
         },
         {
@@ -730,7 +753,7 @@ export const trip = {
       date: 'Sun 5 Jul',
       code: 'DAY 04',
       theme: 'Stirling Day Trip',
-      weather: weatherShort,
+      weather: weatherSun,
       stops: [
         {
           time: '~8:45',
@@ -806,11 +829,23 @@ export const trip = {
           imageAlt: 'Crabshakk seafood bar, Argyle Street, Finnieston',
         },
         {
-          time: '21:00',
+          time: '~20:45',
+          title: 'GIG: The Dirty Nil + Bruise Control',
+          kind: 'gig',
+          blurb:
+            "Last-night gig, and a loud one to go out on: The Dirty Nil (Canadian punk/garage rock — all riffs, hooks and noise) at King Tut's, with Bruise Control and Smug LLC. Doors 19:00, 18+ so bring photo ID; the headliner's on around 21:00, so finish at Crabshakk and cab the 10 min over (Finnieston → St Vincent St). Ticketed and Tut's sells out — grab tickets before you fly. Slouch and the Clutha are a short walk on for the last pints.",
+          booking: { label: 'Tickets (TicketWeb)', url: 'https://www.ticketweb.uk/event/the-dirty-nil-king-tuts-wah-wah-hut-tickets/14663133' },
+          maps: mapsUrl("King Tut's Wah Wah Hut St Vincent Street"),
+          pairing: 'House lager, loud.',
+          swap: "Not a ticketed-gig night? Skip it — Slouch and the Clutha below are the no-ticket last-night plan.",
+        },
+        {
+          time: '~22:45',
           title: 'Slouch',
           kind: 'drink',
+          optional: true,
           blurb:
-            "With Sleazy's now Saturday's gig, the last-night dive moves here: Slouch on Bath St — rock-and-indie bar with live music most nights and a 3am licence, so it actually has life on a Sunday. Cheap, loud, the dive bar of the trip. 10-min cab from Crabshakk, then walk down to the Clutha. (Live blues more your thing? The Howlin' Wolf runs a Sunday 'Killing Floor' jam round the corner.)",
+            "After the gig — or instead of it, if you skipped the ticket: Slouch on Bath St, a rock-and-indie bar with live music most nights and a 3am licence, so it actually has life on a Sunday. Cheap, loud, the dive bar of the trip. ~5 min from Tut's, then walk down to the Clutha. (Live blues more your thing? The Howlin' Wolf runs a Sunday 'Killing Floor' jam round the corner.)",
           maps: mapsUrl('Slouch Bath Street Glasgow'),
           pairing: 'Cheap house lager, or a boilermaker. Red Bull & vodka if the day catches up.',
         },
@@ -832,7 +867,7 @@ export const trip = {
       date: 'Mon 6 Jul',
       code: 'DAY 05',
       theme: 'Last Call',
-      weather: weatherShort,
+      weather: weatherMon,
       stops: [
         {
           time: '~9:30',
