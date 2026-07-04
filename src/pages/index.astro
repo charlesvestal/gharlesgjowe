@@ -27,7 +27,7 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
         const slug = day.code.toLowerCase().replace(/\s+/g, '-');
         return (
           <li>
-            <a href={`#${slug}`}>
+            <a href={`#${slug}`} data-date={day.iso}>
               <span class="daynav__code">{day.code}</span>
               <span class="daynav__date">{day.date}</span>
             </a>
@@ -42,6 +42,11 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   </nav>
 
   <main id="main" class="wrap main">
+    <aside class="today-banner" hidden aria-live="polite">
+      <span class="today-banner__label" data-today-label></span>
+      <a class="today-banner__jump" href="#" data-today-jump hidden>Jump to today ↓</a>
+    </aside>
+
     <Checklist items={[...trip.checklist]} />
 
     <DrinksPlan
@@ -83,6 +88,53 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
     padding-bottom: 2.5rem;
     max-width: 700px;
   }
+
+  .today-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    flex-wrap: wrap;
+    margin: 0 0 2rem 0;
+    padding: 0.8rem 1.1rem;
+    background: var(--acid);
+    color: var(--ink);
+    border: var(--rule) solid var(--ink);
+  }
+  .today-banner__label {
+    font-family: var(--ff-mono);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .today-banner__jump {
+    margin-left: auto;
+    flex: 0 0 auto;
+    padding: 0.25rem 0.6rem;
+    background: var(--ink);
+    color: var(--acid);
+    text-decoration: none;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--ink);
+  }
+  .today-banner__jump:hover,
+  .today-banner__jump:focus-visible {
+    background: var(--riso-red);
+    color: var(--bone);
+    outline: none;
+  }
+
+  .daynav__list a.is-today {
+    background: var(--acid);
+    color: var(--ink);
+    border-color: var(--acid);
+  }
+  .daynav__list a.is-today .daynav__code { color: var(--ink); }
+  .daynav__list a.is-past { opacity: 0.55; }
 
   .menu-note {
     margin: 0 0 2rem 0;
@@ -169,4 +221,69 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   setNavH();
   window.addEventListener('resize', setNavH);
   window.addEventListener('load', setNavH);
+
+  // --- "what day is it" — flag today, dim the past, live in the browser ---
+  (() => {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const now = new Date();
+    const todayISO = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
+    const dayCards = Array.from(document.querySelectorAll<HTMLElement>('.day[data-date]'));
+    const navLinks = Array.from(document.querySelectorAll<HTMLElement>('.daynav__list a[data-date]'));
+    if (!dayCards.length) return;
+
+    const dates = dayCards.map((el) => el.dataset.date || '');
+    const first = dates[0];
+    const last = dates[dates.length - 1];
+
+    const weekday = new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(now);
+    const dayMonth = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long' }).format(now);
+
+    let todayCard: HTMLElement | null = null;
+
+    const classify = (el: HTMLElement) => {
+      const d = el.dataset.date || '';
+      if (d === todayISO) return 'is-today';
+      if (d < todayISO) return 'is-past';
+      return 'is-upcoming';
+    };
+
+    for (const el of dayCards) {
+      const state = classify(el);
+      el.classList.add(state);
+      if (state === 'is-today') {
+        todayCard = el;
+        el.querySelectorAll<HTMLElement>('.day__tag--today').forEach((t) => (t.hidden = false));
+      } else if (state === 'is-past') {
+        el.querySelectorAll<HTMLElement>('.day__tag--past').forEach((t) => (t.hidden = false));
+      }
+    }
+    for (const a of navLinks) {
+      a.classList.add(classify(a));
+    }
+
+    // Banner copy
+    const banner = document.querySelector<HTMLElement>('.today-banner');
+    const label = document.querySelector<HTMLElement>('[data-today-label]');
+    const jump = document.querySelector<HTMLAnchorElement>('[data-today-jump]');
+    if (!banner || !label) return;
+
+    if (todayCard) {
+      const code = todayCard.querySelector('.day__bar-code')?.textContent?.trim() || '';
+      const theme = todayCard.querySelector('.day__theme')?.textContent?.trim() || '';
+      label.textContent = `📍 Today is ${weekday} ${dayMonth} — ${code}: ${theme}`;
+      if (jump && todayCard.id) {
+        jump.href = `#${todayCard.id}`;
+        jump.hidden = false;
+      }
+    } else if (todayISO < first) {
+      label.textContent = `Not yet — the trip starts ${new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(first))}. Bags packed?`;
+    } else if (todayISO > last) {
+      label.textContent = `That's a wrap — the Glasgow weekend is done. Safe travels home. 🏴`;
+    } else {
+      // A gap day between listed days (shouldn't happen here) — say nothing loud.
+      label.textContent = `📅 Today is ${weekday} ${dayMonth}.`;
+    }
+    banner.hidden = false;
+  })();
 </script>

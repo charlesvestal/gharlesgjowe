@@ -14,17 +14,22 @@ const { day, dayNumber, showWeatherCaveat, caveat } = Astro.props;
 const slug = day.code.toLowerCase().replace(/\s+/g, '-');
 const stamp = String(dayNumber).padStart(2, '0');
 ---
-<section class="day" id={slug} aria-labelledby={`${slug}-h`}>
+<section class="day" id={slug} data-date={day.iso} aria-labelledby={`${slug}-h`}>
   <div class="day__bar" aria-hidden="true">
     <span class="day__bar-code">{day.code}</span>
     <span class="day__bar-date">{day.date}</span>
     <span class="day__bar-theme">{day.theme}</span>
+    <span class="day__bar-today">Today</span>
   </div>
 
   <header class="day__head">
     <div class="day__stamp" aria-hidden="true">{stamp}</div>
     <div class="day__heading">
-      <p class="day__code meta">{day.code} · {day.date}</p>
+      <p class="day__code meta">
+        {day.code} · {day.date}
+        <span class="day__tag day__tag--today" hidden>· Today</span>
+        <span class="day__tag day__tag--past" hidden>· Done</span>
+      </p>
       <h3 class="day__theme" id={`${slug}-h`}>{day.theme}</h3>
     </div>
   </header>
@@ -55,6 +60,51 @@ const stamp = String(dayNumber).padStart(2, '0');
     scroll-margin-top: 5.5rem;
   }
   .day:first-of-type { border-top: 0; }
+
+  /* --- "what day is it" states (toggled client-side) --- */
+
+  /* Today: pull it forward with an acid rail and a glow. */
+  .day.is-today {
+    border-top-color: var(--acid);
+  }
+  .day.is-today::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--gutter, 1rem));
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--acid);
+  }
+
+  /* Past days: dim and desaturate, but keep them readable if opened. */
+  .day.is-past { opacity: 0.5; transition: opacity var(--dur) var(--ease); }
+  .day.is-past:hover,
+  .day.is-past:focus-within { opacity: 1; }
+
+  .day__bar-today {
+    display: none;
+    margin-left: auto;
+    flex: 0 0 auto;
+    padding: 0 0.4rem;
+    background: var(--acid);
+    color: var(--ink);
+    font-weight: 700;
+    border-radius: 2px;
+  }
+  .day.is-today .day__bar-today { display: inline-block; }
+  .day.is-today .day__bar { border-bottom-color: var(--acid); }
+
+  .day__tag {
+    font-family: var(--ff-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .day__tag--today { color: var(--acid); font-weight: 700; }
+  .day__tag--past { color: var(--bone-dim); }
+  @media (prefers-reduced-motion: reduce) {
+    .day.is-past { transition: none; }
+  }
 
   /* slim sticky day header — locks under the nav as you scroll the day */
   .day__bar {

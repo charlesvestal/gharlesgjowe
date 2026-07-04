@@ -16,6 +16,7 @@ export interface Stop {
 
 export interface Day {
   date: string;
+  iso: string;      // ISO date (YYYY-MM-DD) — lets the site know which day is "today"
   code: string;
   theme: string;
   weather: string;
@@ -183,6 +184,7 @@ export const trip = {
     { id: 'book-crabshakk', label: 'Book Crabshakk — Sun 5 Jul (small room, often fills)', done: true },
     { id: 'book-margo', label: 'Book Margo — Sat 4 Jul (Merchant City small plates)', done: true },
     { id: 'book-stirling-castle', label: 'Book Stirling Castle entry online — cheaper than gate price' },
+    { id: 'book-stirling-distillery', label: 'Book Stirling Distillery tour for Sun 5 Jul ~14:15 — small-group, Sunday slots limited (stirlingdistillery.com)' },
     { id: 'check-sunday-trains', label: 'Check Sunday Stirling ↔ Glasgow trains — last train back matters' },
     { id: 'summer-sessions-cabs', label: "Bellahouston crowds: Kings of Leon (Fri 3) & My Chemical Romance (Sat 4) at Summer Sessions, ~40k each — pre-book the Sat Glasgow Green→flat cab; expect busy central pubs & cabs both nights" },
     { id: 'backpack', label: 'Backpack only — no checked bag' },
@@ -429,6 +431,7 @@ export const trip = {
   days: [
     {
       date: 'Thu 2 Jul',
+      iso: '2026-07-02',
       code: 'DAY 01',
       theme: 'Touchdown & a covers band',
       weather: weatherThu,
@@ -516,6 +519,7 @@ export const trip = {
     },
     {
       date: 'Fri 3 Jul',
+      iso: '2026-07-03',
       code: 'DAY 02',
       theme: 'West End Wander',
       weather: weatherFri,
@@ -611,6 +615,7 @@ export const trip = {
     },
     {
       date: 'Sat 4 Jul',
+      iso: '2026-07-04',
       code: 'DAY 03',
       theme: 'East End & The Barras',
       weather: weatherSat,
@@ -625,7 +630,20 @@ export const trip = {
           pairing: 'Coffee and a kipper if you\'re feeling Scottish.',
         },
         {
-          time: '10:00',
+          time: '~10:00',
+          title: 'GoMA — carried over from Thursday',
+          kind: 'sight',
+          optional: true,
+          blurb:
+            "You never made it here, and it's 3 min from the Gandolfi table — so grab it now while you're in the Merchant City, before heading east. Free contemporary-art gallery on Royal Exchange Sq (opens 10:00 Sat), plus the traffic-coned Duke of Wellington out front = the obligatory Glasgow photo. A quick 30–40 min in and out; then it's the ~20-min walk (or £6 cab) up to the Cathedral, so the rest of the day slides ~45 min later.",
+          maps: mapsUrl('Gallery of Modern Art Royal Exchange Square'),
+          pairing: 'Espresso in the GoMA café before the walk east.',
+          swap: "Rather not lose the 45 min today? GoMA opens 10:00 Mon too and it's right by the flat — nip in on Monday morning before the Tenement House instead.",
+          image: localImg('goma-glasgow.jpg'),
+          imageAlt: 'Gallery of Modern Art Glasgow front facade with Duke of Wellington statue',
+        },
+        {
+          time: '~10:45',
           title: 'Glasgow Cathedral',
           kind: 'sight',
           blurb:
@@ -737,6 +755,7 @@ export const trip = {
     },
     {
       date: 'Sun 5 Jul',
+      iso: '2026-07-05',
       code: 'DAY 04',
       theme: 'Stirling Day Trip',
       weather: weatherSun,
@@ -793,6 +812,17 @@ export const trip = {
           imageAlt: 'The Portcullis Hotel pub, Stirling, near the castle',
         },
         {
+          time: '~14:15',
+          title: 'Stirling Distillery',
+          kind: 'drink',
+          blurb:
+            "You floated this — worth it. Stirling's first distillery in ~200 years, in the old smiddy on Lower Castlehill, a 2-min walk down from the castle esplanade (so it drops neatly into the Old Town wander). Guided gin/whisky tours run ~1 hr and finish with a tasting; they also do a shorter tasting flight if you'd rather not commit the full hour. Book ahead — Sunday slots are limited and small-group.",
+          booking: { label: 'Book a tour (Stirling Distillery)', url: 'https://www.stirlingdistillery.com/' },
+          maps: 'https://www.google.com/maps/search/?api=1&query=Stirling+Distillery',
+          pairing: 'Their Stirling Gin, neat off the still — but keep it to one; the 16:30 train and Crabshakk are waiting.',
+          swap: "No tour slot free? The tasting bar takes walk-ins when they're quiet, or skip it for a longer sit at the Portcullis. Either way, hard stop for the train — don't wing the thin Sunday service.",
+        },
+        {
           time: '~16:30',
           title: 'Train: Stirling → Queen St',
           kind: 'transport',
@@ -839,6 +869,7 @@ export const trip = {
     },
     {
       date: 'Mon 6 Jul',
+      iso: '2026-07-06',
       code: 'DAY 05',
       theme: 'Last Call',
       weather: weatherMon,
