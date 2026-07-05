@@ -6,6 +6,7 @@ import Checklist from '../components/Checklist.astro';
 import DrinksPlan from '../components/DrinksPlan.astro';
 import FoodAlternates from '../components/FoodAlternates.astro';
 import NearTheFlat from '../components/NearTheFlat.astro';
+import JoeCoda from '../components/JoeCoda.astro';
 import Footer from '../components/Footer.astro';
 import { trip } from '../data/trip';
 
@@ -38,6 +39,7 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
       <li><a href="#tab" class="daynav__pill daynav__pill--tab">The Tab</a></li>
       <li><a href="#near" class="daynav__pill daynav__pill--near">By the flat</a></li>
       <li><a href="#food" class="daynav__pill daynav__pill--food">Food</a></li>
+      <li><a href="#joe" class="daynav__pill daynav__pill--joe">Joe's coda</a></li>
     </ul>
   </nav>
 
@@ -77,6 +79,8 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
     <NearTheFlat intro={trip.nearTheFlat.intro} groups={[...trip.nearTheFlat.groups]} />
 
     <FoodAlternates groups={trip.foodAlternates} />
+
+    <JoeCoda coda={trip.joesCoda} />
   </main>
 
   <Footer items={trip.footer.items} />
@@ -209,6 +213,9 @@ const title = `${trip.title} · ${trip.travellers.join(' × ')} · ${trip.dates}
   .daynav__list a.daynav__pill--tab:hover, .daynav__list a.daynav__pill--tab:focus-visible { background: var(--riso-red); color: var(--ink); border-color: var(--riso-red); }
   .daynav__list a.daynav__pill--near { background: var(--bone); color: var(--ink); border-color: var(--bone); }
   .daynav__list a.daynav__pill--near:hover, .daynav__list a.daynav__pill--near:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+  .daynav__list a.daynav__pill--joe { background: var(--riso-red); color: var(--bone); border-color: var(--riso-red); }
+  .daynav__list a.daynav__pill--joe .daynav__code { color: var(--bone); }
+  .daynav__list a.daynav__pill--joe:hover, .daynav__list a.daynav__pill--joe:focus-visible { background: var(--acid); color: var(--ink); border-color: var(--acid); }
 </style>
 
 <script>

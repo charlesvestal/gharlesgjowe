@@ -76,8 +76,27 @@ export interface DrinkDay {
   detail: string;      // what those drinks actually are
 }
 
+export interface CodaDay {
+  date: string;
+  title: string;
+  subtitle: string;
+  stops: Stop[];
+}
+
+export interface JoesCoda {
+  label: string;      // section eyebrow
+  who: string;        // whose coda + the one-line premise
+  intro: string;
+  travel: string;     // train logistics note
+  days: CodaDay[];
+}
+
 const mapsUrl = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${query} Glasgow`)}`;
+
+// Like mapsUrl but no "Glasgow" suffix — for Joe's coda in Newcastle/Edinburgh.
+const placeUrl = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 // Local mirror of remote photos. Files live in public/images/ and are
 // served at <base>/images/<filename>. See .scripts/mirror-images.sh.
@@ -933,6 +952,136 @@ export const trip = {
       ],
     },
   ] satisfies Day[],
+  joesCoda: {
+    label: 'The coda',
+    who: "Joe's solo overnight — after Charles flies home",
+    intro:
+      "Charles is on the Monday-evening flight; Joe has a spare night before Edinburgh, so he peels off south for a Newcastle overnight and rolls up the East Coast line the next day. One shared breakfast, a goodbye, and he's released around noon.",
+    travel:
+      "Trains: Glasgow Central → Newcastle is TransPennine Express direct, ~2h30 via Dumfries & Carlisle — but only ~5–6 direct runs a day, so pin a specific seat rather than winging it. There's a direct departure around midday (roughly 11:40 / 12:40 ex-Central — confirm the exact time on the day). Newcastle → Edinburgh the next day is the easy bit: ~1h30 and 2–3 an hour, so just turn up. Book the Glasgow leg ahead; the Edinburgh leg you can buy on the day.",
+    days: [
+      {
+        date: 'Mon 6 Jul',
+        title: 'Glasgow → Newcastle',
+        subtitle: 'Afternoon train south, a night on the Toon',
+        stops: [
+          {
+            time: '~9:30',
+            title: 'Last breakfast together — Café Gandolfi',
+            kind: 'food',
+            blurb:
+              "The shared send-off before you split: a proper sit-down at the Merchant City classic (Albion St, ~4 min from the flat), big pot of tea, no rush. Then Charles drifts toward his day and the airport, Joe toward Queen St / Central.",
+            maps: mapsUrl('Cafe Gandolfi Albion Street'),
+            pairing: 'Tea, and a bacon roll for the road.',
+          },
+          {
+            time: '~12:00',
+            title: 'Released — Glasgow Central → Newcastle',
+            kind: 'transport',
+            blurb:
+              "The goodbye, then south. TransPennine Express direct, ~2h30, a genuinely pretty run down through Dumfries & Galloway and over the border. Grab a window seat and a coffee. Lands you in Newcastle mid-afternoon with the whole evening ahead.",
+            transport:
+              'From Glasgow Central (NOT Queen St). Direct trains are sparse (~5–6/day) — pin the midday one in advance; a walk-up fare on the day will sting.',
+            booking: { label: 'Times & tickets (National Rail)', url: 'https://www.nationalrail.co.uk/' },
+            pairing: 'A can and a book for the border scenery.',
+          },
+          {
+            time: '~15:00',
+            title: 'Drop bags — stay near Central / Grainger Town',
+            kind: 'note',
+            blurb:
+              "Book a room in the city centre near Central Station or Grainger Town — everything below is a walk from there, and it makes the next morning's Edinburgh train a five-minute stroll. (The Quayside is prettier but a bit further from the platform.)",
+            pairing: 'Dump the bag, splash your face, back out.',
+          },
+          {
+            time: '~15:30',
+            title: 'Grainger Town + Grey Street',
+            kind: 'sight',
+            blurb:
+              "Newcastle's handsome Georgian core, 5 min from the station. Walk up Grey Street — regularly voted one of Britain's finest streets — to Grey's Monument, then duck into the Grainger Market: a Victorian covered market with cheap food stalls, proper coffee at Pumphrey's, and the original tiny M&S 'Penny Bazaar'. Grab a stottie.",
+            maps: placeUrl('Grainger Market Newcastle upon Tyne'),
+            pairing: "A flat white at Pumphrey's in the market.",
+          },
+          {
+            time: '~16:30',
+            title: 'The Quayside, the bridges & BALTIC',
+            kind: 'sight',
+            blurb:
+              "Head down to the Tyne for the postcard: the great green Tyne Bridge and the tilting Gateshead Millennium Bridge (the 'blinking eye'). Cross the Millennium Bridge to BALTIC — free contemporary-art gallery in an old flour mill; ride to the top-floor viewing box for the best river panorama in the city.",
+            maps: placeUrl('BALTIC Centre for Contemporary Art Gateshead'),
+            pairing: "Nothing yet — pint's coming.",
+            swap: "Sunny evening? Bail on the gallery and take the Metro out to Tynemouth (~30 min) — priory ruins, a proper beach, and Riley's Fish Shack on the sand, one of the best casual seafood spots in the country.",
+          },
+          {
+            time: '~18:30',
+            title: 'Dinner — The Broad Chare',
+            kind: 'food',
+            blurb:
+              "A short walk back toward the Quayside. Terry Laybourne's proper Northern gastropub — cracking cask ales, pease pudding, ox cheek, that kind of thing. Solo-friendly: sit at the bar and let them look after you.",
+            booking: { label: 'The Broad Chare', url: 'https://thebroadchare.co.uk/' },
+            maps: placeUrl('The Broad Chare Newcastle upon Tyne'),
+            pairing: 'A local cask ale — ask what\'s freshest.',
+            swap: "Fancy a blow-out last-night solo dinner? House of Tides — Kenny Atkinson's Michelin-starred spot in a 16th-c merchant house on the Quayside — is the splurge.",
+          },
+          {
+            time: '~20:30',
+            title: 'A night in Ouseburn',
+            kind: 'drink',
+            blurb:
+              "Skip the rowdy Bigg Market strip and cab (or 15-min walk) to Ouseburn, Newcastle's coolest quarter. The Free Trade Inn for a legendary pint with the best Tyne view; The Cluny for a bar-and-live-music-venue (check what's on — keeps the trip's gig streak alive); the Tyne Bar tucked under the bridge. Cheap, arty, no airs.",
+            maps: placeUrl('The Free Trade Inn Ouseburn Newcastle'),
+            pairing: 'Whatever\'s on cask at the Free Trade, pint in hand out the back.',
+            swap: 'Rather stay central? The tiny historic Crown Posada and The Bridge Tavern (own brewery, under the Tyne Bridge) are the Quayside pair.',
+          },
+        ],
+      },
+      {
+        date: 'Tue 7 Jul',
+        title: 'Newcastle → Edinburgh',
+        subtitle: 'Slow morning, scenic run up the coast',
+        stops: [
+          {
+            time: '~9:30',
+            title: 'Slow breakfast',
+            kind: 'food',
+            blurb:
+              "No train to catch till you fancy it. Coffee and something in the Grainger Market again, or a Quayside café by the river. Ease into it.",
+            maps: placeUrl('Grainger Market Newcastle upon Tyne'),
+            pairing: 'Coffee, and a leftover-holiday fry-up if the head needs it.',
+          },
+          {
+            time: '~11:00',
+            title: 'One last wander',
+            kind: 'sight',
+            optional: true,
+            blurb:
+              "Time to kill before the train: the Castle Keep (the 'new castle' that named the city, right by the station) for the history-and-views box, or just a slow last loop of the Quayside. Then collect the bag.",
+            maps: placeUrl('Newcastle Castle Keep'),
+            pairing: 'Take-out coffee for the platform.',
+          },
+          {
+            time: '~13:00',
+            title: 'Newcastle → Edinburgh Waverley',
+            kind: 'transport',
+            blurb:
+              "The easy leg — ~1h30, 2–3 an hour, no need to pre-book. And it's a stunner: the East Coast main line hugs the coast past Alnmouth, over the border at Berwick, and along the cliffs into Edinburgh. Sit on the right-hand (east) side for the sea.",
+            transport: 'Frequent LNER / CrossCountry services from Newcastle Central. Buy on the day.',
+            booking: { label: 'Live times (LNER)', url: 'https://www.lner.co.uk/' },
+            pairing: 'Save the first Edinburgh pint for Waverley.',
+          },
+          {
+            time: '~15:00',
+            title: 'Arrive Edinburgh',
+            kind: 'note',
+            blurb:
+              "Waverley drops you dead-centre, under the castle. From here it's over to you and the Edinburgh plan — the coda's done its job.",
+            maps: placeUrl('Edinburgh Waverley Station'),
+            pairing: 'Whatever Edinburgh\'s pouring.',
+          },
+        ],
+      },
+    ],
+  } satisfies JoesCoda,
 };
 
 export type Trip = typeof trip;

@@ -1,0 +1,156 @@
+---
+import type { JoesCoda } from '../data/trip';
+import StopRow from './StopRow.astro';
+
+interface Props {
+  coda: JoesCoda;
+}
+
+const { coda } = Astro.props;
+---
+<section class="coda" id="joe" aria-labelledby="coda-h">
+  <div class="coda__bar" aria-hidden="true">
+    <span class="coda__bar-code">{coda.label}</span>
+    <span class="coda__bar-who">{coda.who}</span>
+  </div>
+
+  <header class="coda__head">
+    <h2 class="coda__title" id="coda-h">Joe's<br />Coda</h2>
+    <p class="coda__intro">{coda.intro}</p>
+  </header>
+
+  <p class="coda__travel">
+    <span class="coda__travel-label" aria-hidden="true">Trains</span>
+    {coda.travel}
+  </p>
+
+  {coda.days.map((day) => (
+    <div class="coda__day">
+      <div class="coda__day-head">
+        <span class="coda__day-date">{day.date}</span>
+        <h3 class="coda__day-title">{day.title}</h3>
+        <p class="coda__day-sub">{day.subtitle}</p>
+      </div>
+      <ol class="coda__stops" aria-label={`Stops — ${day.title}`}>
+        {day.stops.map((stop, i) => (
+          <li><StopRow stop={stop} index={i} /></li>
+        ))}
+      </ol>
+    </div>
+  ))}
+</section>
+
+<style>
+  .coda {
+    padding: 2.5rem 0;
+    border-top: var(--rule-thick) solid var(--riso-red);
+    scroll-margin-top: 5.5rem;
+  }
+
+  .coda__bar {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--ink);
+    border-bottom: var(--rule) solid var(--riso-red);
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .coda__bar-code { color: var(--riso-red); font-weight: 700; flex: 0 0 auto; }
+  .coda__bar-who {
+    color: var(--bone-dim);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coda__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .coda__title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 0.85;
+    color: var(--riso-red);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    transform: rotate(-2deg);
+    text-shadow: 0.02em 0.02em 0 var(--acid);
+    flex: 0 0 auto;
+  }
+  .coda__intro {
+    flex: 1 1 16rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--bone);
+    max-width: 48ch;
+    padding-top: 0.5rem;
+  }
+
+  .coda__travel {
+    margin: 0 0 2rem 0;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--acid);
+    background: var(--ink-2);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--bone);
+  }
+  .coda__travel-label {
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acid);
+    margin-right: 0.5rem;
+  }
+
+  .coda__day { margin-bottom: 2rem; }
+  .coda__day-head {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: var(--rule) solid var(--bone-faint);
+  }
+  .coda__day-date {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-meta);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--acid);
+  }
+  .coda__day-title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 0.95;
+    margin: 0.2rem 0 0.15rem 0;
+    color: var(--bone);
+    text-transform: uppercase;
+  }
+  .coda__day-sub {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-small);
+    color: var(--bone-dim);
+  }
+
+  .coda__stops {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .coda__stops > li { display: block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .coda__title { transform: none; }
+  }
+</style>
