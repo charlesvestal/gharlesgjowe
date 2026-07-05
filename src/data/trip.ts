@@ -894,12 +894,12 @@ export const trip = {
       weather: weatherMon,
       stops: [
         {
-          time: '~9:30',
-          title: 'Slow breakfast — Café Gandolfi',
+          time: '~9:15',
+          title: 'Last breakfast — The Butterfly and the Pig',
           kind: 'food',
-          blurb: "No rush — the flight's not till evening. Back to Café Gandolfi (Albion St, ~4 min) for a proper sit-down send-off — the Merchant City classic since 1979, big pot of tea and all.",
-          maps: mapsUrl('Cafe Gandolfi Albion Street'),
-          pairing: 'Big pot of tea. Or a Bloody Mary if you\'re already in goodbye mode.',
+          blurb: "The classic send-off. Head up to the Tea Rooms above the pub at 153 Bath St — mismatched vintage china, a proper big Scottish fry-up, and their famous homemade tablet. Open from 9am Monday, ~10 min from the flat and roughly on the line up to Garnethill, so it sets you up nicely for the Tenement House. No rush — the flight's not till evening.",
+          maps: mapsUrl('The Butterfly and the Pig Bath Street'),
+          pairing: "A big pot of tea in a cosy-worn pot. Or a Bloody Mary if you're already in goodbye mode.",
         },
         {
           time: '10:30',
@@ -966,12 +966,12 @@ export const trip = {
         subtitle: 'Afternoon train south, a night on the Toon',
         stops: [
           {
-            time: '~9:30',
-            title: 'Last breakfast together — Café Gandolfi',
+            time: '~9:15',
+            title: 'Last breakfast together — The Butterfly and the Pig',
             kind: 'food',
             blurb:
-              "The shared send-off before you split: a proper sit-down at the Merchant City classic (Albion St, ~4 min from the flat), big pot of tea, no rush. Then Charles drifts toward his day and the airport, Joe toward Queen St / Central.",
-            maps: mapsUrl('Cafe Gandolfi Albion Street'),
+              "The shared send-off before you split: up to the Tea Rooms above the pub on Bath St (open from 9am) for a proper classic Scottish fry-up, vintage china and a big pot of tea, no rush. Charles has the Tenement House and an evening flight; then it's goodbye and Joe heads for Central.",
+            maps: mapsUrl('The Butterfly and the Pig Bath Street'),
             pairing: 'Tea, and a bacon roll for the road.',
           },
           {
